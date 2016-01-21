@@ -5,6 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:directive.include file="sqllink.jsp"/>
+<jsp:useBean id="pa" class="com.clinic.Patient" scope="session"/>
+<jsp:useBean id="vi" class="com.clinic.Visit" scope="session" />
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,15 +19,10 @@
     function validateFormValues(){
 	
 	
-       if (document.provider.first_name.value === ""){
-		alert('Please enter first name');
+       if (document.service.service_type_id.value === ""){
+		alert('Please select a service type');
 		return false;} 
-        if (document.provider.last_name.value === ""){
-		alert('Please enter last name');
-		return false;} 
-         if (document.provider.job_title_id.value === ""){
-		alert('Please select job title');
-		return false;} 
+        
 			else
 		{
 			return true;
@@ -41,108 +39,77 @@
               <div id="nav">
                  <jsp:directive.include file="menubar.jsp"/>
 </div>   
-
-      <c:set var="edit_mode" value="${not empty param.visit_id}"></c:set>   
-      <c:set var="new_mode" value="${ empty param.visit_id}"></c:set> 
+<div id="section"> 
+   
       
-    <c:choose>
-        
- <div id="section">       
-        <c:when test='${edit_mode}'>
-
-            <c:set var="provider_id" value = "<%= request.getParameter("provider_id")%>"/>        
-            <c:set var="first_name" value="<%= request.getParameter("first_name")%>" />
-            <c:set var="last_name" value="<%= request.getParameter("last_name")%>" />
-            <c:set var="job_title_id" value="<%= request.getParameter("job_title_id")%>" />
-
-            <sql:update dataSource="${snapshot}" var="result">
-            update provider set first_name = '${first_name}', last_name = '${last_name}', job_title_id = ${job_title_id}
-            where provider_id  = ${provider_id}
-            </sql:update>  
-
-        </c:when>
-        <c:when test='${new_mode}'>
-            <sql:query dataSource="${snapshot}" var="pr">
-            select CONCAT('PR', max(substr(provider_no,3,5)) + 1) as pr_no 
-            FROM provider
+      
+            <sql:query dataSource="${snapshot}" var="vi">
+            select CONCAT('VI', max(substr(visit_no,3,5)) + 1) as vi_no 
+            FROM visit
             </sql:query>
 
-            <c:forEach var="row" items="${pr.rows}">
-                <c:set var="pr_no" value = "${row.pr_no}" />
+            <c:forEach var="row" items="${vi.rows}">
+                <c:set var="vi_no" value = "${row.vi_no}" />
             </c:forEach>   
 
 
-            <c:set var="first_name" value="<%= request.getParameter("first_name")%>" />
-            <c:set var="last_name" value="<%= request.getParameter("last_name")%>" />
-            <c:set var="job_title_id" value="<%= request.getParameter("job_title_id")%>" />
+            <c:set var="patient_id" value="<%= pa.getPatient_id() %>" />
+            <c:set var="primary_complaint" value="<%= request.getParameter("primary_complaint")%>" />
+            <c:set var="provider_id" value="<%= request.getParameter("provider_id")%>" />
 
             <sql:update dataSource="${snapshot}" var="result">
-            insert into provider (provider_no, first_name, last_name, job_title_id)
-            values ('${pr_no}', '${first_name}','${last_name}', ${job_title_id})
-            </sql:update>        
+            insert into visit (patient_id, visit_no, primary_complaint, provider_id)
+            values (${patient_id}, '${vi_no}','${primary_complaint}', ${provider_id})
+            </sql:update> 
+            
+            <sql:query dataSource="${snapshot}" var="sid">
+            SELECT visit_id
+            FROM visit
+            WHERE visit_no = (select CONCAT('VI', max(substr(visit_no,3,5))) FROM visit)
+            </sql:query>
+            
+            <c:forEach var="row" items="${sid.rows}">
+                <c:set var="visit_id" value = "${row.visit_id}" />
+            </c:forEach>
+            
+            <jsp:setProperty name="vi" property="visit_id" value="${visit_id}"/>
+    
+            <sql:query dataSource="${snapshot}" var="se">
+            SELECT service_type_id, service_type_no, service_type_description
+            FROM service_type
+            ORDER BY service_type_description
+            </sql:query> 
+    
 
-        </c:when>
-    </c:choose>
-    
-    <sql:query dataSource="${snapshot}" var="jt">
-        SELECT job_title_id, job_title
-        FROM job_title
-        ORDER BY job_title
-        </sql:query> 
-    
-    
-     
-         <sql:query dataSource="${snapshot}" var="pr_list">
-        SELECT pr.provider_id, pr.provider_no, pr.first_name, pr.last_name, jt.job_title
-        FROM provider pr, job_title jt
-        WHERE pr.job_title_id = jt.job_title_id
-        ORDER BY pr.last_name
-        </sql:query>
         
-        
-    <form name="provider" action="saveprovider.jsp" method="POST">
+        <form name="service" action="addservice.jsp" method="POST">
          <table border="0" cellpadding="10" align="center">  
              <caption>
-                 <h2>Healthcare provider</h2>
+                 <h2>Patient Visit for <%= pa.getFirst_name() %> <%= pa.getLast_name() %></h2>
             </caption>
              
-        
-                 <tr><th align="left">First name</th><td><input type="text" name="first_name" /></td> </tr>
-                 <tr><th align="left">last name</th><td><input type="text" name="last_name" /></td> </tr>
-           
-                 <tr><th align="left">Job Title</th><td> 
-                 <select name="provider_id">
-                 <option value="">[Please select job title]</option>
-                 <c:forEach var="row" items="${jt.rows}">
-                <option value="${row.job_title_id}">${row.job_title}</option>
+                 <tr><th align="left"></th><td><input type="hidden" name="visit_id" value="<%= vi.getVisit_id() %>"> </td> </tr>
+             
+            
+                 <tr><th align="left">Service Type </th><td> 
+                <select name="service_type_id">
+                  
+                 <option value="">[Please select Service]</option>
+             
+                 <c:forEach var="row" items="${se.rows}">
+                <option value="${row.service_type_id}">${row.service_type_description}</option>
   		</c:forEach> 
-                </select>    
-                 </td> </tr>
+                </select> 
+  
+                     </td> </tr>
              <tr><th></th><td><input type="submit" value="Submit" onclick="return validateFormValues()"/></td> </tr>
+         
             </table>
             </form>
-    <table border="1" cellpadding="10" align="center" >
-         <caption><h2>Health care provider</h2></caption>
-         <tr>
-            <th>Provider Number</th>
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Job Title</th>
-            <th>Edit</th>
-
-         </tr>
-         <c:forEach var="row" items="${pr_list.rows}">
-         <tr>
-            <td><c:out value="${row.provider_no}"/></td>
-            <td><c:out value="${row.first_name}"/></td>
-            <td><c:out value="${row.last_name}"/></td>
-            <td><c:out value="${row.job_title}"/></td>
-            <td><a href="<c:url value="provider.jsp?provider_id=${row.provider_id}"/>">Edit</a></td>
-         </tr>
-         </c:forEach>
-         </table>
-    </div>
-      <div id="footer">
+         
+         
+        </div>
+        <div id="footer">
             
         
        <jsp:directive.include file="footer.html"/>
@@ -150,7 +117,6 @@
         </div>
     </body>
 </html>
-
 
 
 
