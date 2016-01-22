@@ -9,7 +9,7 @@
 <jsp:useBean id="pa" class="com.clinic.Patient" scope="session"/>
 
 <html>
-    <head><title>Kenya Clinic: Healthcare provider</title>
+    <head><title>Kenya Clinic: Patient Visit </title>
     <link href="styleOne.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
     function validateFormValues(){
@@ -48,6 +48,36 @@
     FROM provider
     ORDER BY last_name
     </sql:query> 
+    
+    <c:set var="patient_id" value = "<%= request.getParameter("patient_id")%>"/>
+    
+    <sql:query dataSource="${snapshot}" var="pat">
+    SELECT pat.patient_id, pat.patient_no, pat.first_name, pat.last_name, pat.date_of_birth, pat.gender, pat.national_id, pat.pin_no
+    FROM patient pat 
+    WHERE patient_id = ${patient_id}
+    </sql:query>
+    
+    <c:forEach var="row" items="${pat.rows}">
+        <c:set var="patient_id" value = "${row.patient_id}"/>
+        <c:set var="patient_no" value = "${row.patient_no}"/>
+        <c:set var="first_name" value = "${row.first_name}"/>
+        <c:set var="last_name" value = "${row.last_name}"/>
+        
+        <c:set var="gender" value = "${row.gender}"/>
+        <c:set var="national_id" value = "${row.national_id}"/>
+        <c:set var="pin_no" value = "${row.pin_no}"/>
+    
+
+        </c:forEach> 
+
+        <jsp:setProperty name="pa" property="patient_id" value="${patient_id}"/>
+        <jsp:setProperty name="pa" property="patient_no" value="${patient_no}"/>
+        <jsp:setProperty name="pa" property="first_name" value="${first_name}"/>
+        <jsp:setProperty name="pa" property="last_name" value="${last_name}"/>
+       
+        <jsp:setProperty name="pa" property="gender" value="${gender}"/>
+        <jsp:setProperty name="pa" property="national_id" value="${national_id}"/>
+        <jsp:setProperty name="pa" property="pin_no" value="${pin_no}"/>
     
     <sql:query dataSource="${snapshot}" var="patient_name">
     SELECT patient_id
