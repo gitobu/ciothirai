@@ -70,7 +70,7 @@
             </sql:query>
             
             <form name="service" action="addservice.jsp" method="POST">
-                 <h2>Patient Visit for <%= pa.getFirst_name() %> <%= pa.getLast_name() %></h2>
+                 <h2>Services for <%= pa.getFirst_name() %> <%= pa.getLast_name() %></h2>
          <table border="0" cellpadding="10" align="center">  
              <caption>
                 

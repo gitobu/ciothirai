@@ -92,6 +92,17 @@
          </tr>
          </c:forEach>
          </table>
+         
+         <form name="patient" action="prescription.jsp" method="POST">
+            <input type="submit" value="Drugs">
+      
+         
+            <input type="hidden" name="visit_id" value="<%= vi.getVisit_id() %>">
+           
+        
+            
+        </form>
+</div>
            <div id="footer">
             
         
