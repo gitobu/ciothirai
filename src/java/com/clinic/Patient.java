@@ -14,10 +14,12 @@ public class Patient {
         private int patient_id;
    	private String patient_no;
    	private String first_name;
+        private String middle_name;
 	private String last_name;
    	private int gender;
 	private String national_id;
 	private String pin_no; 
+        private String phone;
    
     
     	public void setPatient_id(int id){
@@ -28,7 +30,10 @@ public class Patient {
 		}
     	public void setFirst_name (String fn){
         	first_name = fn;
-        	}	
+        	}
+        public void setMiddle_name (String mn){
+                middle_name = mn;
+        }
     	public void setLast_name (String pln){
         	last_name = pln;
         	}
@@ -41,6 +46,9 @@ public class Patient {
     	public void setPin_no(String pi){
 		pin_no = pi;
 		}
+        public void setPhone (String ph){
+                phone = ph;
+                }
     	public int getPatient_id(){
         	return patient_id;
         	}
@@ -50,6 +58,9 @@ public class Patient {
     	public String getFirst_name(){
         	return first_name;
         	}
+        public String getMiddle_name(){
+                return middle_name;
+                }
     	public String getLast_name(){
         	return last_name;
         	}
@@ -62,4 +73,7 @@ public class Patient {
     	public String getPin_no() {   
         	return pin_no;
         	} 
+        public String getPhone(){
+                return phone;
+                }
 }

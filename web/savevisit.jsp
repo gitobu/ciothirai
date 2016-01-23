@@ -53,12 +53,13 @@
             <jsp:setProperty name="vi" property="visit_id" value="${visit_id}"/>
             
             <c:set var="patient_id" value="<%= pa.getPatient_id() %>" />
+            <c:set var="visit_date" value="<%= request.getParameter("visit_date")%>" />
             <c:set var="primary_complaint" value="<%= request.getParameter("primary_complaint")%>" />
             <c:set var="provider_id" value="<%= request.getParameter("provider_id")%>" />
             
             <sql:update dataSource="${snapshot}" var="result">
-            insert into visit (patient_id, visit_no, primary_complaint, provider_id)
-            values (${patient_id}, '${vi_no}','${primary_complaint}', ${provider_id})
+            insert into visit (patient_id, visit_no, visit_date, primary_complaint, provider_id)
+            values (${patient_id}, '${vi_no}','${visit_date}', '${primary_complaint}', ${provider_id})
             </sql:update> 
             
             
@@ -72,6 +73,8 @@
             <jsp:directive.include file="patientdata.jsp"/>
             <hr>
             
+            <jsp:directive.include file="visitdata.jsp"/>
+            <hr>
             
             <form name="service" action="addservice.jsp" method="POST">
                 

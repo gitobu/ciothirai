@@ -39,7 +39,10 @@
            <hr>
             <jsp:directive.include file="patientdata.jsp"/>
             <hr>
-            
+            <jsp:directive.include file="visitdata.jsp"/>
+            <hr>
+            <jsp:directive.include file="servicedata.jsp"/>
+            <hr>
             
             
             <sql:query dataSource="${snapshot}" var="dr">

@@ -57,14 +57,16 @@
             <c:set var="patient_id" value = "<%= request.getParameter("patient_id")%>"/> 
             <c:set var="patient_no" value = "<%= request.getParameter("patient_no")%>"/> 
             <c:set var="first_name" value = "<%= request.getParameter("first_name")%>"/> 
+            <c:set var="middle_name" value = "<%= request.getParameter("middle_name")%>"/> 
             <c:set var="last_name" value = "<%= request.getParameter("last_name")%>"/> 
-        
+            <c:set var="date_of_birth" value = "<%= request.getParameter("date_of_birth")%>"/> 
             <c:set var="gender" value = "<%= request.getParameter("gender")%>"/> 
             <c:set var="national_id" value = "<%= request.getParameter("national_id")%>"/> 
             <c:set var="pin_no" value = "<%= request.getParameter("pin_no")%>"/> 
-
+            <c:set var="phone" value = "<%= request.getParameter("phone")%>"/> 
+            
             <sql:update dataSource="${snapshot}" var="result">
-            update patient set first_name = '${first_name}', last_name = '${last_name}', gender = ${gender}, national_id = '${national_id}', pin_no = '${pin_no}'
+            update patient set first_name = '${first_name}', last_name = '${last_name}', middle_name = '${middle_name}', date_of_birth = '${date_of_birth}', gender = ${gender}, national_id = '${national_id}', pin_no = '${pin_no}', phone = '${phone}'
             where patient_id  = ${patient_id}
             </sql:update>  
 
@@ -81,15 +83,17 @@
             </c:forEach>   
 
             <c:set var="first_name" value = "<%= request.getParameter("first_name")%>"/> 
+            <c:set var="middle_name" value = "<%= request.getParameter("middle_name")%>"/> 
             <c:set var="last_name" value = "<%= request.getParameter("last_name")%>"/> 
-        
+            <c:set var="date_of_birth" value = "<%= request.getParameter("date_of_birth")%>"/> 
             <c:set var="gender" value = "<%= request.getParameter("gender")%>"/> 
             <c:set var="national_id" value = "<%= request.getParameter("national_id")%>"/> 
             <c:set var="pin_no" value = "<%= request.getParameter("pin_no")%>"/>
-
+            <c:set var="phone" value = "<%= request.getParameter("phone")%>"/>
+            
             <sql:update dataSource="${snapshot}" var="result">
-            insert into patient (patient_no, first_name, last_name, gender, national_id, pin_no)
-            values ('${pa_no}', '${first_name}','${last_name}', ${gender}, '${national_id}', '${pin_no}')
+            insert into patient (patient_no, first_name, middle_name, last_name, date_of_birth, gender, national_id, pin_no, phone)
+            values ('${pa_no}', '${first_name}','${middle_name}','${last_name}', '${date_of_birth}', ${gender}, '${national_id}', '${pin_no}','${phone}')
             </sql:update>   
             
        
@@ -97,17 +101,24 @@
             <jsp:setProperty name="pia" property="patient_id" value="${patient_id}"/>
             <jsp:setProperty name="pia" property="patient_no" value="${pa_no}"/>
             <jsp:setProperty name="pia" property="first_name" value="${first_name}"/>
-            <jsp:setProperty name="pia" property="last_name" value="<${last_name}"/>     
+            <jsp:setProperty name="pia" property="middle_name" value="<${middle_name}"/> 
+            <jsp:setProperty name="pia" property="last_name" value="<${last_name}"/>   
+            
             <jsp:setProperty name="pia" property="gender" value="${gender}"/>
             <jsp:setProperty name="pia" property="national_id" value="${national_id}"/>
             <jsp:setProperty name="pia" property="pin_no" value="${pin_no}"/>
-                 
+            <jsp:setProperty name="pia" property="phone" value="${phone}"/>    
     </c:when>
     </c:choose>
                
       
         <sql:query dataSource="${snapshot}" var="pa_list">
-        SELECT pat.patient_id, pat.patient_no, pat.first_name, pat.last_name, pat.date_of_birth, pat.gender, pat.national_id, pat.pin_no
+        SELECT pat.patient_id, pat.patient_no, pat.first_name, pat.middle_name, pat.last_name, pat.date_of_birth, 
+        case 
+            when pat.gender = 1 then 'Female'
+            when pat.gender = 2 then 'Male' 
+        end as gender,
+        pat.national_id, pat.pin_no, pat.phone
         FROM patient pat 
         <c:choose>
         <c:when test='${edit_mode}'>
@@ -124,11 +135,13 @@
              <c:forEach var="row" items="${pa_list.rows}">
              <tr><th>Patient Number</th><td><c:out value="${row.patient_no}"/></td></tr>
              <tr><th>First Name</th><td><c:out value="${row.first_name}"/></td></tr>
+             <tr><th>Middle Name</th><td><c:out value="${row.middle_name}"/></td></tr>
              <tr><th>Last Name</th><td><c:out value="${row.last_name}"/></td></tr>
              <tr><th>Date of Birth</th><td><c:out value="${row.date_of_birth}"/></td></tr>
              <tr><th>Gender</th><td><c:out value="${row.gender}"/></td></tr>
              <tr><th>National Id</th><td><c:out value="${row.national_id}"/><td></td></tr>
              <tr><th>Pin Number</th><td><c:out value="${row.pin_no}"/></td></tr>
+             <tr><th>Phone Number</th><td><c:out value="${row.phone}"/></td></tr>
              <tr><th>Update</th><td><a href="<c:url value="patient.jsp?patient_id=${row.patient_id}"/>">Edit</a></td></tr>
                </c:forEach>
          </table>

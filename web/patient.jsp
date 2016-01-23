@@ -49,7 +49,7 @@
         <c:set var="patient_id" value = "${param.patient_id}"/>
            
         <sql:query dataSource="${snapshot}" var="pa_data">
-        SELECT pa.patient_id, pa.patient_no, pa.first_name, pa.last_name, pa.date_of_birth, pa.gender, pa.national_id, pa.pin_no
+        SELECT pa.patient_id, pa.patient_no, pa.first_name, pa.middle_name, pa.last_name, pa.date_of_birth, pa.gender, pa.national_id, pa.pin_no, pa.phone
         FROM patient pa 
         WHERE pa.patient_id = ${patient_id}
         </sql:query>
@@ -58,24 +58,26 @@
         <c:set var="patient_id" value = "${row.patient_id}"/>
         <c:set var="patient_no" value = "${row.patient_no}"/>
         <c:set var="first_name" value = "${row.first_name}"/>
+        <c:set var="first_name" value = "${row.middle_name}"/>
         <c:set var="last_name" value = "${row.last_name}"/>
         
         <c:set var="gender" value = "${row.gender}"/>
         <c:set var="national_id" value = "${row.national_id}"/>
         <c:set var="pin_no" value = "${row.pin_no}"/>
-    
+        <c:set var="phone" value = "${row.phone}"/>
 
         </c:forEach> 
 
         <jsp:setProperty name="pa" property="patient_id" value="${patient_id}"/>
         <jsp:setProperty name="pa" property="patient_no" value="${patient_no}"/>
         <jsp:setProperty name="pa" property="first_name" value="${first_name}"/>
+        <jsp:setProperty name="pa" property="middle_name" value="${middle_name}"/>
         <jsp:setProperty name="pa" property="last_name" value="${last_name}"/>
        
         <jsp:setProperty name="pa" property="gender" value="${gender}"/>
         <jsp:setProperty name="pa" property="national_id" value="${national_id}"/>
         <jsp:setProperty name="pa" property="pin_no" value="${pin_no}"/>
-        
+        <jsp:setProperty name="pa" property="phone" value="${phone}"/>
      
     </c:when>
     <c:when test='${new_mode}'>
@@ -101,26 +103,30 @@
                  
                 
              <tr><th align="left">First name</th><td><input type="text" name="first_name" value="<%= pa.getFirst_name() %>"></td> </tr>
+             <tr><th align="left">Middle name</th><td><input type="text" name="middle_name" value="<%= pa.getMiddle_name() %>"></td> </tr>
              <tr><th align="left">Last name</th><td><input type="text" name="last_name" value="<%= pa.getLast_name() %>"></td> </tr>
              <tr><th align="left">Date of birth</th><td><input type="text" name="date_of_birth" ></td> </tr>
              <tr><th align="left">Gender</th><td><input type="text" name="gender" value="<%= pa.getGender() %>"></td> </tr>
+             
              <tr><th align="left">National Id</th><td><input type="text" name="national_id" value="<%= pa.getNational_id() %>"></td> </tr>
              <tr><th align="left">PIN Number</th><td><input type="text" name="pin_no" value="<%= pa.getPin_no() %>"></td> </tr>
-          
+             <tr><th align="left">Phone Number</th><td><input type="text" name="phone" value="<%= pa.getPhone() %>"></td> </tr>
             
              </c:when>
              <c:when test='${new_mode}'>
            <tr><th align="left">First name</th><td><input type="text" name="first_name" ></td> </tr>
+           <tr><th align="left">Middle name</th><td><input type="text" name="middle_name" ></td> </tr>
              <tr><th align="left">Last name</th><td><input type="text" name="last_name" ></td> </tr>
              <tr><th align="left">Date of birth</th><td><input type="text" name="date_of_birth" ></td> </tr>
-             <tr><th align="left">Gender</th><td><input type="text" name="gender"></td> </tr>
+             <tr><th align="left">Gender</th><td><input type="radio" name="gender" value="1">Female<input type="radio" name="gender" value="2">Male</td> </tr>
              <tr><th align="left">National Id</th><td><input type="text" name="national_id" ></td> </tr>
              <tr><th align="left">PIN Number</th><td><input type="text" name="pin_no" ></td> </tr>
+             <tr><th align="left">Phone Number</th><td><input type="text" name="phone" ></td> </tr>
             </c:when> 
              </c:choose> 
                  
                      
-             <tr><th></th><td><input type="submit" value="Submit" onclick="return validateFormValues()"/></td> </tr>
+             <tr><td><input type="submit" value="Submit" onclick="return validateFormValues()"/></td> </tr>
             </table>
             </form>
         

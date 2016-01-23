@@ -46,6 +46,10 @@
             <hr>
             <jsp:directive.include file="patientdata.jsp"/>
             <hr> 
+            <jsp:directive.include file="visitdata.jsp"/>
+            <hr>
+            <jsp:directive.include file="servicedata.jsp"/>
+            <hr>
             <form name="service" action="saveprescription.jsp" method="POST">
                
          <table border="0" cellpadding="10" >  

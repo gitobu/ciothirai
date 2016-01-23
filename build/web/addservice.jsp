@@ -50,6 +50,9 @@
              <jsp:directive.include file="patientdata.jsp"/>
            
             <hr>
+           
+            <jsp:directive.include file="visitdata.jsp"/>
+            <hr>
             <form name="service" action="addservice.jsp" method="POST">
                 
          <table border="0" cellpadding="10" >  
