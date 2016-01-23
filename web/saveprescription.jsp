@@ -43,10 +43,12 @@
             FROM drug
             ORDER BY drug_name
             </sql:query>
-            
+            <hr>
+            <jsp:directive.include file="patientdata.jsp"/>
+            <hr> 
             <form name="service" action="saveprescription.jsp" method="POST">
-                 <h2>Prescription for <%= pa.getFirst_name() %> <%= pa.getLast_name() %></h2>
-         <table border="0" cellpadding="10" align="center">  
+               
+         <table border="0" cellpadding="10" >  
              <caption>
                 
             </caption>
@@ -65,23 +67,26 @@
                 </select> 
   
                      </td> </tr>
-                 <tr><th align="left"></th><td><input type="text" name="quantity"> </td> </tr>
+                 <tr><th align="left">Quantity</th><td><input type="text" name="quantity"> </td> </tr>
              <tr><th></th><td><input type="submit" value="Submit" onclick="return validateFormValues()"/></td> </tr>
          
             </table>
             </form>
               
              <sql:query dataSource="${snapshot}" var="show_drugs">
-             SELECT prescription.visit_id, drug.drug_name, prescription.quantity
-             FROM prescription, drug
+             SELECT prescription.visit_id, drug.drug_no, drug.drug_name, drug_form.drug_form, prescription.quantity
+             FROM prescription, drug, drug_form
              WHERE prescription.drug_id = drug.drug_id
+             AND drug.drug_form_id = drug_form.drug_form_id
              AND prescription.visit_id = ${visit_id}
              </sql:query>
              
-             <table border="1" cellpadding="10" align="center" >
+             <table border="0" cellpadding="10"  >
         
          <tr>
+             <th>Drug Code</th>
             <th>Drug</th>
+            <th>Drug Form</th>
             <th>Quantity</th>
             <th>Edit</th>
 
@@ -89,7 +94,9 @@
          
          <c:forEach var="row" items="${show_drugs.rows}">
          <tr>   
+             <td><c:out value="${row.drug_no}"/></td>
              <td><c:out value="${row.drug_name}"/></td>
+             <td><c:out value="${row.drug_form}"/></td>
             <td><c:out value="${row.quantity}"/></td>
 
             

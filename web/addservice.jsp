@@ -46,10 +46,13 @@
             FROM service_type
             ORDER BY service_type_description
             </sql:query>
-            
+            <hr>
+             <jsp:directive.include file="patientdata.jsp"/>
+           
+            <hr>
             <form name="service" action="addservice.jsp" method="POST">
-                <h2>Patient Visit for <%= pa.getFirst_name() %> <%= pa.getLast_name() %></h2>
-         <table border="0" cellpadding="10" align="center">  
+                
+         <table border="0" cellpadding="10" >  
              <caption>
                  
             </caption>
@@ -67,14 +70,14 @@
   		</c:forEach> 
                 </select> 
   
-                     </td> </tr>
-             <tr><th></th><td><input type="submit" value="Submit" onclick="return validateFormValues()"/></td> </tr>
+                     </td> 
+             <td><input type="submit" value="Submit" onclick="return validateFormValues()"/></td> </tr>
          
             </table>
             </form>
             
-            <table border="1" cellpadding="10" align="center" >
-         <caption><h2>Services for <%= pa.getFirst_name() %> <%= pa.getLast_name() %></h2></caption>
+            <table border="0" cellpadding="10"  >
+        
          <tr>
             <th>Service Number</th>
             <th>Description</th>

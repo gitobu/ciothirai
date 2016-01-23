@@ -9,7 +9,7 @@ import java.sql.*;
 import javax.servlet.http.*;
 import javax.servlet.*;
 
-public final class patientlog_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class patientdata_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -17,11 +17,8 @@ public final class patientlog_jsp extends org.apache.jasper.runtime.HttpJspBase
   private static java.util.List<String> _jspx_dependants;
 
   static {
-    _jspx_dependants = new java.util.ArrayList<String>(4);
+    _jspx_dependants = new java.util.ArrayList<String>(1);
     _jspx_dependants.add("/sqllink.jsp");
-    _jspx_dependants.add("/header.html");
-    _jspx_dependants.add("/menubar.jsp");
-    _jspx_dependants.add("/footer.html");
   }
 
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
@@ -93,77 +90,25 @@ public final class patientlog_jsp extends org.apache.jasper.runtime.HttpJspBase
         return;
       out.write('\n');
       out.write("\n");
-      out.write("\n");
       out.write("<!DOCTYPE html>\n");
+      out.write(" \n");
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>Patient log</title>\n");
+      out.write("        <title>JSP Page</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <div id=\"header\">\n");
-      out.write("            ");
-      out.write("<!DOCTYPE html>\r\n");
-      out.write("<!--\r\n");
-      out.write("To change this license header, choose License Headers in Project Properties.\r\n");
-      out.write("To change this template file, choose Tools | Templates\r\n");
-      out.write("and open the template in the editor.\r\n");
-      out.write("-->\r\n");
-      out.write("<!DOCTYPE html>\r\n");
-      out.write("<!--\r\n");
-      out.write("To change this license header, choose License Headers in Project Properties.\r\n");
-      out.write("To change this template file, choose Tools | Templates\r\n");
-      out.write("and open the template in the editor.\r\n");
-      out.write("-->\r\n");
-      out.write("<html>\r\n");
-      out.write("    <head><title></title></head>\r\n");
-      out.write("    <body>\r\n");
-      out.write("        <div><h1>Kenya Clinic</h1></div>\r\n");
-      out.write("    </body>\r\n");
-      out.write("</html>\r\n");
-      out.write("\r\n");
-      out.write("\n");
-      out.write("        </div>\n");
-      out.write("        <div id=\"nav\">\n");
-      out.write("            ");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write(" <!DOCTYPE html>\n");
-      out.write(" <html>\n");
-      out.write("     <head>\n");
-      out.write("         <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("         <title>JSP Page</title>\n");
-      out.write("     <link href=\"styleOne.css\" rel=\"stylesheet\" type=\"text/css\" />\n");
-      out.write("     </head>\n");
-      out.write("     <body>\n");
-      out.write("         <div id=\"nav\">\n");
-      out.write("             <ul>\n");
-      out.write("                 <li><a href=\"jobTitle.jsp\">Job Title</a></li>\n");
-      out.write("                 <li><a href=\"provider.jsp\">Provider</a></li>\n");
-      out.write("                 <li><a href=\"drugForm.jsp\">Drug Form</a></li>\n");
-      out.write("                 <li><a href=\"patient.jsp\">Patient</a></li>\n");
-      out.write("                 <li><a href=\"servicetype.jsp\">Service Type</a></li>\n");
-      out.write("             </ul>\n");
-      out.write("         </div>\n");
-      out.write("     </body>\n");
-      out.write(" </html>\n");
-      out.write("\n");
-      out.write("        </div>\n");
-      out.write("        <div id=\"section\">\n");
-      out.write("        \n");
-      out.write("        \n");
       out.write("        ");
       if (_jspx_meth_sql_query_0(_jspx_page_context))
         return;
-      out.write("  \n");
-      out.write("       \n");
+      out.write("\n");
+      out.write("        \n");
       out.write("        <table border=\"1\" cellpadding=\"10\" align=\"center\" >\n");
       out.write("         <caption><h2>Patient Log</h2></caption>\n");
       out.write("         <tr>\n");
       out.write("            <th>Patient Number</th>\n");
-      out.write("            <th>First name</th>\n");
-      out.write("            <th>Last name</th>\n");
+      out.write("            <th>Patient name</th>\n");
+      out.write("            <th>Phone Number</th>\n");
       out.write("            <th>Date of birth</th>\n");
       out.write("            <th>Gender</th>\n");
       out.write("            <th>National Id</th>\n");
@@ -176,33 +121,9 @@ public final class patientlog_jsp extends org.apache.jasper.runtime.HttpJspBase
         return;
       out.write("\n");
       out.write("         </table>\n");
-      out.write("        </div>\n");
-      out.write("        <div id=\"footer\">\n");
-      out.write("            \n");
-      out.write("        \n");
-      out.write("       ");
-      out.write("<!DOCTYPE html>\r\n");
-      out.write("<!--\r\n");
-      out.write("To change this license header, choose License Headers in Project Properties.\r\n");
-      out.write("To change this template file, choose Tools | Templates\r\n");
-      out.write("and open the template in the editor.\r\n");
-      out.write("-->\r\n");
-      out.write("<html>\r\n");
-      out.write("    <head>\r\n");
-      out.write("        <title>TODO supply a title</title>\r\n");
-      out.write("        <meta charset=\"UTF-8\">\r\n");
-      out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n");
-      out.write("    </head>\r\n");
-      out.write("    <body>\r\n");
-      out.write("        <div>and he healed them all (Luke 6:19)</div>\r\n");
-      out.write("    </body>\r\n");
-      out.write("</html>\r\n");
-      out.write("\n");
-      out.write("      \n");
-      out.write("        </div>\n");
+      out.write("        <h1>Hello World!</h1>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
-      out.write("\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
@@ -260,9 +181,9 @@ public final class patientlog_jsp extends org.apache.jasper.runtime.HttpJspBase
         }
         do {
           out.write("\n");
-          out.write("        SELECT pa.patient_id, pa.patient_no, pa.first_name, pa.last_name, pa.date_of_birth, pa.gender, pa.national_id, pa.pin_no\n");
+          out.write("        SELECT pa.patient_id, pa.patient_no, CONCAT(pa.first_name, pa.middle_name, pa.last_name) as patient_name, pa.date_of_birth, pa.gender, pa.national_id, pa.pin_no, pa.phone\n");
           out.write("        FROM patient pa \n");
-          out.write("        ORDER BY pa.last_name\n");
+          out.write("        WHERE patient_id = 1\n");
           out.write("        ");
           int evalDoAfterBody = _jspx_th_sql_query_0.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
@@ -383,7 +304,7 @@ public final class patientlog_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_1 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_out_1.setPageContext(_jspx_page_context);
     _jspx_th_c_out_1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
-    _jspx_th_c_out_1.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.first_name}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_out_1.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.patient_name}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_c_out_1 = _jspx_th_c_out_1.doStartTag();
     if (_jspx_th_c_out_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_1);
@@ -401,7 +322,7 @@ public final class patientlog_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_2 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
     _jspx_th_c_out_2.setPageContext(_jspx_page_context);
     _jspx_th_c_out_2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
-    _jspx_th_c_out_2.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.last_name}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_out_2.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.phone}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_c_out_2 = _jspx_th_c_out_2.doStartTag();
     if (_jspx_th_c_out_2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_2);

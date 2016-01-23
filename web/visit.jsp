@@ -9,7 +9,7 @@
 <jsp:useBean id="pa" class="com.clinic.Patient" scope="session"/>
 
 <html>
-    <head><title>Kenya Clinic: Patient Visit </title>
+    <head><title>Kenya Clinic: Patient Visit for <%= pa.getFirst_name() %> <%= pa.getLast_name() %> </title>
     <link href="styleOne.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
     function validateFormValues(){
@@ -51,6 +51,8 @@
     
     <c:set var="patient_id" value = "<%= request.getParameter("patient_id")%>"/>
     
+    
+    
     <sql:query dataSource="${snapshot}" var="pat">
     SELECT pat.patient_id, pat.patient_no, pat.first_name, pat.last_name, pat.date_of_birth, pat.gender, pat.national_id, pat.pin_no
     FROM patient pat 
@@ -84,16 +86,18 @@
     FROM patient
     WHERE patient_id =  <%= pa.getPatient_id() %>
     </sql:query> 
-        
+        <jsp:directive.include file="patientdata.jsp"/>
+      
+        <hr>
         <form name="visit" action="savevisit.jsp" method="POST">
-         <table border="0" cellpadding="10" align="center">  
+         <table border="0" cellpadding="5" align="left">  
              <caption>
-                 <h2>Patient Visit for <%= pa.getFirst_name() %> <%= pa.getLast_name() %></h2>
+                 
             </caption>
              
                  <tr><th align="left"></th><td><input type="hidden" name="patient_id" value="<%= pa.getPatient_id() %>"> </td> </tr>
                  <tr><th align="left">Visit date</th><td><input type="text" name="visit_date" /></td> </tr>
-                 <tr><th align="left">Primary complaint</th><td><textarea name="primary_complaint" rows="5"></textarea></td> 
+                 <tr><th align="left">Primary complaint</th><td><textarea name="primary_complaint" rows="5" cols="50"></textarea></td> 
             
                  <tr><th align="left">Provider </th><td> 
                 <select name="provider_id">

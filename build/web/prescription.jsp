@@ -36,7 +36,9 @@
             <c:set var="visit_id" value="<%= vi.getVisit_id() %>" />
            
             
-           
+           <hr>
+            <jsp:directive.include file="patientdata.jsp"/>
+            <hr>
             
             
             
@@ -47,8 +49,8 @@
             </sql:query>
             
             <form name="service" action="saveprescription.jsp" method="POST">
-                 <h2>Prescription for <%= pa.getFirst_name() %> <%= pa.getLast_name() %></h2>
-         <table border="0" cellpadding="10" align="center">  
+                 
+         <table border="0" cellpadding="10" >  
              <caption>
                 
             </caption>
