@@ -58,7 +58,7 @@
         <c:set var="patient_id" value = "${row.patient_id}"/>
         <c:set var="patient_no" value = "${row.patient_no}"/>
         <c:set var="first_name" value = "${row.first_name}"/>
-        <c:set var="first_name" value = "${row.middle_name}"/>
+        <c:set var="middle_name" value = "${row.middle_name}"/>
         <c:set var="last_name" value = "${row.last_name}"/>
         
         <c:set var="gender" value = "${row.gender}"/>

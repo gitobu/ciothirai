@@ -24,8 +24,13 @@
         
         
         <sql:query dataSource="${snapshot}" var="pa_list">
-        SELECT pa.patient_id, pa.patient_no, pa.first_name, pa.last_name, pa.date_of_birth, pa.gender, pa.national_id, pa.pin_no
-        FROM patient pa 
+        SELECT pa.patient_id, pa.patient_no, 
+        case when pa.middle_name is null then CONCAT(pa.first_name,' ', pa.last_name)
+        else
+        CONCAT(pa.first_name,' ', pa.middle_name,' ', pa.last_name) end as patient_name, 
+        DATE_FORMAT(pa.date_of_birth,'%d-%m-%Y') as date_of_birth, case when pa.gender = 1 then 'Male' else 'Female' end as patient_gender, pa.national_id, pa.pin_no, 
+        case when pa.phone is null then 'N/A' else pa.phone end as phone_number
+        FROM patient pa
         ORDER BY pa.last_name
         </sql:query>  
        
@@ -33,25 +38,26 @@
          <caption><h2>Patient Log</h2></caption>
          <tr>
             <th>Patient Number</th>
-            <th>First name</th>
-            <th>Last name</th>
+            <th>Patient name</th>
+           
             <th>Date of birth</th>
             <th>Gender</th>
             <th>National Id</th>
             <th>PIN Number</th>
+            <th>Phone Number</th>
             <th>Edit</th>
 
          </tr>
          <c:forEach var="row" items="${pa_list.rows}">
          <tr>   
             <td><c:out value="${row.patient_no}"/></td>
-            <td><c:out value="${row.first_name}"/></td>
-            <td><c:out value="${row.last_name}"/></td>
+            <td><c:out value="${row.patient_name}"/></td>
+            
             <td><c:out value="${row.date_of_birth}"/></td>
-            <td><c:out value="${row.gender}"/></td>
+            <td><c:out value="${row.patient_gender}"/></td>
             <td><c:out value="${row.national_id}"/></td>
             <td><c:out value="${row.pin_no}"/></td>
-            
+            <td><c:out value="${row.phone_number}"/></td>
             <td><a href="<c:url value="patient.jsp?patient_id=${row.patient_id}"/>">Edit</a></td>
          </tr>
          </c:forEach>

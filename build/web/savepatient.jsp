@@ -113,7 +113,7 @@
                
       
         <sql:query dataSource="${snapshot}" var="pa_list">
-        SELECT pat.patient_id, pat.patient_no, pat.first_name, pat.middle_name, pat.last_name, pat.date_of_birth, 
+        SELECT pat.patient_id, pat.patient_no, pat.first_name, pat.middle_name, pat.last_name, DATE_FORMAT(pat.date_of_birth,'%d-%m-%Y') as date_of_birth, 
         case 
             when pat.gender = 1 then 'Female'
             when pat.gender = 2 then 'Male' 
