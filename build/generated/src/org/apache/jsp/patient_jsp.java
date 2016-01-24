@@ -234,6 +234,9 @@ public final class patient_jsp extends org.apache.jasper.runtime.HttpJspBase
               out.write("             <tr><th align=\"left\">First name</th><td><input type=\"text\" name=\"first_name\" value=\"");
               out.print( pa.getFirst_name() );
               out.write("\"></td> </tr>\n");
+              out.write("             <tr><th align=\"left\">Middle name</th><td><input type=\"text\" name=\"middle_name\" value=\"");
+              out.print( pa.getMiddle_name() );
+              out.write("\"></td> </tr>\n");
               out.write("             <tr><th align=\"left\">Last name</th><td><input type=\"text\" name=\"last_name\" value=\"");
               out.print( pa.getLast_name() );
               out.write("\"></td> </tr>\n");
@@ -241,13 +244,16 @@ public final class patient_jsp extends org.apache.jasper.runtime.HttpJspBase
               out.write("             <tr><th align=\"left\">Gender</th><td><input type=\"text\" name=\"gender\" value=\"");
               out.print( pa.getGender() );
               out.write("\"></td> </tr>\n");
+              out.write("             \n");
               out.write("             <tr><th align=\"left\">National Id</th><td><input type=\"text\" name=\"national_id\" value=\"");
               out.print( pa.getNational_id() );
               out.write("\"></td> </tr>\n");
               out.write("             <tr><th align=\"left\">PIN Number</th><td><input type=\"text\" name=\"pin_no\" value=\"");
               out.print( pa.getPin_no() );
               out.write("\"></td> </tr>\n");
-              out.write("          \n");
+              out.write("             <tr><th align=\"left\">Phone Number</th><td><input type=\"text\" name=\"phone\" value=\"");
+              out.print( pa.getPhone() );
+              out.write("\"></td> </tr>\n");
               out.write("            \n");
               out.write("             ");
               int evalDoAfterBody = _jspx_th_c_when_2.doAfterBody();
@@ -279,7 +285,7 @@ public final class patient_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write(" \n");
       out.write("                 \n");
       out.write("                     \n");
-      out.write("             <tr><th></th><td><input type=\"submit\" value=\"Submit\" onclick=\"return validateFormValues()\"/></td> </tr>\n");
+      out.write("             <tr><td><input type=\"submit\" value=\"Submit\" onclick=\"return validateFormValues()\"/></td> </tr>\n");
       out.write("            </table>\n");
       out.write("            </form>\n");
       out.write("        \n");
@@ -457,6 +463,9 @@ public final class patient_jsp extends org.apache.jasper.runtime.HttpJspBase
         org.apache.jasper.runtime.JspRuntimeLibrary.handleSetPropertyExpression(_jspx_page_context.findAttribute("pa"), "first_name", "${first_name}", _jspx_page_context, null);
         out.write("\n");
         out.write("        ");
+        org.apache.jasper.runtime.JspRuntimeLibrary.handleSetPropertyExpression(_jspx_page_context.findAttribute("pa"), "middle_name", "${middle_name}", _jspx_page_context, null);
+        out.write("\n");
+        out.write("        ");
         org.apache.jasper.runtime.JspRuntimeLibrary.handleSetPropertyExpression(_jspx_page_context.findAttribute("pa"), "last_name", "${last_name}", _jspx_page_context, null);
         out.write("\n");
         out.write("       \n");
@@ -469,7 +478,9 @@ public final class patient_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("        ");
         org.apache.jasper.runtime.JspRuntimeLibrary.handleSetPropertyExpression(_jspx_page_context.findAttribute("pa"), "pin_no", "${pin_no}", _jspx_page_context, null);
         out.write("\n");
-        out.write("        \n");
+        out.write("        ");
+        org.apache.jasper.runtime.JspRuntimeLibrary.handleSetPropertyExpression(_jspx_page_context.findAttribute("pa"), "phone", "${phone}", _jspx_page_context, null);
+        out.write("\n");
         out.write("     \n");
         out.write("    ");
         int evalDoAfterBody = _jspx_th_c_when_0.doAfterBody();
@@ -526,7 +537,7 @@ public final class patient_jsp extends org.apache.jasper.runtime.HttpJspBase
         }
         do {
           out.write("\n");
-          out.write("        SELECT pa.patient_id, pa.patient_no, pa.first_name, pa.last_name, pa.date_of_birth, pa.gender, pa.national_id, pa.pin_no\n");
+          out.write("        SELECT pa.patient_id, pa.patient_no, pa.first_name, pa.middle_name, pa.last_name, pa.date_of_birth, pa.gender, pa.national_id, pa.pin_no, pa.phone\n");
           out.write("        FROM patient pa \n");
           out.write("        WHERE pa.patient_id = ");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${patient_id}", java.lang.String.class, (PageContext)_jspx_page_context, null));
@@ -586,11 +597,11 @@ public final class patient_jsp extends org.apache.jasper.runtime.HttpJspBase
           if (_jspx_meth_c_set_6((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
             return true;
           out.write("\n");
-          out.write("        \n");
           out.write("        ");
           if (_jspx_meth_c_set_7((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
             return true;
           out.write("\n");
+          out.write("        \n");
           out.write("        ");
           if (_jspx_meth_c_set_8((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
             return true;
@@ -599,7 +610,14 @@ public final class patient_jsp extends org.apache.jasper.runtime.HttpJspBase
           if (_jspx_meth_c_set_9((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
             return true;
           out.write("\n");
-          out.write("    \n");
+          out.write("        ");
+          if (_jspx_meth_c_set_10((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
+            return true;
+          out.write("\n");
+          out.write("        ");
+          if (_jspx_meth_c_set_11((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
+            return true;
+          out.write("\n");
           out.write("\n");
           out.write("        ");
           int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
@@ -686,8 +704,8 @@ public final class patient_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.SetTag _jspx_th_c_set_6 = (org.apache.taglibs.standard.tag.rt.core.SetTag) _jspx_tagPool_c_set_var_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.SetTag.class);
     _jspx_th_c_set_6.setPageContext(_jspx_page_context);
     _jspx_th_c_set_6.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
-    _jspx_th_c_set_6.setVar("last_name");
-    _jspx_th_c_set_6.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.last_name}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_set_6.setVar("middle_name");
+    _jspx_th_c_set_6.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.middle_name}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_c_set_6 = _jspx_th_c_set_6.doStartTag();
     if (_jspx_th_c_set_6.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_c_set_var_value_nobody.reuse(_jspx_th_c_set_6);
@@ -705,8 +723,8 @@ public final class patient_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.SetTag _jspx_th_c_set_7 = (org.apache.taglibs.standard.tag.rt.core.SetTag) _jspx_tagPool_c_set_var_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.SetTag.class);
     _jspx_th_c_set_7.setPageContext(_jspx_page_context);
     _jspx_th_c_set_7.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
-    _jspx_th_c_set_7.setVar("gender");
-    _jspx_th_c_set_7.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.gender}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_set_7.setVar("last_name");
+    _jspx_th_c_set_7.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.last_name}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_c_set_7 = _jspx_th_c_set_7.doStartTag();
     if (_jspx_th_c_set_7.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_c_set_var_value_nobody.reuse(_jspx_th_c_set_7);
@@ -724,8 +742,8 @@ public final class patient_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.SetTag _jspx_th_c_set_8 = (org.apache.taglibs.standard.tag.rt.core.SetTag) _jspx_tagPool_c_set_var_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.SetTag.class);
     _jspx_th_c_set_8.setPageContext(_jspx_page_context);
     _jspx_th_c_set_8.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
-    _jspx_th_c_set_8.setVar("national_id");
-    _jspx_th_c_set_8.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.national_id}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_set_8.setVar("gender");
+    _jspx_th_c_set_8.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.gender}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_c_set_8 = _jspx_th_c_set_8.doStartTag();
     if (_jspx_th_c_set_8.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_c_set_var_value_nobody.reuse(_jspx_th_c_set_8);
@@ -743,14 +761,52 @@ public final class patient_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.SetTag _jspx_th_c_set_9 = (org.apache.taglibs.standard.tag.rt.core.SetTag) _jspx_tagPool_c_set_var_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.SetTag.class);
     _jspx_th_c_set_9.setPageContext(_jspx_page_context);
     _jspx_th_c_set_9.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
-    _jspx_th_c_set_9.setVar("pin_no");
-    _jspx_th_c_set_9.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.pin_no}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_set_9.setVar("national_id");
+    _jspx_th_c_set_9.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.national_id}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_c_set_9 = _jspx_th_c_set_9.doStartTag();
     if (_jspx_th_c_set_9.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_c_set_var_value_nobody.reuse(_jspx_th_c_set_9);
       return true;
     }
     _jspx_tagPool_c_set_var_value_nobody.reuse(_jspx_th_c_set_9);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_set_10(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:set
+    org.apache.taglibs.standard.tag.rt.core.SetTag _jspx_th_c_set_10 = (org.apache.taglibs.standard.tag.rt.core.SetTag) _jspx_tagPool_c_set_var_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.SetTag.class);
+    _jspx_th_c_set_10.setPageContext(_jspx_page_context);
+    _jspx_th_c_set_10.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
+    _jspx_th_c_set_10.setVar("pin_no");
+    _jspx_th_c_set_10.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.pin_no}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int _jspx_eval_c_set_10 = _jspx_th_c_set_10.doStartTag();
+    if (_jspx_th_c_set_10.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_set_var_value_nobody.reuse(_jspx_th_c_set_10);
+      return true;
+    }
+    _jspx_tagPool_c_set_var_value_nobody.reuse(_jspx_th_c_set_10);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_set_11(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:set
+    org.apache.taglibs.standard.tag.rt.core.SetTag _jspx_th_c_set_11 = (org.apache.taglibs.standard.tag.rt.core.SetTag) _jspx_tagPool_c_set_var_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.SetTag.class);
+    _jspx_th_c_set_11.setPageContext(_jspx_page_context);
+    _jspx_th_c_set_11.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
+    _jspx_th_c_set_11.setVar("phone");
+    _jspx_th_c_set_11.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.phone}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int _jspx_eval_c_set_11 = _jspx_th_c_set_11.doStartTag();
+    if (_jspx_th_c_set_11.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_set_var_value_nobody.reuse(_jspx_th_c_set_11);
+      return true;
+    }
+    _jspx_tagPool_c_set_var_value_nobody.reuse(_jspx_th_c_set_11);
     return false;
   }
 
@@ -768,7 +824,7 @@ public final class patient_jsp extends org.apache.jasper.runtime.HttpJspBase
       do {
         out.write("\n");
         out.write("         ");
-        if (_jspx_meth_c_set_10((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_when_1, _jspx_page_context))
+        if (_jspx_meth_c_set_12((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_when_1, _jspx_page_context))
           return true;
         out.write("\n");
         out.write("   ");
@@ -785,22 +841,22 @@ public final class patient_jsp extends org.apache.jasper.runtime.HttpJspBase
     return false;
   }
 
-  private boolean _jspx_meth_c_set_10(javax.servlet.jsp.tagext.JspTag _jspx_th_c_when_1, PageContext _jspx_page_context)
+  private boolean _jspx_meth_c_set_12(javax.servlet.jsp.tagext.JspTag _jspx_th_c_when_1, PageContext _jspx_page_context)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  c:set
-    org.apache.taglibs.standard.tag.rt.core.SetTag _jspx_th_c_set_10 = (org.apache.taglibs.standard.tag.rt.core.SetTag) _jspx_tagPool_c_set_var_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.SetTag.class);
-    _jspx_th_c_set_10.setPageContext(_jspx_page_context);
-    _jspx_th_c_set_10.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_when_1);
-    _jspx_th_c_set_10.setVar("patient_id");
-    _jspx_th_c_set_10.setValue(new String(""));
-    int _jspx_eval_c_set_10 = _jspx_th_c_set_10.doStartTag();
-    if (_jspx_th_c_set_10.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _jspx_tagPool_c_set_var_value_nobody.reuse(_jspx_th_c_set_10);
+    org.apache.taglibs.standard.tag.rt.core.SetTag _jspx_th_c_set_12 = (org.apache.taglibs.standard.tag.rt.core.SetTag) _jspx_tagPool_c_set_var_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.SetTag.class);
+    _jspx_th_c_set_12.setPageContext(_jspx_page_context);
+    _jspx_th_c_set_12.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_when_1);
+    _jspx_th_c_set_12.setVar("patient_id");
+    _jspx_th_c_set_12.setValue(new String(""));
+    int _jspx_eval_c_set_12 = _jspx_th_c_set_12.doStartTag();
+    if (_jspx_th_c_set_12.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_set_var_value_nobody.reuse(_jspx_th_c_set_12);
       return true;
     }
-    _jspx_tagPool_c_set_var_value_nobody.reuse(_jspx_th_c_set_10);
+    _jspx_tagPool_c_set_var_value_nobody.reuse(_jspx_th_c_set_12);
     return false;
   }
 
@@ -818,11 +874,13 @@ public final class patient_jsp extends org.apache.jasper.runtime.HttpJspBase
       do {
         out.write("\n");
         out.write("           <tr><th align=\"left\">First name</th><td><input type=\"text\" name=\"first_name\" ></td> </tr>\n");
+        out.write("           <tr><th align=\"left\">Middle name</th><td><input type=\"text\" name=\"middle_name\" ></td> </tr>\n");
         out.write("             <tr><th align=\"left\">Last name</th><td><input type=\"text\" name=\"last_name\" ></td> </tr>\n");
         out.write("             <tr><th align=\"left\">Date of birth</th><td><input type=\"text\" name=\"date_of_birth\" ></td> </tr>\n");
-        out.write("             <tr><th align=\"left\">Gender</th><td><input type=\"text\" name=\"gender\"></td> </tr>\n");
+        out.write("             <tr><th align=\"left\">Gender</th><td><input type=\"radio\" name=\"gender\" value=\"1\">Female<input type=\"radio\" name=\"gender\" value=\"2\">Male</td> </tr>\n");
         out.write("             <tr><th align=\"left\">National Id</th><td><input type=\"text\" name=\"national_id\" ></td> </tr>\n");
         out.write("             <tr><th align=\"left\">PIN Number</th><td><input type=\"text\" name=\"pin_no\" ></td> </tr>\n");
+        out.write("             <tr><th align=\"left\">Phone Number</th><td><input type=\"text\" name=\"phone\" ></td> </tr>\n");
         out.write("            ");
         int evalDoAfterBody = _jspx_th_c_when_3.doAfterBody();
         if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
