@@ -149,7 +149,7 @@
     
          
          <form name="patient" action="visit.jsp" method="POST">
-            <input type="submit" value="Continue">
+            <input type="submit" value="Patient visit">
              
        
           

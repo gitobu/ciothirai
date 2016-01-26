@@ -122,8 +122,9 @@ public final class searchpatient_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("        </div>\n");
       out.write("        <div id=\"section\">\n");
       out.write("        <form action=\"listpatient.jsp\" method=\"POST\">\n");
-      out.write("            <table border=\"0\" cellpadding=\"10\" >\n");
-      out.write("                <tr><td>\n");
+      out.write("            <table border=\"0\" >\n");
+      out.write("                <caption><h3>Find a patient</h3></caption>\n");
+      out.write("                <tr><th>Select search criteria</th><td>\n");
       out.write("            <select name=\"method\">\n");
       out.write("                 <option value=\"1\">National Id</option>\n");
       out.write("                 <option value=\"2\">Phone Number</option>\n");
