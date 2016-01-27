@@ -71,7 +71,9 @@
          </tr>
          </c:forEach>
          </table>   
-            
+            <hr>
+            <jsp:directive.include file="newvisit.jsp"/>
+            <hr>
          </div>
        
         <div id="footer">

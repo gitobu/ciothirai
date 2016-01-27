@@ -18,7 +18,9 @@
                  <li><a href="jobTitle.jsp">Job Title</a></li>
                  <li><a href="provider.jsp">Provider</a></li>
                  <li><a href="drugForm.jsp">Drug Form</a></li>
+                 <li><a href="drug.jsp">Drug</a></li>
                  <li><a href="patient.jsp">Patient</a></li>
+                 <li><a href="searchpatient.jsp">Search</a></li>
                  <li><a href="servicetype.jsp">Service Type</a></li>
              </ul>
          </div>
