@@ -142,7 +142,9 @@ public final class patientlog_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                 <li><a href=\"jobTitle.jsp\">Job Title</a></li>\n");
       out.write("                 <li><a href=\"provider.jsp\">Provider</a></li>\n");
       out.write("                 <li><a href=\"drugForm.jsp\">Drug Form</a></li>\n");
+      out.write("                 <li><a href=\"drug.jsp\">Drug</a></li>\n");
       out.write("                 <li><a href=\"patient.jsp\">Patient</a></li>\n");
+      out.write("                 <li><a href=\"searchpatient.jsp\">Search</a></li>\n");
       out.write("                 <li><a href=\"servicetype.jsp\">Service Type</a></li>\n");
       out.write("             </ul>\n");
       out.write("         </div>\n");
@@ -169,6 +171,7 @@ public final class patientlog_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <th>National Id</th>\n");
       out.write("            <th>PIN Number</th>\n");
       out.write("            <th>Phone Number</th>\n");
+      out.write("             <th>Visits</th>\n");
       out.write("            <th>Edit</th>\n");
       out.write("\n");
       out.write("         </tr>\n");
@@ -341,6 +344,10 @@ public final class patientlog_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("            <td><a href=\"");
           if (_jspx_meth_c_url_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
             return true;
+          out.write("\">Visits</a></td>\n");
+          out.write("            <td><a href=\"");
+          if (_jspx_meth_c_url_1((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
+            return true;
           out.write("\">Edit</a></td>\n");
           out.write("         </tr>\n");
           out.write("         ");
@@ -497,13 +504,31 @@ public final class patientlog_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_url_0 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _jspx_tagPool_c_url_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
     _jspx_th_c_url_0.setPageContext(_jspx_page_context);
     _jspx_th_c_url_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
-    _jspx_th_c_url_0.setValue((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("patient.jsp?patient_id=${row.patient_id}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_url_0.setValue((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("listvisit.jsp?patient_id=${row.patient_id}", java.lang.String.class, (PageContext)_jspx_page_context, null));
     int _jspx_eval_c_url_0 = _jspx_th_c_url_0.doStartTag();
     if (_jspx_th_c_url_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_c_url_value_nobody.reuse(_jspx_th_c_url_0);
       return true;
     }
     _jspx_tagPool_c_url_value_nobody.reuse(_jspx_th_c_url_0);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_url_1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:url
+    org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_url_1 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _jspx_tagPool_c_url_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
+    _jspx_th_c_url_1.setPageContext(_jspx_page_context);
+    _jspx_th_c_url_1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
+    _jspx_th_c_url_1.setValue((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("patient.jsp?patient_id=${row.patient_id}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+    int _jspx_eval_c_url_1 = _jspx_th_c_url_1.doStartTag();
+    if (_jspx_th_c_url_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_url_value_nobody.reuse(_jspx_th_c_url_1);
+      return true;
+    }
+    _jspx_tagPool_c_url_value_nobody.reuse(_jspx_th_c_url_1);
     return false;
   }
 }

@@ -3,12 +3,17 @@
     Created on : Jan 19, 2016, 1:02:36 AM
     Author     : Gitobu
 --%>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <jsp:directive.include file="sqllink.jsp"/>
 
 
 <jsp:useBean id="pa" class="com.clinic.Patient" scope="session"/>
 <jsp:useBean id="pia" class="com.clinic.Patient" scope="session"/>
+<jsp:useBean id="now" class="java.util.Date" />
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

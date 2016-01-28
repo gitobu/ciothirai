@@ -64,7 +64,7 @@
             <th>National Id</th>
             <th>PIN Number</th>
             <th>Phone Number</th>
-            <th>Edit</th>
+            <th>Visits</th>
 
          </tr>
          <c:forEach var="row" items="${pa_list.rows}">

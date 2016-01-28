@@ -45,6 +45,7 @@
             <th>National Id</th>
             <th>PIN Number</th>
             <th>Phone Number</th>
+             <th>Visits</th>
             <th>Edit</th>
 
          </tr>
@@ -58,6 +59,7 @@
             <td><c:out value="${row.national_id}"/></td>
             <td><c:out value="${row.pin_no}"/></td>
             <td><c:out value="${row.phone_number}"/></td>
+            <td><a href="<c:url value="listvisit.jsp?patient_id=${row.patient_id}"/>">Visits</a></td>
             <td><a href="<c:url value="patient.jsp?patient_id=${row.patient_id}"/>">Edit</a></td>
          </tr>
          </c:forEach>
