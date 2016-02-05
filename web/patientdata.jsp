@@ -14,6 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <style type="text/css">
+            
         th { background-color:#FFF;
 	color:black;
 	text-align:left}
@@ -21,7 +22,7 @@
         tr { background-color:white;
 	color:black;
 	text-align:left}
-            
+         
         </style>
     </head>
     <body>
@@ -46,7 +47,7 @@
             <th>Gender:</th> <td><c:out value="${row.patient_gender}"/></td>
             <th>Phone Number:</th> <td><c:out value="${row.phone_number}"/></td>
             
-           
+            <tr>
              <th>National Id</th><td><c:out value="${row.national_id}"/></td><th>PIN Number</th><td><c:out value="${row.pin_no}"/></td></tr>
             
            

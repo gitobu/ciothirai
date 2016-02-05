@@ -12,6 +12,22 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Patient log</title>
+        <style type="text/css">
+        th { background-color:#FFF;
+	color:black;
+	text-align:left}
+	
+        tr { background-color:white;
+	color:black;
+	text-align:left}
+        table{
+            font-family: verdana, Garamond;
+            font-size: 10pt;
+            border-color: #6d6f7b;
+            border-style: double;
+        }
+            
+        </style>
     </head>
     <body>
         <div id="header">
@@ -34,7 +50,7 @@
         ORDER BY pa.last_name
         </sql:query>  
        
-        <table border="1" cellpadding="10" align="center" >
+        <table border="0" cellpadding="10" align="center" >
          <caption><h2>Patient Log</h2></caption>
          <tr>
             <th>Patient Number</th>

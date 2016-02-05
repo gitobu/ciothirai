@@ -13,6 +13,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="styleOne.css" rel="stylesheet" type="text/css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Patient Visit for <%= pa.getFirst_name() %> <%= pa.getLast_name() %></title>
         <jsp:directive.include file="sqllink.jsp"/>

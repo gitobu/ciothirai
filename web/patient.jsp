@@ -32,11 +32,11 @@
       <div id="header">
        <jsp:directive.include file="header.html"/>
         </div>
-               <div id="nav">
+              
 
                    <jsp:directive.include file="menubar.jsp"/>
 
-</div>
+
         <div id="section">
             
             <c:set var="edit_mode" value="${not empty param.patient_id}"></c:set>   

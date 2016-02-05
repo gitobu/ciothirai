@@ -8,21 +8,10 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="styleOne.css" rel="stylesheet" type="text/css" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Find patient</title>
-  <style type="text/css">
-        table {alignment-adjust: middle;
-		}
-        
-        th { background-color:#FFF;
-	color:black;
-	text-align:left}
-	
-        tr { background-color:white;
-	color:black;
-	text-align:left}
-            
-        </style>
+  
     </head>
     <body>
         <div id="header">

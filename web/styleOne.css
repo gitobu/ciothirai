@@ -21,6 +21,7 @@ a:link {color:#03F}
 table {font-family: Verdana, Garamond;
 		font-size:10pt;
 		border-color: #6d6f7b;
+                
 		border-style:double;}
 		
 input.myButton {width: 100px;} 
@@ -70,32 +71,7 @@ caption {font-style: 8pt;
                 text-align:center;
                 padding:5px;
             }
-            #nav {
-            line-height:30px;
-            background-color:#eeeeee;
-            height:300px;
-            width:120px;
-            float:left;
-            padding:5px; 
-            }
-            #nav ul{
-                 height: auto;
-                 padding: 8px 0px;
-                 margin: 0px;
-             }
-             #nav li{
-               display: inline;
-               padding: 20px;
-             }
-             #nav a{
-                 text-decoration: none;
-                 color: #00F;
-                 padding: 8px 8px 8px 8px;
-             }
-             #nav a:hover{
-                 color:#F90;
-                 background-color: #FFF;
-             }  
+            
             #section {
                 
                 float:left;
@@ -113,4 +89,7 @@ caption {font-style: 8pt;
                 clear:both;
                 text-align:center;
                  padding:5px; 
+                 position: fixed;
+                bottom: 0;
+            width: 100%; 
             }
