@@ -12,6 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Patient log</title>
+        <link href="styleOne.css" rel="stylesheet" type="text/css" />
         <style type="text/css">
         th { background-color:#FFF;
 	color:black;
