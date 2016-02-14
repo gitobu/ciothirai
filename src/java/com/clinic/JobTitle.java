@@ -4,20 +4,22 @@
  * and open the template in the editor.
  */
 
+package com.clinic;
+
 /**
  *
  * @author Gitobu
  */
-public class Job_Title {
+public class JobTitle {
     private int job_title_id;
-    private String job_title_number;
+    private String job_title_no;
     private String job_title;
     
    public void setJob_title_id(int id){
 	job_title_id = id;
 	}
   public void setJob_title_no(String jtn){
-	job_title_number = jtn;
+	job_title_no = jtn;
 	}
   public void setJob_title (String t){
       job_title = t;
@@ -26,7 +28,7 @@ public class Job_Title {
     return job_title_id;
     }
  public String getJob_title_no(){
-     return job_title_number;
+     return job_title_no;
  }
   public String getJob_title(){
      return job_title;
