@@ -16,11 +16,15 @@ public class Patient {
    	private String first_name;
         private String middle_name;
 	private String last_name;
+        
    	private int gender;
 	private String national_id;
 	private String pin_no; 
         private String phone;
-   
+        
+        private String vday;
+        private String vmonth;
+	private String vyear;
     
     	public void setPatient_id(int id){
         	patient_id = id;
@@ -49,6 +53,16 @@ public class Patient {
         public void setPhone (String ph){
                 phone = ph;
                 }
+        
+        public void setVday (String vd){
+        	vday = vd;
+        	}
+        public void setVmonth (String vm){
+        	vmonth = vm;
+        	}
+         public void setVyear (String vy){
+        	vyear = vy;
+        	}
     	public int getPatient_id(){
         	return patient_id;
         	}
@@ -75,5 +89,14 @@ public class Patient {
         	} 
         public String getPhone(){
                 return phone;
+                }
+        public String getVday(){
+                return vday;
+                }
+         public String getVmonth(){
+                return vmonth;
+                }
+          public String getVyear(){
+                return vyear;
                 }
 }

@@ -11,7 +11,9 @@
 <html>
     <head><title>Kenya Clinic: Patient Visit for <%= pa.getFirst_name() %> <%= pa.getLast_name() %> </title>
     <link href="styleOne.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript">
+     <link rel="stylesheet" type="text/css" href="tcal.css" />
+    
+        <script type="text/javascript" src="tcal.js">
     function validateFormValues(){
 	
 	
@@ -96,7 +98,8 @@
             </caption>
              
                  <tr><th align="left"></th><td><input type="hidden" name="patient_id" value="<%= pa.getPatient_id() %>"> </td> </tr>
-                 <tr><th align="left">Visit date</th><td><input type="text" name="visit_date" /></td> </tr>
+                 
+                 <tr><th align="left">Visit date</th><td><input type="text" name="visit_date" class="tcal" value=""></td></tr>  
                  <tr><th align="left">Primary complaint</th><td><textarea name="primary_complaint" rows="5" cols="50"></textarea></td> 
             
                  <tr><th align="left">Provider </th><td> 

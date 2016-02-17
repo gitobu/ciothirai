@@ -10,6 +10,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <jsp:useBean id="vi" class="com.clinic.Visit" scope="session" />
 
 <jsp:useBean id="pa" class="com.clinic.Patient" scope="session"/>
@@ -54,12 +55,17 @@
             
             <c:set var="patient_id" value="<%= pa.getPatient_id() %>" />
             <c:set var="visit_date" value="<%= request.getParameter("visit_date")%>" />
+            <c:set var="vday" value="${fn:substring(visit_date, 0, 2)}"/>
+            <c:set var="vmonth" value="${fn:substring(visit_date, 3, 5)}"/>
+            <c:set var="vyear" value="${fn:substring(visit_date, 6, 10)}"/>
+            <c:set var="dash" value="-"/>
+            <c:set var="vd" value="${vyear}${dash}${vmonth}${dash}${vday}"/>
             <c:set var="primary_complaint" value="<%= request.getParameter("primary_complaint")%>" />
             <c:set var="provider_id" value="<%= request.getParameter("provider_id")%>" />
             
             <sql:update dataSource="${snapshot}" var="result">
             insert into visit (patient_id, visit_no, visit_date, primary_complaint, provider_id)
-            values (${patient_id}, '${vi_no}','${visit_date}', '${primary_complaint}', ${provider_id})
+            values (${patient_id}, '${vi_no}','${vd}', '${primary_complaint}', ${provider_id})
             </sql:update> 
             
             

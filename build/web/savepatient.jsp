@@ -6,7 +6,7 @@
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <jsp:directive.include file="sqllink.jsp"/>
 
 
@@ -91,6 +91,11 @@
             <c:set var="middle_name" value = "<%= request.getParameter("middle_name")%>"/> 
             <c:set var="last_name" value = "<%= request.getParameter("last_name")%>"/> 
             <c:set var="date_of_birth" value = "<%= request.getParameter("date_of_birth")%>"/> 
+            <c:set var="vday" value="${fn:substring(date_of_birth, 0, 2)}"/>
+            <c:set var="vmonth" value="${fn:substring(date_of_birth, 3, 5)}"/>
+            <c:set var="vyear" value="${fn:substring(date_of_birth, 6, 10)}"/>
+            <c:set var="dash" value="-"/>
+            <c:set var="dob" value="${vyear}${dash}${vmonth}${dash}${vday}"/>
             <c:set var="gender" value = "<%= request.getParameter("gender")%>"/> 
             <c:set var="national_id" value = "<%= request.getParameter("national_id")%>"/> 
             <c:set var="pin_no" value = "<%= request.getParameter("pin_no")%>"/>
@@ -98,7 +103,7 @@
             
             <sql:update dataSource="${snapshot}" var="result">
             insert into patient (patient_no, first_name, middle_name, last_name, date_of_birth, gender, national_id, pin_no, phone)
-            values ('${pa_no}', '${first_name}','${middle_name}','${last_name}', '${date_of_birth}', ${gender}, '${national_id}', '${pin_no}','${phone}')
+            values ('${pa_no}', '${first_name}','${middle_name}','${last_name}', '${dob}', ${gender}, '${national_id}', '${pin_no}','${phone}')
             </sql:update>   
             
        
@@ -108,7 +113,9 @@
             <jsp:setProperty name="pia" property="first_name" value="${first_name}"/>
             <jsp:setProperty name="pia" property="middle_name" value="<${middle_name}"/> 
             <jsp:setProperty name="pia" property="last_name" value="<${last_name}"/>   
-            
+            <jsp:setProperty name="pia" property="vday" value="${fn:substring(date_of_birth, 1, 2)}"/>
+            <jsp:setProperty name="pia" property="vmonth" value="${fn:substring(date_of_birth, 1, 2)}"/>
+            <jsp:setProperty name="pia" property="vyear" value="${fn:substring(date_of_birth, 1, 2)}"/>
             <jsp:setProperty name="pia" property="gender" value="${gender}"/>
             <jsp:setProperty name="pia" property="national_id" value="${national_id}"/>
             <jsp:setProperty name="pia" property="pin_no" value="${pin_no}"/>

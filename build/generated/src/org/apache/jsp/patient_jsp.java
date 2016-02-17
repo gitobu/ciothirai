@@ -108,7 +108,10 @@ public final class patient_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<html>\n");
       out.write("    <head><title>Kenya Clinic: Patient</title>\n");
       out.write("    <link href=\"styleOne.css\" rel=\"stylesheet\" type=\"text/css\" />\n");
-      out.write("    <script type=\"text/javascript\">\n");
+      out.write("     <link rel=\"stylesheet\" type=\"text/css\" href=\"tcal.css\" />\n");
+      out.write("    <script type=\"text/javascript\" src=\"tcal.js\">\n");
+      out.write("       \n");
+      out.write("                \n");
       out.write("    function validateFormValues(){\n");
       out.write("\t\n");
       out.write("\t\n");
@@ -145,7 +148,7 @@ public final class patient_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <head><title></title></head>\r\n");
       out.write("    \r\n");
       out.write("    <body>\r\n");
-      out.write("        <div><h1>Kenya Clinic</h1></div>\r\n");
+      out.write("        <div><h1>Kenya Community Health Clinic Ministries</h1></div>\r\n");
       out.write("        \r\n");
       out.write("    </body>\r\n");
       out.write("</html>\r\n");
@@ -206,12 +209,14 @@ public final class patient_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("     <body>\n");
       out.write("         <div id=\"nav\">\n");
       out.write("             <ul>\n");
+      out.write("                 <li><a href=\"searchpatient.jsp\">Search Patient</a></li>\n");
+      out.write("                 <li><a href=\"patient.jsp\"> New Patient</a></li>\n");
+      out.write("                 \n");
       out.write("                 <li><a href=\"jobTitle.jsp\">Job Title</a></li>\n");
-      out.write("                 <li><a href=\"provider.jsp\">Provider</a></li>\n");
+      out.write("                 <li><a href=\"provider.jsp\">Clinic Personnel</a></li>\n");
       out.write("                 <li><a href=\"drugForm.jsp\">Drug Form</a></li>\n");
       out.write("                 <li><a href=\"drug.jsp\">Drug</a></li>\n");
-      out.write("                 <li><a href=\"patient.jsp\">Patient</a></li>\n");
-      out.write("                 <li><a href=\"searchpatient.jsp\">Search</a></li>\n");
+      out.write("                \n");
       out.write("                 <li><a href=\"servicetype.jsp\">Service Type</a></li>\n");
       out.write("             </ul>\n");
       out.write("         </div>\n");
@@ -915,10 +920,10 @@ public final class patient_jsp extends org.apache.jasper.runtime.HttpJspBase
     if (_jspx_eval_c_when_3 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\n");
-        out.write("           <tr><th align=\"left\">First name</th><td><input type=\"text\" name=\"first_name\" ></td> </tr>\n");
-        out.write("           <tr><th align=\"left\">Middle name</th><td><input type=\"text\" name=\"middle_name\" ></td> </tr>\n");
+        out.write("            <tr><th align=\"left\">First name</th><td><input type=\"text\" name=\"first_name\" ></td> </tr>\n");
+        out.write("            <tr><th align=\"left\">Middle name</th><td><input type=\"text\" name=\"middle_name\" ></td> </tr>\n");
         out.write("             <tr><th align=\"left\">Last name</th><td><input type=\"text\" name=\"last_name\" ></td> </tr>\n");
-        out.write("             <tr><th align=\"left\">Date of birth</th><td><input type=\"text\" name=\"date_of_birth\" ></td> </tr>\n");
+        out.write("            <tr><th align=\"left\">Date of birth</th><td><input type=\"text\" name=\"date_of_birth\" class=\"tcal\" value=\"\"></td></tr>          \n");
         out.write("             <tr><th align=\"left\">Gender</th><td><input type=\"radio\" name=\"gender\" value=\"1\">Female<input type=\"radio\" name=\"gender\" value=\"2\">Male</td> </tr>\n");
         out.write("             <tr><th align=\"left\">National Id</th><td><input type=\"text\" name=\"national_id\" ></td> </tr>\n");
         out.write("             <tr><th align=\"left\">PIN Number</th><td><input type=\"text\" name=\"pin_no\" ></td> </tr>\n");

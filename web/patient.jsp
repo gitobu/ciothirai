@@ -10,7 +10,10 @@
 <html>
     <head><title>Kenya Clinic: Patient</title>
     <link href="styleOne.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript">
+     <link rel="stylesheet" type="text/css" href="tcal.css" />
+    <script type="text/javascript" src="tcal.js">
+       
+                
     function validateFormValues(){
 	
 	
@@ -114,10 +117,10 @@
             
              </c:when>
              <c:when test='${new_mode}'>
-           <tr><th align="left">First name</th><td><input type="text" name="first_name" ></td> </tr>
-           <tr><th align="left">Middle name</th><td><input type="text" name="middle_name" ></td> </tr>
+            <tr><th align="left">First name</th><td><input type="text" name="first_name" ></td> </tr>
+            <tr><th align="left">Middle name</th><td><input type="text" name="middle_name" ></td> </tr>
              <tr><th align="left">Last name</th><td><input type="text" name="last_name" ></td> </tr>
-             <tr><th align="left">Date of birth</th><td><input type="text" name="date_of_birth" ></td> </tr>
+            <tr><th align="left">Date of birth</th><td><input type="text" name="date_of_birth" class="tcal" value=""></td></tr>          
              <tr><th align="left">Gender</th><td><input type="radio" name="gender" value="1">Female<input type="radio" name="gender" value="2">Male</td> </tr>
              <tr><th align="left">National Id</th><td><input type="text" name="national_id" ></td> </tr>
              <tr><th align="left">PIN Number</th><td><input type="text" name="pin_no" ></td> </tr>

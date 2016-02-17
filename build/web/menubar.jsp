@@ -54,10 +54,10 @@
          <div id="nav">
              <ul>
                  <li><a href="searchpatient.jsp">Search Patient</a></li>
-                 <li><a href="patient.jsp">Patient</a></li>
+                 <li><a href="patient.jsp"> New Patient</a></li>
                  
                  <li><a href="jobTitle.jsp">Job Title</a></li>
-                 <li><a href="provider.jsp">Provider</a></li>
+                 <li><a href="provider.jsp">Clinic Personnel</a></li>
                  <li><a href="drugForm.jsp">Drug Form</a></li>
                  <li><a href="drug.jsp">Drug</a></li>
                 
