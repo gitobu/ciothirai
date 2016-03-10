@@ -89,16 +89,16 @@
 </c:choose>
 
             
-       
+     &nbsp;
+      <h4>New Patient Information</h4>
+      <hr width="333%">  
      
         
      
         
         <form name="patient" action="savepatient.jsp" method="POST">
           <table border="0" cellpadding="10" align="center">  
-             <caption>
-                 <h2>New Patient Information</h2>
-            </caption> 
+             
              
          <c:choose>  
              <c:when test='${edit_mode}'>

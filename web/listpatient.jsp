@@ -54,7 +54,7 @@
         ORDER BY pa.last_name
         </sql:query>  
        
-        <table border="1" cellpadding="10" align="center" >
+        <table border="0" cellpadding="10">
          <caption><h2>Patient Log</h2></caption>
          <tr>
             <th>Patient Number</th>

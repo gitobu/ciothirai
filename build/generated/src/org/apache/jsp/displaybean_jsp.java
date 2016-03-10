@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class newjsp_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class displaybean_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -30,7 +30,7 @@ public final class newjsp_jsp extends org.apache.jasper.runtime.HttpJspBase
     PageContext _jspx_page_context = null;
 
     try {
-      response.setContentType("text/html;charset=UTF-8");
+      response.setContentType("text/html");
       pageContext = _jspxFactory.getPageContext(this, request, response,
       			null, true, 8192, true);
       _jspx_page_context = pageContext;
@@ -44,23 +44,40 @@ public final class newjsp_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      out.write("<!DOCTYPE html>\n");
+      out.write("\n");
+      com.clinic.Visit vi = null;
+      synchronized (session) {
+        vi = (com.clinic.Visit) _jspx_page_context.getAttribute("vi", PageContext.SESSION_SCOPE);
+        if (vi == null){
+          vi = new com.clinic.Visit();
+          _jspx_page_context.setAttribute("vi", vi, PageContext.SESSION_SCOPE);
+        }
+      }
+      out.write('\n');
+      com.clinic.Patient pa = null;
+      synchronized (session) {
+        pa = (com.clinic.Patient) _jspx_page_context.getAttribute("pa", PageContext.SESSION_SCOPE);
+        if (pa == null){
+          pa = new com.clinic.Patient();
+          _jspx_page_context.setAttribute("pa", pa, PageContext.SESSION_SCOPE);
+        }
+      }
+      out.write("\n");
       out.write("<html>\n");
-      out.write("    <head>\n");
-      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>JSP Page</title>\n");
-      out.write("    </head>\n");
-      out.write("    <body>\n");
-      out.write("       <ul>\n");
-      out.write("  <li><a href=\"#home\">Home</a></li>\n");
-      out.write("  <li><a href=\"#news\">News</a></li>\n");
-      out.write("  <li><a href=\"#contact\">Contact</a></li>\n");
-      out.write("  <ul style=\"float:right;list-style-type:none;\">\n");
-      out.write("    <li><a class=\"active\" href=\"#about\">About</a></li>\n");
-      out.write("    <li><a href=\"#login\">Login</a></li>\n");
-      out.write("  </ul>\n");
-      out.write("</ul>\n");
-      out.write("    </body>\n");
+      out.write("<head><title>Bean property display</title></head>\n");
+      out.write("<body>\n");
+      out.write("<h2>Here are the Bean properties</h2>\n");
+      out.write("\n");
+      out.write("Visit id ");
+      out.print( vi.getVisit_id() );
+      out.write(" \n");
+      out.write("\n");
+      out.write("Patient Id ");
+      out.print(  pa.getPatient_id() );
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("</body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){

@@ -1,8 +1,10 @@
 <%-- 
-    Document   : savepatient
-    Created on : Jan 19, 2016, 1:02:36 AM
+    Document   : savenextofkin
+    Created on : Mar 5, 2016, 9:52:55 AM
     Author     : Gitobu
 --%>
+
+
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -12,6 +14,7 @@
 
 <jsp:useBean id="pa" class="com.clinic.Patient" scope="session"/>
 <jsp:useBean id="pia" class="com.clinic.Patient" scope="session"/>
+<jsp:useBean id="rs" class="com.clinic.Relationship" scope="session"/>
 <jsp:useBean id="now" class="java.util.Date" />
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -22,17 +25,39 @@
         <title>Kenya Clinic: New Patient</title>
         <link href="styleOne.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="tcal.css" />
-     <script type="text/javascript" src="tcal.js">
+    <script type="text/javascript" src="tcal.js">
+        
+        <style type="text/css">
+            
+        th { background-color:#FFF;
+	color:black;
+	text-align:left}
+	
+        tr { background-color:white;
+	color:black;
+	text-align:left}
+        hr { 
+        display: block;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        margin-left: auto;
+        margin-right: auto;
+        border-style: inset;
+        border-width: 1px;
+        } 
+         
+        </style>
+    
     function validateFormValues(){
 	
 	
-       if (document.nextofkin.first_name.value === ""){
+       if (document.patient.first_name.value === ""){
 		alert('Please enter first name');
 		return false;} 
-        if (document.nextofkin.last_name.value === ""){
+        if (document.patient.last_name.value === ""){
 		alert('Please enter last name');
 		return false;} 
-         if (document.nextofkin.gender.value === ""){
+         if (document.patient.gender.value === ""){
 		alert('Please select patient gender');
 		return false;} 
 			else
@@ -52,6 +77,7 @@
                  <jsp:directive.include file="menubar.jsp"/>
 </div>   
 <div id="section">
+    <%--
       <c:set var="edit_mode" value="${not empty param.patient_id}"></c:set>   
       <c:set var="new_mode" value="${ empty param.patient_id}"></c:set> 
       
@@ -77,12 +103,13 @@
 
         </c:when>
         <c:when test='${new_mode}'> 
-            <sql:query dataSource="${snapshot}" var="pat">
+    --%>
+            <sql:query dataSource="${snapshot}" var="pa">
             select Max(patient_id) +1 as patient_id, CONCAT('PT', max(substr(patient_no,3,5)) + 1) as pa_no 
             FROM patient
             </sql:query>
 
-            <c:forEach var="row" items="${pat.rows}">
+            <c:forEach var="row" items="${pa.rows}">
                 <c:set var="pa_no" value = "${row.pa_no}" />
                 <c:set var="patient_id" value = "${row.patient_id}" />
             </c:forEach>   
@@ -99,31 +126,51 @@
             <c:set var="gender" value = "<%= request.getParameter("gender")%>"/> 
             <c:set var="national_id" value = "<%= request.getParameter("national_id")%>"/> 
             <c:set var="pin_no" value = "<%= request.getParameter("pin_no")%>"/>
-            <c:set var="phone" value = "<%= request.getParameter("phone")%>"/>
+            <c:set var="phone" value = "<%= request.getParameter("phone")%>" /> 
+            
+            <c:set var="relationship_id" value = "<%= request.getParameter("relationship_id")%>"/> 
+            
+            <jsp:setProperty name="rs" property="relationship_id" value="${relationship_id}"/>
             
             <sql:update dataSource="${snapshot}" var="result">
             insert into patient (patient_no, first_name, middle_name, last_name, date_of_birth, gender, national_id, pin_no, phone)
             values ('${pa_no}', '${first_name}','${middle_name}','${last_name}', '${dob}', ${gender}, '${national_id}', '${pin_no}','${phone}')
             </sql:update>   
             
-       
-      
-            <jsp:setProperty name="pa" property="patient_id" value="${patient_id}"/>
-            <jsp:setProperty name="pa" property="patient_no" value="${pa_no}"/>
-            <jsp:setProperty name="pa" property="first_name" value="${first_name}"/>
-            <jsp:setProperty name="pa" property="middle_name" value="<${middle_name}"/> 
-            <jsp:setProperty name="pa" property="last_name" value="<${last_name}"/>   
-            <jsp:setProperty name="pa" property="vday" value="${fn:substring(date_of_birth, 1, 2)}"/>
-            <jsp:setProperty name="pa" property="vmonth" value="${fn:substring(date_of_birth, 1, 2)}"/>
-            <jsp:setProperty name="pa" property="vyear" value="${fn:substring(date_of_birth, 1, 2)}"/>
-            <jsp:setProperty name="pa" property="gender" value="${gender}"/>
-            <jsp:setProperty name="pa" property="national_id" value="${national_id}"/>
-            <jsp:setProperty name="pa" property="pin_no" value="${pin_no}"/>
-            <jsp:setProperty name="pa" property="phone" value="${phone}"/>    
-    </c:when>
+            <c:set var="v_patient_id" value="<%= pa.getPatient_id() %>"/>
+            
+            <c:set var="v_relationship_id" value="<%= rs.getRelationship_id() %>"/>
+                
+            <sql:update dataSource="${snapshot}" var="result">
+            insert into next_of_kin (patient_id, kin_patient_id, relationship_id) 
+            values (${v_patient_id}, ${patient_id}, ${v_relationship_id})
+            </sql:update>
+       <sql:query dataSource="${snapshot}" var="rel">
+    select relationship_id, relationship 
+    from relationship
+    order by relationship_id
+    </sql:query> 
+            <%--
+            <jsp:setProperty name="pia" property="patient_id" value="${patient_id}"/>
+            <jsp:setProperty name="pia" property="patient_no" value="${pa_no}"/>
+            <jsp:setProperty name="pia" property="first_name" value="${first_name}"/>
+            <jsp:setProperty name="pia" property="middle_name" value="<${middle_name}"/> 
+            <jsp:setProperty name="pia" property="last_name" value="<${last_name}"/>   
+            <jsp:setProperty name="pia" property="vday" value="${fn:substring(date_of_birth, 1, 2)}"/>
+            <jsp:setProperty name="pia" property="vmonth" value="${fn:substring(date_of_birth, 1, 2)}"/>
+            <jsp:setProperty name="pia" property="vyear" value="${fn:substring(date_of_birth, 1, 2)}"/>
+            <jsp:setProperty name="pia" property="gender" value="${gender}"/>
+            <jsp:setProperty name="pia" property="national_id" value="${national_id}"/>
+            <jsp:setProperty name="pia" property="pin_no" value="${pin_no}"/>
+            <jsp:setProperty name="pia" property="phone" value="${phone}"/>   
+            --%>
+     <%--
+            </c:when>
+            
     </c:choose>
                
-      
+     --%> 
+     <%--
         <sql:query dataSource="${snapshot}" var="pa_list">
         SELECT pat.patient_id, pat.patient_no, pat.first_name, pat.middle_name, pat.last_name, DATE_FORMAT(pat.date_of_birth,'%d-%m-%Y') as date_of_birth, 
         case 
@@ -132,16 +179,18 @@
         end as gender,
         pat.national_id, pat.pin_no, pat.phone
         FROM patient pat 
-        WHERE pat.patient_id = <%= pa.getPatient_id() %>
+       <%-- <c:choose>
+        <c:when test='${edit_mode}'>
+            WHERE pat.patient_id = <%= pa.getPatient_id() %>
+        </c:when>
+        <c:when test='${new_mode}'> --%>
+        <%--    WHERE pat.patient_id =  <%= pia.getPatient_id() %>--%>
+        <%--  </c:when>
+        </c:choose>--%>
+         <%--    
         ORDER BY pat.last_name
         </sql:query>
-        
-    <sql:query dataSource="${snapshot}" var="rel">
-    select relationship_id, relationship 
-    from relationship
-    order by relationship_id
-    </sql:query> 
-      <%--
+     
          <table border="0" cellpadding="10" align="center">
              <c:forEach var="row" items="${pa_list.rows}">
              <tr><th>Patient Number</th><td><c:out value="${row.patient_no}"/></td></tr>
@@ -154,49 +203,15 @@
              <tr><th>Pin Number</th><td><c:out value="${row.pin_no}"/></td></tr>
              <tr><th>Phone Number</th><td><c:out value="${row.phone}"/></td></tr>
              <tr><th>Update</th><td><a href="<c:url value="patient.jsp?patient_id=${row.patient_id}"/>">Edit</a></td></tr>
-         
-         
-             </c:forEach>
+               </c:forEach>
          </table>--%>
-      &nbsp;
-      
-      <h3>Patient Information</h3>
-      <hr>
-         <table border="0" cellpadding="10" align="center" >
-         
-         <tr>
-            <th>Patient Number</th>
-            <th>First name</th>
-            <th>Middle name</th>
-            <th>Last name</th>
-            <th>Date of birth</th>
-            <th>Gender</th>
-            <th>National Id</th>
-            <th>PIN Number</th>
-            <th>Phone Number</th>
-             
-            <th>Edit</th>
-
-         </tr>
-         <c:forEach var="row" items="${pa_list.rows}">
-         <tr>   
-            <td><c:out value="${row.patient_no}"/></td>
-            <td><c:out value="${row.first_name}"/></td>
-            <td><c:out value="${row.middle_name}"/></td>
-            <td><c:out value="${row.last_name}"/></td>
-            <td><c:out value="${row.date_of_birth}"/></td>
-            <td><c:out value="${row.gender}"/></td>
-            <td><c:out value="${row.national_id}"/></td>
-            <td><c:out value="${row.pin_no}"/></td>
-            <td><c:out value="${row.phone}"/></td>
-           
-            <td><a href="<c:url value="patient.jsp?patient_id=${row.patient_id}"/>">Edit</a></td>
-         </tr>
-         </c:forEach>
-         </table>
+          <jsp:directive.include file="patientdata.jsp"/>
+          <hr>
+          <jsp:directive.include file="nextofkindata.jsp"/>
+          
       <%-- Add next of kin --%>  
-      &nbsp;
-      <h3>Next of Kin Information</h3>
+    &nbsp;
+      <h4>Next of Kin Information</h4>
       <hr>
      <form name="nextofkin" action="savenextofkin.jsp" method="POST">
           <table border="0" cellpadding="10">  
@@ -227,7 +242,27 @@
             </table>
             </form>
      
-        
+         <%-- Add Visit --%>  
+         <form name="patient" action="visit.jsp" method="POST">
+            <input type="submit" value="Patient visit">
+             
+       
+          
+            
+       <%--     
+            <c:choose>
+        <c:when test='${edit_mode}'>
+            <input type="hidden" name="patient_id" value="<%= pa.getPatient_id() %>">
+           
+        </c:when>
+         <c:when test='${new_mode}'> 
+           <input type="hidden" name="patient_id" value="<%= pia.getPatient_id() %>">
+         </c:when>
+        </c:choose>
+            
+          --%>  
+          <input type="hidden" name="patient_id" value="<%= pa.getPatient_id() %>">
+        </form>
 
         </div>
         <div id="footer">

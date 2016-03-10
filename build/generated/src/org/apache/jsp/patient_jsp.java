@@ -216,7 +216,7 @@ public final class patient_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                 <li><a href=\"provider.jsp\">Clinic Personnel</a></li>\n");
       out.write("                 <li><a href=\"drugForm.jsp\">Drug Form</a></li>\n");
       out.write("                 <li><a href=\"drug.jsp\">Drug</a></li>\n");
-      out.write("                \n");
+      out.write("                 <li><a href=\"relationship.jsp\">Relationship</a></li>\n");
       out.write("                 <li><a href=\"servicetype.jsp\">Service Type</a></li>\n");
       out.write("             </ul>\n");
       out.write("         </div>\n");
@@ -243,16 +243,16 @@ public final class patient_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("            \n");
-      out.write("       \n");
+      out.write("     &nbsp;\n");
+      out.write("      <h4>New Patient Information</h4>\n");
+      out.write("      <hr width=\"333%\">  \n");
       out.write("     \n");
       out.write("        \n");
       out.write("     \n");
       out.write("        \n");
       out.write("        <form name=\"patient\" action=\"savepatient.jsp\" method=\"POST\">\n");
       out.write("          <table border=\"0\" cellpadding=\"10\" align=\"center\">  \n");
-      out.write("             <caption>\n");
-      out.write("                 <h2>New Patient Information</h2>\n");
-      out.write("            </caption> \n");
+      out.write("             \n");
       out.write("             \n");
       out.write("         ");
       //  c:choose

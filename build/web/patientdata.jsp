@@ -22,6 +22,15 @@
         tr { background-color:white;
 	color:black;
 	text-align:left}
+        hr { 
+        display: block;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        margin-left: auto;
+        margin-right: auto;
+        border-style: inset;
+        border-width: 1px;
+        } 
          
         </style>
     </head>
@@ -37,8 +46,9 @@
         WHERE patient_id = <%= pa.getPatient_id() %>
         </sql:query>
         
+      
         
-        <table border="0" cellpadding="10" align="center" >
+        <table border="0" cellpadding="10">
          
                 <c:forEach var="row" items="${pa_list.rows}">     
                    
@@ -50,20 +60,7 @@
             <tr>
              <th>National Id</th><td><c:out value="${row.national_id}"/></td><th>PIN Number</th><td><c:out value="${row.pin_no}"/></td></tr>
             
-           
-
-         
-         
-        
-            
-           
-            
-           
-            
-            
-            
-            
-         
+          
          </c:forEach>
          
          </table>

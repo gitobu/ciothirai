@@ -1,6 +1,6 @@
 <%-- 
-    Document   : patientdata
-    Created on : Jan 22, 2016, 9:12:40 PM
+    Document   : patientdatapia
+    Created on : Mar 6, 2016, 6:20:35 AM
     Author     : Gitobu
 --%>
 
@@ -43,12 +43,22 @@
         DATE_FORMAT(pa.date_of_birth,'%d-%m-%Y') as date_of_birth, case when pa.gender = 1 then 'Male' else 'Female' end as patient_gender, pa.national_id, pa.pin_no, 
         case when pa.phone is null then 'N/A' else pa.phone end as phone_number
         FROM patient pa 
-        WHERE patient_id = <%= pa.getPatient_id() %>
+        WHERE patient_id = <%= pia.getPatient_id() %>
         </sql:query>
-        
-      
-        
-        <table border="0" cellpadding="10">
+        <sql:query dataSource="${snapshot}" var="nok_list">
+        select p.patient_id, CONCAT(p.first_name,' ', p.last_name) as patient, CONCAT(pr.first_name,' ', pr.last_name) as next_of_kin,  r.relationship, pr.phone, p.national_id, 
+        case 
+                    when pr.gender = 1 then 'Female'
+                    when pr.gender = 2 then 'Male' 
+                end as gender
+        from  next_of_kin nok inner join  patient p on (nok.patient_id = p.patient_id and p.patient_id = <%= pia.getPatient_id() %>)
+        inner join patient pr on nok.kin_patient_id = pr.patient_id
+        inner join relationship r on nok.relationship_id = r.relationship_id
+        </sql:query>
+        &nbsp; 
+        <h4>Patient Information</h4>
+        <hr>
+        <table border="0" cellpadding="10" align="center" >
          
                 <c:forEach var="row" items="${pa_list.rows}">     
                    
@@ -59,10 +69,31 @@
             
             <tr>
              <th>National Id</th><td><c:out value="${row.national_id}"/></td><th>PIN Number</th><td><c:out value="${row.pin_no}"/></td></tr>
-            
-          
+    
          </c:forEach>
          
+         </table>
+        <h4>Next of Kin</h4>
+        <hr>
+        <table border="0" cellpadding="10"  >
+        
+         <tr>
+             <th>Name:</th>
+            <th>Relationship:</th>
+           <th>Phone:</th>
+           <th>National Id:</th>
+           <th>Gender:</th>
+         </tr>
+         
+         <c:forEach var="row" items="${nok_list.rows}">
+         <tr>   
+             <td><c:out value="${row.next_of_kin}"/></td>
+             <td><c:out value="${row.relationship}"/></td>
+             <td><c:out value="${row.phone}"/></td>
+             <td><c:out value="${row.national_id}"/></td>
+             <td><c:out value="${row.gender}"/></td>
+         </tr>
+         </c:forEach>
          </table>
         
     </body>

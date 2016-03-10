@@ -33,6 +33,15 @@ th { background-color:lightseagreen;
 tr { background-color:white;
 	color:black;
 	text-align:left}
+hr { 
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+} 
 	
 caption {font-style: 8pt;
 	font-style:normal}

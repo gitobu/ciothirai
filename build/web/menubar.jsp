@@ -60,7 +60,7 @@
                  <li><a href="provider.jsp">Clinic Personnel</a></li>
                  <li><a href="drugForm.jsp">Drug Form</a></li>
                  <li><a href="drug.jsp">Drug</a></li>
-                
+                 <li><a href="relationship.jsp">Relationship</a></li>
                  <li><a href="servicetype.jsp">Service Type</a></li>
              </ul>
          </div>

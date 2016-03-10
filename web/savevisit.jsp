@@ -24,26 +24,15 @@
         <link href="styleOne.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-       
-<div id="header">
-       <jsp:directive.include file="header.html"/>
-        </div>
-        
-              <div id="nav">
-                 <jsp:directive.include file="menubar.jsp"/>
-</div>   
-<div id="section"> 
-               
-
-
-            
-             
-        <sql:query dataSource="${snapshot}" var="sid">
-           
-        SELECT max(visit_id) + 1  as visit_id, CONCAT('VI', max(substr(visit_no,3,5)) + 1) as vi_no 
+        <div id="header"><jsp:directive.include file="header.html"/></div>
+        <div id="nav"><jsp:directive.include file="menubar.jsp"/></div>   
+        <div id="section"> 
+         
+            <%-- Get visit id and visit number --%>
+            <sql:query dataSource="${snapshot}" var="sid">
+            SELECT max(visit_id) + 1  as visit_id, CONCAT('VI', max(substr(visit_no,3,5)) + 1) as vi_no 
             FROM visit
             </sql:query>
-            
             
             
             <c:forEach var="row" items="${sid.rows}">
@@ -53,7 +42,7 @@
             
             <jsp:setProperty name="vi" property="visit_id" value="${visit_id}"/>
             
-            <c:set var="patient_id" value="<%= pa.getPatient_id() %>" />
+            <c:set var="patient_id" value="<%= request.getParameter("patient_id")%>" />
             <c:set var="visit_date" value="<%= request.getParameter("visit_date")%>" />
             <c:set var="vday" value="${fn:substring(visit_date, 0, 2)}"/>
             <c:set var="vmonth" value="${fn:substring(visit_date, 3, 5)}"/>
@@ -83,38 +72,24 @@
             <hr>
             
             <form name="service" action="addservice.jsp" method="POST">
-                
-         <table border="0" cellpadding="10" >  
-             <caption>
-                
-            </caption>
-             
-                 <tr><th align="left"></th><td><input type="hidden" name="visit_id" value="<%= vi.getVisit_id() %>"> </td> </tr>
-             
-            
-                 <tr><th align="left">Service Type </th><td> 
-                <select name="service_type_id">
-                  
-                 <option value="">[Please select Service]</option>
-             
-                 <c:forEach var="row" items="${se.rows}">
-                <option value="${row.service_type_id}">${row.service_type_description}</option>
-  		</c:forEach> 
-                </select> 
-  
-                     </td> </tr>
-             <tr><th></th><td><input type="submit" value="Submit" onclick="return validateFormValues()"/></td> </tr>
-         
-            </table>
+                <table border="0" cellpadding="10" >  
+                    <tr><th align="left"></th><td><input type="hidden" name="visit_id" value="<%= vi.getVisit_id() %>"> </td> </tr>
+                    <tr><th align="left">Service Type </th>
+                        <td>
+                            <select name="service_type_id">         
+                            <option value="">[Please select Service]</option>     
+                                <c:forEach var="row" items="${se.rows}">
+                                <option value="${row.service_type_id}">${row.service_type_description}</option>
+                                </c:forEach> 
+                            </select> 
+                        </td> 
+                    </tr>
+                    <tr><th></th><td><input type="submit" value="Submit" onclick="return validateFormValues()"/></td> </tr>
+  		</table>
             </form>
-         
-</div>
-       
-        <div id="footer">
-            
-        
-       <jsp:directive.include file="footer.html"/>
-      
-        </div>
+                
+ </div>
+ <div id="footer"><jsp:directive.include file="footer.html"/></div>
+  
     </body>
 </html>
