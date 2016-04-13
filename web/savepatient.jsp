@@ -141,23 +141,7 @@
     from relationship
     order by relationship_id
     </sql:query> 
-      <%--
-         <table border="0" cellpadding="10" align="center">
-             <c:forEach var="row" items="${pa_list.rows}">
-             <tr><th>Patient Number</th><td><c:out value="${row.patient_no}"/></td></tr>
-             <tr><th>First Name</th><td><c:out value="${row.first_name}"/></td></tr>
-             <tr><th>Middle Name</th><td><c:out value="${row.middle_name}"/></td></tr>
-             <tr><th>Last Name</th><td><c:out value="${row.last_name}"/></td></tr>
-             <tr><th>Date of Birth</th><td><c:out value="${row.date_of_birth}"/></td></tr>
-             <tr><th>Gender</th><td><c:out value="${row.gender}"/></td></tr>
-             <tr><th>National Id</th><td><c:out value="${row.national_id}"/><td></td></tr>
-             <tr><th>Pin Number</th><td><c:out value="${row.pin_no}"/></td></tr>
-             <tr><th>Phone Number</th><td><c:out value="${row.phone}"/></td></tr>
-             <tr><th>Update</th><td><a href="<c:url value="patient.jsp?patient_id=${row.patient_id}"/>">Edit</a></td></tr>
-         
-         
-             </c:forEach>
-         </table>--%>
+      
       &nbsp;
       
       <h3>Patient Information</h3>

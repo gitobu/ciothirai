@@ -96,7 +96,7 @@
              <tr><th></th><td><input type="submit" value="Submit" onclick="return validateFormValues()"/></td> </tr>
             </table>
             </form>
-         <table border="1" cellpadding="10" align="center" >
+         <table border="0" cellpadding="10" align="center" >
          <caption><h2>Service Type</h2></caption>
          <tr>
             <th>Service Type Number</th>

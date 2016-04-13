@@ -35,9 +35,8 @@
          
             <hr>
             <jsp:directive.include file="patientdata.jsp"/>
-            <hr>
-           <jsp:directive.include file="nextofkindata.jsp"/>
-            <hr>
+            
+        
             
             
                      

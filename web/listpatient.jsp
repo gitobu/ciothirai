@@ -70,7 +70,7 @@
          </tr>
          <c:forEach var="row" items="${pa_list.rows}">
          <tr>   
-            <td><c:out value="${row.patient_no}"/></td>
+            <td><a href="<c:url value="patientdetails.jsp?patient_id=${row.patient_id}"/>"><c:out value="${row.patient_no}"/></a></td>
             <td><c:out value="${row.patient_name}"/></td>
             
             <td><c:out value="${row.date_of_birth}"/></td>
