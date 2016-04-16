@@ -1,0 +1,39 @@
+SMAP
+addnextofkin_jsp.java
+JSP
+*S JSP
+*F
++ 0 addnextofkin.jsp
+addnextofkin.jsp
++ 1 sqllink.jsp
+sqllink.jsp
++ 2 header.html
+header.html
++ 3 menubar.jsp
+menubar.jsp
++ 4 footer.html
+footer.html
+*L
+5,5:73
+5#1,10:77
+14:294,9
+16:89
+9#0,4:90
+12:93,9
+13:102
+14:103,9
+15,12:112
+1#2,22:124
+26#0,5:145
+5#3,65:150
+30#0,4:214
+33:316,17
+34,4:333
+37,22:220
+58:364,11
+59:375,6
+60:381
+60,11:244
+1#4,17:255
+70#0,6:271
+*E

@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:directive.include file="sqllink.jsp"/>
-
+<jsp:useBean id="pa" class="com.clinic.Patient" scope="session"/>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,6 +22,8 @@
             <jsp:directive.include file="menubar.jsp"/>
         </div>
         <div id="section">
+        <c:set var="patient_id" value = "<%= request.getParameter("patient_id")%>"/> 
+        <jsp:setProperty name="pa" property="patient_id" value="${patient_id}"/>
         
         <c:set var="criteria" value="<%= request.getParameter("method")%>" />
         <c:set var="search_string" value="<%= request.getParameter("search")%>" />
@@ -82,6 +84,7 @@
          </tr>
          </c:forEach>
          </table>
+        
         </div>
         <div id="footer">
             

@@ -31,6 +31,10 @@
             <hr>
            <jsp:directive.include file="nextofkindata.jsp"/>
             <hr>
+            <form name="addnextofkin" action="addnextofkin.jsp">
+                <input type="Submit" value="Add Next of Kin">
+                
+            </form>
 </div>
        
         <div id="footer">

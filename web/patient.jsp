@@ -10,7 +10,7 @@
 <html>
     <head><title>Kenya Clinic: Patient</title>
     <link href="styleOne.css" rel="stylesheet" type="text/css" />
-     <link rel="stylesheet" type="text/css" href="tcal.css" />
+    <link rel="stylesheet" type="text/css" href="tcal.css" /> 
     <script type="text/javascript" src="tcal.js">
        
                 
@@ -28,7 +28,29 @@
 			return true;
 		}
     }
+   
     </script>
+   
+    <style type="text/css">
+            
+        th { background-color:#FFF;
+	color:black;
+	text-align:left}
+	
+        tr { background-color:white;
+	color:black;
+	text-align:left}
+        hr { 
+        display: block;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        margin-left: auto;
+        margin-right: auto;
+        border-style: inset;
+        border-width: 1px;
+        } 
+         
+        </style>
     </head>
     
     <body>
@@ -105,26 +127,26 @@
                  <input type="hidden" name="patient_id" value="<%= pa.getPatient_id() %>"> 
                  
                 
-             <tr><th align="left">First name</th><td><input type="text" name="first_name" value="<%= pa.getFirst_name() %>"></td> </tr>
-             <tr><th align="left">Middle name</th><td><input type="text" name="middle_name" value="<%= pa.getMiddle_name() %>"></td> </tr>
+             <tr><th align="left">First name</th><td><input type="text" name="first_name" value="<%= pa.getFirst_name() %>"></td> 
+             <th align="left">Middle name</th><td><input type="text" name="middle_name" value="<%= pa.getMiddle_name() %>"></td> </tr>
              <tr><th align="left">Last name</th><td><input type="text" name="last_name" value="<%= pa.getLast_name() %>"></td> </tr>
-             <tr><th align="left">Date of birth</th><td><input type="text" name="date_of_birth" ></td> </tr>
-             <tr><th align="left">Gender</th><td><input type="text" name="gender" value="<%= pa.getGender() %>"></td> </tr>
+             <tr><th align="left">Date of birth</th><td><input type="text" name="date_of_birth" ></td> 
+             <th align="left">Gender</th><td><input type="text" name="gender" value="<%= pa.getGender() %>"></td> </tr>
              
-             <tr><th align="left">National Id</th><td><input type="text" name="national_id" value="<%= pa.getNational_id() %>"></td> </tr>
-             <tr><th align="left">PIN Number</th><td><input type="text" name="pin_no" value="<%= pa.getPin_no() %>"></td> </tr>
+             <tr><th align="left">National Id</th><td><input type="text" name="national_id" value="<%= pa.getNational_id() %>"></td>
+             <th align="left">PIN Number</th><td><input type="text" name="pin_no" value="<%= pa.getPin_no() %>"></td> </tr>
              <tr><th align="left">Phone Number</th><td><input type="text" name="phone" value="<%= pa.getPhone() %>"></td> </tr>
             
              </c:when>
              <c:when test='${new_mode}'>
-            <tr><th align="left">First name</th><td><input type="text" name="first_name" ></td> </tr>
-            <tr><th align="left">Middle name</th><td><input type="text" name="middle_name" ></td> </tr>
-             <tr><th align="left">Last name</th><td><input type="text" name="last_name" ></td> </tr>
-            <tr><th align="left">Date of birth</th><td><input type="text" name="date_of_birth" class="tcal" value=""></td></tr>          
-             <tr><th align="left">Gender</th><td><input type="radio" name="gender" value="1">Female<input type="radio" name="gender" value="2">Male</td> </tr>
-             <tr><th align="left">National Id</th><td><input type="text" name="national_id" ></td> </tr>
-             <tr><th align="left">PIN Number</th><td><input type="text" name="pin_no" ></td> </tr>
-             <tr><th align="left">Phone Number</th><td><input type="text" name="phone" ></td> </tr>
+            <tr><th align="left">First name</th><td><input type="text" name="first_name" ></td> 
+            <th align="left">Middle name</th><td><input type="text" name="middle_name" ></td> </tr>
+             <tr><th align="left">Last name</th><td><input type="text" name="last_name" ></td> 
+            <th align="left">Date of birth</th><td><input type="text" name="date_of_birth" class="tcal" value=""></td></tr>          
+             <tr><th align="left">Gender</th><td><input type="radio" name="gender" value="1">Female<input type="radio" name="gender" value="2">Male</td> 
+             <th align="left">National Id</th><td><input type="text" name="national_id" ></td> </tr>
+             <tr><th align="left">PIN Number</th><td><input type="text" name="pin_no" ></td> 
+             <th align="left">Phone Number</th><td><input type="text" name="phone" ></td> </tr>
             </c:when> 
              </c:choose> 
                  

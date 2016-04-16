@@ -21,6 +21,26 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Kenya Clinic: New Patient</title>
         <link href="styleOne.css" rel="stylesheet" type="text/css" />
+      <style type="text/css">
+            
+        th { background-color:#FFF;
+	color:black;
+	text-align:left}
+	
+        tr { background-color:white;
+	color:black;
+	text-align:left}
+        hr { 
+        display: block;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        margin-left: auto;
+        margin-right: auto;
+        border-style: inset;
+        border-width: 1px;
+        } 
+         
+        </style>  
     <link rel="stylesheet" type="text/css" href="tcal.css" />
      <script type="text/javascript" src="tcal.js">
     function validateFormValues(){
@@ -187,14 +207,14 @@
             
              
          
-            <tr><th align="left">First name</th><td><input type="text" name="first_name" ></td> </tr>
-            <tr><th align="left">Middle name</th><td><input type="text" name="middle_name" ></td> </tr>
-             <tr><th align="left">Last name</th><td><input type="text" name="last_name" ></td> </tr>
-            <tr><th align="left">Date of birth</th><td><input type="text" name="date_of_birth" class="tcal" value=""></td></tr>          
-             <tr><th align="left">Gender</th><td><input type="radio" name="gender" value="1">Female<input type="radio" name="gender" value="2">Male</td> </tr>
-             <tr><th align="left">National Id</th><td><input type="text" name="national_id" ></td> </tr>
-             <tr><th align="left">PIN Number</th><td><input type="text" name="pin_no" ></td> </tr>
-             <tr><th align="left">Phone Number</th><td><input type="text" name="phone" ></td> </tr>
+            <tr><th align="left">First name</th><td><input type="text" name="first_name" ></td> 
+            <th align="left">Middle name</th><td><input type="text" name="middle_name" ></td> </tr>
+             <tr><th align="left">Last name</th><td><input type="text" name="last_name" ></td> 
+            <th align="left">Date of birth</th><td><input type="text" name="date_of_birth" class="tcal" value=""></td></tr>          
+             <tr><th align="left">Gender</th><td><input type="radio" name="gender" value="1">Female<input type="radio" name="gender" value="2">Male</td> 
+             <th align="left">National Id</th><td><input type="text" name="national_id" ></td> </tr>
+             <tr><th align="left">PIN Number</th><td><input type="text" name="pin_no" ></td> 
+             <th align="left">Phone Number</th><td><input type="text" name="phone" ></td> </tr>
               
               <tr><th align="left">Relationship to patient</th>
                   <td>

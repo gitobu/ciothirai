@@ -62,6 +62,7 @@
                  <li><a href="drug.jsp">Drug</a></li>
                  <li><a href="relationship.jsp">Relationship</a></li>
                  <li><a href="servicetype.jsp">Service Type</a></li>
+                 <li><a href="reports.jsp">Reports</a></li>
              </ul>
          </div>
      </body>
