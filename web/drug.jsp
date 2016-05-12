@@ -8,7 +8,7 @@
 <jsp:useBean id="dr" class="com.clinic.Drug" scope="session"/>
 
 <html>
-    <head><title>Kenya Clinic: Healthcare provider</title>
+    <head><title>Kenya Clinic: Drug information</title>
     <link href="styleOne.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
     function validateFormValues(){

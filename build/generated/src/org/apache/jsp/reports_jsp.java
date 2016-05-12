@@ -96,24 +96,9 @@ public final class reports_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <title>Patient log</title>\n");
+      out.write("        <title>Reports</title>\n");
       out.write("        <link href=\"styleOne.css\" rel=\"stylesheet\" type=\"text/css\" />\n");
-      out.write("        <style type=\"text/css\">\n");
-      out.write("        th { background-color:#FFF;\n");
-      out.write("\tcolor:black;\n");
-      out.write("\ttext-align:left}\n");
-      out.write("\t\n");
-      out.write("        tr { background-color:white;\n");
-      out.write("\tcolor:black;\n");
-      out.write("\ttext-align:left}\n");
-      out.write("        table{\n");
-      out.write("            font-family: verdana, Garamond;\n");
-      out.write("            font-size: 10pt;\n");
-      out.write("            border-color: #6d6f7b;\n");
-      out.write("            border-style: double;\n");
-      out.write("        }\n");
-      out.write("            \n");
-      out.write("        </style>\n");
+      out.write("        \n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <div id=\"header\">\n");
@@ -203,6 +188,7 @@ public final class reports_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                 <li><a href=\"drug.jsp\">Drug</a></li>\n");
       out.write("                 <li><a href=\"relationship.jsp\">Relationship</a></li>\n");
       out.write("                 <li><a href=\"servicetype.jsp\">Service Type</a></li>\n");
+      out.write("                 <li><a href=\"reports.jsp\">Reports</a></li>\n");
       out.write("             </ul>\n");
       out.write("         </div>\n");
       out.write("     </body>\n");
@@ -211,25 +197,86 @@ public final class reports_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        </div>\n");
       out.write("        <div id=\"section\">\n");
       out.write("        \n");
-      out.write("        \n");
+      out.write("        <div style=\"float:left; width:55%;\">\n");
+      out.write("        <div style=\"float:top; height:45%;\">\n");
       out.write("        ");
       if (_jspx_meth_sql_query_0(_jspx_page_context))
         return;
-      out.write("  \n");
+      out.write(" \n");
       out.write("       \n");
-      out.write("        <table border=\"0\" cellpadding=\"10\" align=\"center\" >\n");
+      out.write("        <table border=\"0\" cellpadding=\"10\">\n");
       out.write("         <caption><h2>Illness cases</h2></caption>\n");
       out.write("         <tr>\n");
       out.write("            <th>Primary Complaint</th>\n");
       out.write("            <th>Number of Cases</th>\n");
-      out.write(" \n");
-      out.write("\n");
       out.write("         </tr>\n");
       out.write("         ");
       if (_jspx_meth_c_forEach_0(_jspx_page_context))
         return;
       out.write("\n");
       out.write("         </table>\n");
+      out.write("        \n");
+      out.write("        </div>\n");
+      out.write("        <div style=\"float:bottom; height:45%;\">\n");
+      out.write("       ");
+      if (_jspx_meth_sql_query_1(_jspx_page_context))
+        return;
+      out.write("   \n");
+      out.write("         <table border=\"0\" cellpadding=\"10\">\n");
+      out.write("         <caption><h2>Inventory</h2></caption>\n");
+      out.write("         <tr>\n");
+      out.write("            <th>Drug</th>\n");
+      out.write("            <th>Drug form</th>\n");
+      out.write("            <th>Inventory Quantity</th>\n");
+      out.write("            <th>Drugs dispensed</th>\n");
+      out.write("            <th>Drugs remaining</th>\n");
+      out.write(" \n");
+      out.write("\n");
+      out.write("         </tr>\n");
+      out.write("         ");
+      if (_jspx_meth_c_forEach_1(_jspx_page_context))
+        return;
+      out.write("\n");
+      out.write("         </table>\n");
+      out.write("        </div>\n");
+      out.write("        </div>\n");
+      out.write("        <div style=\"float:right; width:35%;\">\n");
+      out.write("         <div style=\"float:top; height:45%;\">   \n");
+      out.write("        ");
+      if (_jspx_meth_sql_query_2(_jspx_page_context))
+        return;
+      out.write("\n");
+      out.write("        <table border=\"0\" cellpadding=\"10\">\n");
+      out.write("         <caption><h2>Patients by age</h2></caption>\n");
+      out.write("         <tr>\n");
+      out.write("            <th>Age group</th>\n");
+      out.write("            <th>Number of patients</th>\n");
+      out.write("         \n");
+      out.write("         </tr>\n");
+      out.write("         ");
+      if (_jspx_meth_c_forEach_2(_jspx_page_context))
+        return;
+      out.write("\n");
+      out.write("         </table>\n");
+      out.write("         </div>\n");
+      out.write("         <div style=\"float:bottom; height:45%;\">\n");
+      out.write("        ");
+      if (_jspx_meth_sql_query_3(_jspx_page_context))
+        return;
+      out.write("\n");
+      out.write("        <table border=\"0\" cellpadding=\"10\">\n");
+      out.write("         <caption><h2>Patients by gender</h2></caption>\n");
+      out.write("         <tr>\n");
+      out.write("            <th>Gender</th>\n");
+      out.write("            <th>Number of patients</th>\n");
+      out.write("         </tr>\n");
+      out.write("         ");
+      if (_jspx_meth_c_forEach_3(_jspx_page_context))
+        return;
+      out.write("\n");
+      out.write("         </table>\n");
+      out.write("         </div>\n");
+      out.write("        </div>\n");
       out.write("        </div>\n");
       out.write("        <div id=\"footer\">\n");
       out.write("            \n");
@@ -365,12 +412,10 @@ public final class reports_jsp extends org.apache.jasper.runtime.HttpJspBase
           if (_jspx_meth_c_out_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
             return true;
           out.write("</td>\n");
-          out.write("            <td>");
+          out.write("            <td align=\"center\">");
           if (_jspx_meth_c_out_1((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
             return true;
-          out.write("</td>\n");
-          out.write("            \n");
-          out.write("            \n");
+          out.write("</td>      \n");
           out.write("         </tr>\n");
           out.write("         ");
           int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
@@ -425,6 +470,473 @@ public final class reports_jsp extends org.apache.jasper.runtime.HttpJspBase
       return true;
     }
     _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_1);
+    return false;
+  }
+
+  private boolean _jspx_meth_sql_query_1(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  sql:query
+    org.apache.taglibs.standard.tag.rt.sql.QueryTag _jspx_th_sql_query_1 = (org.apache.taglibs.standard.tag.rt.sql.QueryTag) _jspx_tagPool_sql_query_var_dataSource.get(org.apache.taglibs.standard.tag.rt.sql.QueryTag.class);
+    _jspx_th_sql_query_1.setPageContext(_jspx_page_context);
+    _jspx_th_sql_query_1.setParent(null);
+    _jspx_th_sql_query_1.setDataSource((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${snapshot}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_sql_query_1.setVar("inventory");
+    int[] _jspx_push_body_count_sql_query_1 = new int[] { 0 };
+    try {
+      int _jspx_eval_sql_query_1 = _jspx_th_sql_query_1.doStartTag();
+      if (_jspx_eval_sql_query_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        if (_jspx_eval_sql_query_1 != javax.servlet.jsp.tagext.Tag.EVAL_BODY_INCLUDE) {
+          out = _jspx_page_context.pushBody();
+          _jspx_push_body_count_sql_query_1[0]++;
+          _jspx_th_sql_query_1.setBodyContent((javax.servlet.jsp.tagext.BodyContent) out);
+          _jspx_th_sql_query_1.doInitBody();
+        }
+        do {
+          out.write("\n");
+          out.write("       select total_drugs.drug_name, df.drug_form,  total_drugs.quantity, dispensed.qty as drugs_dispensed, total_drugs.quantity - dispensed.qty balance\n");
+          out.write("       from\n");
+          out.write("            (select i.drug_id, d.drug_name, i.quantity, d.drug_form_id\n");
+          out.write("             from inventory i inner join drug d on i.drug_id = d.drug_id) total_drugs\n");
+          out.write("            inner join \n");
+          out.write("            drug_form df on total_drugs.drug_form_id = df.drug_form_id\n");
+          out.write("            left join \n");
+          out.write("            (select prescription.drug_id, drug.drug_name, count(prescription.quantity) as qty \n");
+          out.write("            from prescription inner join drug on prescription.drug_id = drug.drug_id\n");
+          out.write("            inner join visit on prescription.visit_id = visit.visit_id\n");
+          out.write("            group by drug.drug_name) dispensed\n");
+          out.write("            on total_drugs.drug_id = dispensed.drug_id order by 1;\n");
+          out.write("        ");
+          int evalDoAfterBody = _jspx_th_sql_query_1.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+        if (_jspx_eval_sql_query_1 != javax.servlet.jsp.tagext.Tag.EVAL_BODY_INCLUDE)
+          out = _jspx_page_context.popBody();
+          _jspx_push_body_count_sql_query_1[0]--;
+      }
+      if (_jspx_th_sql_query_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_sql_query_1[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_sql_query_1.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_sql_query_1.doFinally();
+      _jspx_tagPool_sql_query_var_dataSource.reuse(_jspx_th_sql_query_1);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_c_forEach_1(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_forEach_1.setPageContext(_jspx_page_context);
+    _jspx_th_c_forEach_1.setParent(null);
+    _jspx_th_c_forEach_1.setVar("row");
+    _jspx_th_c_forEach_1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${inventory.rows}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int[] _jspx_push_body_count_c_forEach_1 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_forEach_1 = _jspx_th_c_forEach_1.doStartTag();
+      if (_jspx_eval_c_forEach_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\n");
+          out.write("         <tr>   \n");
+          out.write("            <td>");
+          if (_jspx_meth_c_out_2((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_1, _jspx_page_context, _jspx_push_body_count_c_forEach_1))
+            return true;
+          out.write("</td>\n");
+          out.write("            <td>");
+          if (_jspx_meth_c_out_3((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_1, _jspx_page_context, _jspx_push_body_count_c_forEach_1))
+            return true;
+          out.write("</td>\n");
+          out.write("            <td>");
+          if (_jspx_meth_c_out_4((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_1, _jspx_page_context, _jspx_push_body_count_c_forEach_1))
+            return true;
+          out.write("</td>\n");
+          out.write("            <td>");
+          if (_jspx_meth_c_out_5((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_1, _jspx_page_context, _jspx_push_body_count_c_forEach_1))
+            return true;
+          out.write("</td>\n");
+          out.write("            <td>");
+          if (_jspx_meth_c_out_6((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_1, _jspx_page_context, _jspx_push_body_count_c_forEach_1))
+            return true;
+          out.write("</td>\n");
+          out.write("         </tr>\n");
+          out.write("         ");
+          int evalDoAfterBody = _jspx_th_c_forEach_1.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_forEach_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_forEach_1[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_forEach_1.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_forEach_1.doFinally();
+      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_1);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_c_out_2(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_1, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_1)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:out
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_2 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_out_2.setPageContext(_jspx_page_context);
+    _jspx_th_c_out_2.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_1);
+    _jspx_th_c_out_2.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.drug_name}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int _jspx_eval_c_out_2 = _jspx_th_c_out_2.doStartTag();
+    if (_jspx_th_c_out_2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_2);
+      return true;
+    }
+    _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_2);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_out_3(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_1, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_1)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:out
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_3 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_out_3.setPageContext(_jspx_page_context);
+    _jspx_th_c_out_3.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_1);
+    _jspx_th_c_out_3.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.drug_form}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int _jspx_eval_c_out_3 = _jspx_th_c_out_3.doStartTag();
+    if (_jspx_th_c_out_3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_3);
+      return true;
+    }
+    _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_3);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_out_4(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_1, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_1)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:out
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_4 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_out_4.setPageContext(_jspx_page_context);
+    _jspx_th_c_out_4.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_1);
+    _jspx_th_c_out_4.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.quantity}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int _jspx_eval_c_out_4 = _jspx_th_c_out_4.doStartTag();
+    if (_jspx_th_c_out_4.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_4);
+      return true;
+    }
+    _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_4);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_out_5(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_1, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_1)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:out
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_5 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_out_5.setPageContext(_jspx_page_context);
+    _jspx_th_c_out_5.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_1);
+    _jspx_th_c_out_5.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.qty}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int _jspx_eval_c_out_5 = _jspx_th_c_out_5.doStartTag();
+    if (_jspx_th_c_out_5.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_5);
+      return true;
+    }
+    _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_5);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_out_6(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_1, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_1)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:out
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_6 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_out_6.setPageContext(_jspx_page_context);
+    _jspx_th_c_out_6.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_1);
+    _jspx_th_c_out_6.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.balance}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int _jspx_eval_c_out_6 = _jspx_th_c_out_6.doStartTag();
+    if (_jspx_th_c_out_6.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_6);
+      return true;
+    }
+    _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_6);
+    return false;
+  }
+
+  private boolean _jspx_meth_sql_query_2(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  sql:query
+    org.apache.taglibs.standard.tag.rt.sql.QueryTag _jspx_th_sql_query_2 = (org.apache.taglibs.standard.tag.rt.sql.QueryTag) _jspx_tagPool_sql_query_var_dataSource.get(org.apache.taglibs.standard.tag.rt.sql.QueryTag.class);
+    _jspx_th_sql_query_2.setPageContext(_jspx_page_context);
+    _jspx_th_sql_query_2.setParent(null);
+    _jspx_th_sql_query_2.setDataSource((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${snapshot}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_sql_query_2.setVar("pat_by_age");
+    int[] _jspx_push_body_count_sql_query_2 = new int[] { 0 };
+    try {
+      int _jspx_eval_sql_query_2 = _jspx_th_sql_query_2.doStartTag();
+      if (_jspx_eval_sql_query_2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        if (_jspx_eval_sql_query_2 != javax.servlet.jsp.tagext.Tag.EVAL_BODY_INCLUDE) {
+          out = _jspx_page_context.pushBody();
+          _jspx_push_body_count_sql_query_2[0]++;
+          _jspx_th_sql_query_2.setBodyContent((javax.servlet.jsp.tagext.BodyContent) out);
+          _jspx_th_sql_query_2.doInitBody();
+        }
+        do {
+          out.write("    \n");
+          out.write("        select bracket, count(patient_id) as no_of_patients \n");
+          out.write("        from age_brackets\n");
+          out.write("        group by bracket\n");
+          out.write("        order by ranking;   \n");
+          out.write("        ");
+          int evalDoAfterBody = _jspx_th_sql_query_2.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+        if (_jspx_eval_sql_query_2 != javax.servlet.jsp.tagext.Tag.EVAL_BODY_INCLUDE)
+          out = _jspx_page_context.popBody();
+          _jspx_push_body_count_sql_query_2[0]--;
+      }
+      if (_jspx_th_sql_query_2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_sql_query_2[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_sql_query_2.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_sql_query_2.doFinally();
+      _jspx_tagPool_sql_query_var_dataSource.reuse(_jspx_th_sql_query_2);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_c_forEach_2(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_2 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_forEach_2.setPageContext(_jspx_page_context);
+    _jspx_th_c_forEach_2.setParent(null);
+    _jspx_th_c_forEach_2.setVar("row");
+    _jspx_th_c_forEach_2.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pat_by_age.rows}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int[] _jspx_push_body_count_c_forEach_2 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_forEach_2 = _jspx_th_c_forEach_2.doStartTag();
+      if (_jspx_eval_c_forEach_2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\n");
+          out.write("         <tr>   \n");
+          out.write("            <td>");
+          if (_jspx_meth_c_out_7((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_2, _jspx_page_context, _jspx_push_body_count_c_forEach_2))
+            return true;
+          out.write("</td>\n");
+          out.write("            <td align=\"center\">");
+          if (_jspx_meth_c_out_8((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_2, _jspx_page_context, _jspx_push_body_count_c_forEach_2))
+            return true;
+          out.write("</td>\n");
+          out.write("\n");
+          out.write("         </tr>\n");
+          out.write("         ");
+          int evalDoAfterBody = _jspx_th_c_forEach_2.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_forEach_2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_forEach_2[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_forEach_2.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_forEach_2.doFinally();
+      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_2);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_c_out_7(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_2, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_2)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:out
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_7 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_out_7.setPageContext(_jspx_page_context);
+    _jspx_th_c_out_7.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_2);
+    _jspx_th_c_out_7.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.bracket}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int _jspx_eval_c_out_7 = _jspx_th_c_out_7.doStartTag();
+    if (_jspx_th_c_out_7.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_7);
+      return true;
+    }
+    _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_7);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_out_8(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_2, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_2)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:out
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_8 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_out_8.setPageContext(_jspx_page_context);
+    _jspx_th_c_out_8.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_2);
+    _jspx_th_c_out_8.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.no_of_patients}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int _jspx_eval_c_out_8 = _jspx_th_c_out_8.doStartTag();
+    if (_jspx_th_c_out_8.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_8);
+      return true;
+    }
+    _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_8);
+    return false;
+  }
+
+  private boolean _jspx_meth_sql_query_3(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  sql:query
+    org.apache.taglibs.standard.tag.rt.sql.QueryTag _jspx_th_sql_query_3 = (org.apache.taglibs.standard.tag.rt.sql.QueryTag) _jspx_tagPool_sql_query_var_dataSource.get(org.apache.taglibs.standard.tag.rt.sql.QueryTag.class);
+    _jspx_th_sql_query_3.setPageContext(_jspx_page_context);
+    _jspx_th_sql_query_3.setParent(null);
+    _jspx_th_sql_query_3.setDataSource((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${snapshot}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_sql_query_3.setVar("pat_by_gender");
+    int[] _jspx_push_body_count_sql_query_3 = new int[] { 0 };
+    try {
+      int _jspx_eval_sql_query_3 = _jspx_th_sql_query_3.doStartTag();
+      if (_jspx_eval_sql_query_3 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        if (_jspx_eval_sql_query_3 != javax.servlet.jsp.tagext.Tag.EVAL_BODY_INCLUDE) {
+          out = _jspx_page_context.pushBody();
+          _jspx_push_body_count_sql_query_3[0]++;
+          _jspx_th_sql_query_3.setBodyContent((javax.servlet.jsp.tagext.BodyContent) out);
+          _jspx_th_sql_query_3.doInitBody();
+        }
+        do {
+          out.write("\n");
+          out.write("        select  case when gender = 1 then 'Female' else 'Male' end as gender_type, \n");
+          out.write("        count(patient_id) as no_of_patients \n");
+          out.write("        from patient group by case when gender = 1 then 'Female' else 'Male' end;\n");
+          out.write("        ");
+          int evalDoAfterBody = _jspx_th_sql_query_3.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+        if (_jspx_eval_sql_query_3 != javax.servlet.jsp.tagext.Tag.EVAL_BODY_INCLUDE)
+          out = _jspx_page_context.popBody();
+          _jspx_push_body_count_sql_query_3[0]--;
+      }
+      if (_jspx_th_sql_query_3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_sql_query_3[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_sql_query_3.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_sql_query_3.doFinally();
+      _jspx_tagPool_sql_query_var_dataSource.reuse(_jspx_th_sql_query_3);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_c_forEach_3(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_3 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_forEach_3.setPageContext(_jspx_page_context);
+    _jspx_th_c_forEach_3.setParent(null);
+    _jspx_th_c_forEach_3.setVar("row");
+    _jspx_th_c_forEach_3.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pat_by_gender.rows}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int[] _jspx_push_body_count_c_forEach_3 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_forEach_3 = _jspx_th_c_forEach_3.doStartTag();
+      if (_jspx_eval_c_forEach_3 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\n");
+          out.write("         <tr>   \n");
+          out.write("            <td>");
+          if (_jspx_meth_c_out_9((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_3, _jspx_page_context, _jspx_push_body_count_c_forEach_3))
+            return true;
+          out.write("</td>\n");
+          out.write("            <td align=\"center\">");
+          if (_jspx_meth_c_out_10((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_3, _jspx_page_context, _jspx_push_body_count_c_forEach_3))
+            return true;
+          out.write("</td>\n");
+          out.write("         </tr>\n");
+          out.write("         ");
+          int evalDoAfterBody = _jspx_th_c_forEach_3.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_forEach_3.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_forEach_3[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_forEach_3.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_forEach_3.doFinally();
+      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_3);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_c_out_9(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_3, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_3)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:out
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_9 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_out_9.setPageContext(_jspx_page_context);
+    _jspx_th_c_out_9.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_3);
+    _jspx_th_c_out_9.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.gender_type}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int _jspx_eval_c_out_9 = _jspx_th_c_out_9.doStartTag();
+    if (_jspx_th_c_out_9.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_9);
+      return true;
+    }
+    _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_9);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_out_10(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_3, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_3)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:out
+    org.apache.taglibs.standard.tag.rt.core.OutTag _jspx_th_c_out_10 = (org.apache.taglibs.standard.tag.rt.core.OutTag) _jspx_tagPool_c_out_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.OutTag.class);
+    _jspx_th_c_out_10.setPageContext(_jspx_page_context);
+    _jspx_th_c_out_10.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_3);
+    _jspx_th_c_out_10.setValue((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${row.no_of_patients}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int _jspx_eval_c_out_10 = _jspx_th_c_out_10.doStartTag();
+    if (_jspx_th_c_out_10.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_10);
+      return true;
+    }
+    _jspx_tagPool_c_out_value_nobody.reuse(_jspx_th_c_out_10);
     return false;
   }
 }
