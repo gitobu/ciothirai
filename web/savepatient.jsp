@@ -90,8 +90,28 @@
             <c:set var="pin_no" value = "<%= request.getParameter("pin_no")%>"/> 
             <c:set var="phone" value = "<%= request.getParameter("phone")%>"/> 
             
+            <c:set var="county" value = "<%= request.getParameter("county")%>"/>
+            <c:set var="location" value = "<%= request.getParameter("location")%>"/>
+            <c:set var="village" value = "<%= request.getParameter("village")%>"/>
+            <c:set var="referred" value = "<%= request.getParameter("referred")%>"/>
+            <c:set var="affiliation" value = "<%= request.getParameter("affiliation")%>"/>
+            <c:set var="is_member" value = "<%= request.getParameter("is_member")%>"/>
+            
             <sql:update dataSource="${snapshot}" var="result">
-            update patient set first_name = '${first_name}', last_name = '${last_name}', middle_name = '${middle_name}', date_of_birth = '${date_of_birth}', gender = ${gender}, national_id = '${national_id}', pin_no = '${pin_no}', phone = '${phone}'
+            update patient set first_name = '${first_name}', 
+            last_name = '${last_name}', 
+            middle_name = '${middle_name}', 
+            date_of_birth = '${date_of_birth}', 
+            gender = ${gender}, 
+            national_id = '${national_id}', 
+            pin_no = '${pin_no}', 
+            phone = '${phone}',
+            county = '${county}',
+            location = '${location}',
+            village = '${village}',
+            referred = '${referred}',
+            affiliation = '${affiliation}',
+            is_member = '${is_member}'
             where patient_id  = ${patient_id}
             </sql:update>  
 
@@ -121,9 +141,16 @@
             <c:set var="pin_no" value = "<%= request.getParameter("pin_no")%>"/>
             <c:set var="phone" value = "<%= request.getParameter("phone")%>"/>
             
+            <c:set var="county" value = "<%= request.getParameter("county")%>"/>
+            <c:set var="location" value = "<%= request.getParameter("location")%>"/>
+            <c:set var="village" value = "<%= request.getParameter("village")%>"/>
+            <c:set var="referred" value = "<%= request.getParameter("referred")%>"/>
+            <c:set var="affiliation" value = "<%= request.getParameter("affiliation")%>"/>
+            <c:set var="is_member" value = "<%= request.getParameter("is_member")%>"/>
+            
             <sql:update dataSource="${snapshot}" var="result">
-            insert into patient (patient_no, first_name, middle_name, last_name, date_of_birth, gender, national_id, pin_no, phone)
-            values ('${pa_no}', '${first_name}','${middle_name}','${last_name}', '${dob}', ${gender}, '${national_id}', '${pin_no}','${phone}')
+            insert into patient (patient_no, first_name, middle_name, last_name, date_of_birth, gender, national_id, pin_no, phone, county, location, village, referred, affiliation, is_member)
+            values ('${pa_no}', '${first_name}','${middle_name}','${last_name}', '${dob}', ${gender}, '${national_id}', '${pin_no}','${phone}','${county}','${location}','${village}','${referred}','${affiliation}','${is_member}')
             </sql:update>   
             
        
@@ -139,7 +166,14 @@
             <jsp:setProperty name="pa" property="gender" value="${gender}"/>
             <jsp:setProperty name="pa" property="national_id" value="${national_id}"/>
             <jsp:setProperty name="pa" property="pin_no" value="${pin_no}"/>
-            <jsp:setProperty name="pa" property="phone" value="${phone}"/>    
+            <jsp:setProperty name="pa" property="phone" value="${phone}"/>
+            
+            <jsp:setProperty name="pa" property="county" value="${county}"/>
+            <jsp:setProperty name="pa" property="location" value="${location}"/>
+            <jsp:setProperty name="pa" property="village" value="${village}"/>
+            <jsp:setProperty name="pa" property="referred" value="${referred}"/>
+            <jsp:setProperty name="pa" property="affiliation" value="${affiliation}"/>
+            <jsp:setProperty name="pa" property="is_member" value="${is_member}"/>
     </c:when>
     </c:choose>
                
@@ -150,7 +184,7 @@
             when pat.gender = 1 then 'Female'
             when pat.gender = 2 then 'Male' 
         end as gender,
-        pat.national_id, pat.pin_no, pat.phone
+        pat.national_id, pat.pin_no, pat.phone, pat.county, pat.location, pat.village, pat.referred, pat.affiliation, pat.is_member
         FROM patient pat 
         WHERE pat.patient_id = <%= pa.getPatient_id() %>
         ORDER BY pat.last_name
@@ -178,7 +212,10 @@
             <th>National Id</th>
             <th>PIN Number</th>
             <th>Phone Number</th>
-             
+            <th>County</th> 
+            <th>Location</th> 
+            <th>Village</th> 
+            
             <th>Edit</th>
 
          </tr>
@@ -193,7 +230,12 @@
             <td><c:out value="${row.national_id}"/></td>
             <td><c:out value="${row.pin_no}"/></td>
             <td><c:out value="${row.phone}"/></td>
+            
+            <td><c:out value="${row.county}"/></td>
+            <td><c:out value="${row.location}"/></td>
+            <td><c:out value="${row.village}"/></td>
            
+          
             <td><a href="<c:url value="patient.jsp?patient_id=${row.patient_id}"/>">Edit</a></td>
          </tr>
          </c:forEach>

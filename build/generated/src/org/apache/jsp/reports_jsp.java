@@ -188,6 +188,7 @@ public final class reports_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                 <li><a href=\"drug.jsp\">Drug</a></li>\n");
       out.write("                 <li><a href=\"relationship.jsp\">Relationship</a></li>\n");
       out.write("                 <li><a href=\"servicetype.jsp\">Service Type</a></li>\n");
+      out.write("                 <li><a href=\"inventory.jsp\">Inventory</a></li>\n");
       out.write("                 <li><a href=\"reports.jsp\">Reports</a></li>\n");
       out.write("             </ul>\n");
       out.write("         </div>\n");
@@ -497,8 +498,9 @@ public final class reports_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("\n");
           out.write("       select total_drugs.drug_name, df.drug_form,  total_drugs.quantity, dispensed.qty as drugs_dispensed, total_drugs.quantity - dispensed.qty balance\n");
           out.write("       from\n");
-          out.write("            (select i.drug_id, d.drug_name, i.quantity, d.drug_form_id\n");
-          out.write("             from inventory i inner join drug d on i.drug_id = d.drug_id) total_drugs\n");
+          out.write("            (select i.drug_id, d.drug_name, sum(i.quantity) quantity, d.drug_form_id\n");
+          out.write("             from inventory i inner join drug d on i.drug_id = d.drug_id\n");
+          out.write("             group by i.drug_id, d.drug_name, d.drug_form_id) total_drugs\n");
           out.write("            inner join \n");
           out.write("            drug_form df on total_drugs.drug_form_id = df.drug_form_id\n");
           out.write("            left join \n");

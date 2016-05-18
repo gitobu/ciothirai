@@ -41,7 +41,7 @@
         else
         CONCAT(pa.first_name,' ', pa.middle_name,' ', pa.last_name) end as patient_name, 
         DATE_FORMAT(pa.date_of_birth,'%d-%m-%Y') as date_of_birth, case when pa.gender = 1 then 'Male' else 'Female' end as patient_gender, pa.national_id, pa.pin_no, 
-        case when pa.phone is null then 'N/A' else pa.phone end as phone_number
+        case when pa.phone is null then 'N/A' else pa.phone end as phone_number, pa.county, pa.location, pa.village
         FROM patient pa 
         WHERE patient_id = <%= pa.getPatient_id() %>
         </sql:query>
@@ -58,7 +58,9 @@
             <th>Phone Number:</th> <td><c:out value="${row.phone_number}"/></td>
             
             <tr>
-             <th>National Id</th><td><c:out value="${row.national_id}"/></td><th>PIN Number</th><td><c:out value="${row.pin_no}"/></td></tr>
+             <th>National Id</th><td><c:out value="${row.national_id}"/></td><th>PIN Number</th><td><c:out value="${row.pin_no}"/></td>
+             <th>County</th> <td><c:out value="${row.county}"/></td> <th>Location</th> <td><c:out value="${row.location}"/></td> <th>Village</th> <td><c:out value="${row.village}"/></td>
+            </tr>
             
           
          </c:forEach>

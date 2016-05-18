@@ -90,6 +90,13 @@
         <c:set var="national_id" value = "${row.national_id}"/>
         <c:set var="pin_no" value = "${row.pin_no}"/>
         <c:set var="phone" value = "${row.phone}"/>
+        
+        <c:set var="county" value = "${row.county}"/>
+        <c:set var="location" value = "${row.location}"/>
+        <c:set var="village" value = "${row.village}"/>
+        <c:set var="referred" value = "${row.referred}"/>
+        <c:set var="affiliation" value = "${row.affiliation}"/>
+        <c:set var="is_member" value = "${row.is_member}"/>
 
         </c:forEach> 
 
@@ -103,7 +110,14 @@
         <jsp:setProperty name="pa" property="national_id" value="${national_id}"/>
         <jsp:setProperty name="pa" property="pin_no" value="${pin_no}"/>
         <jsp:setProperty name="pa" property="phone" value="${phone}"/>
-     
+        
+        <jsp:setProperty name="pa" property="county" value="${county}"/>
+        <jsp:setProperty name="pa" property="location" value="${location}"/>
+        <jsp:setProperty name="pa" property="village" value="${village}"/>
+        <jsp:setProperty name="pa" property="referred" value="${referred}"/>
+        <jsp:setProperty name="pa" property="affiliation" value="${affiliation}"/>
+        <jsp:setProperty name="pa" property="is_member" value="${is_member}"/>
+        
     </c:when>
     <c:when test='${new_mode}'>
          <c:set var="patient_id" value = ""/>
@@ -137,6 +151,14 @@
              <th align="left">PIN Number</th><td><input type="text" name="pin_no" value="<%= pa.getPin_no() %>"></td> </tr>
              <tr><th align="left">Phone Number</th><td><input type="text" name="phone" value="<%= pa.getPhone() %>"></td> </tr>
             
+             <tr><th align="left">County</th><td><input type="text" name="phone" value="<%= pa.getCounty() %>"></td> </tr>
+             <tr><th align="left">Location</th><td><input type="text" name="phone" value="<%= pa.getLocation() %>"></td> </tr>
+             <tr><th align="left">Village</th><td><input type="text" name="phone" value="<%= pa.getVillage() %>"></td> </tr>
+             <tr><th align="left">Religious affiliation</th><td><input type="text" name="phone" value="<%= pa.getAffiliation() %>"></td> </tr>
+             </table>
+             <table>
+             <tr><th align="left">Were you referred to this clinic?</th><td>Yes<input type="radio" name="affiliation" value="1">No<input type="radio" name="affiliation" value="2"></td></tr>
+             <tr><th align="left">Are you a member of Ciothirai Methodist Church</th><td>Yes<input type="radio" name="is_memebr" value="1">No<input type="radio" name="is_memebr" value="2"></td>
              </c:when>
              <c:when test='${new_mode}'>
             <tr><th align="left">First name</th><td><input type="text" name="first_name" ></td> 
@@ -147,12 +169,26 @@
              <th align="left">National Id</th><td><input type="text" name="national_id" ></td> </tr>
              <tr><th align="left">PIN Number</th><td><input type="text" name="pin_no" ></td> 
              <th align="left">Phone Number</th><td><input type="text" name="phone" ></td> </tr>
+             <tr>
+                 <th align="left">County</th><td><input type="text" name="county"></td>
+                 <th align="left">Location</th><td><input type="text" name="location"></td>
+             </tr>
+             <tr>
+                 <th align="left">Village</th><td><input type="text" name="village"></td>
+                 <th align="left">Religious affiliation</th><td><input type="text" name="affiliation"></td>
+             </tr>
+             </table >
+             <table border="0" cellpadding="10" align="left">
+             <tr>
+                 <th align="left">Were you referred to this clinic?</th><td>Yes<input type="radio" name="referred" value="1">No<input type="radio" name="referred" value="2"></td></tr>
+             <tr>  <th align="left">Are you a member of Ciothirai Methodist Church?</th><td>Yes<input type="radio" name="is_member" value="1">No<input type="radio" name="is_member" value="2"></td>
+             </tr>
+              <tr><td><input type="submit" value="Submit" onclick="return validateFormValues()"/></td> </tr>
+             </table> 
             </c:when> 
              </c:choose> 
                  
-                     
-             <tr><td><input type="submit" value="Submit" onclick="return validateFormValues()"/></td> </tr>
-            </table>
+            
             </form>
         
         </div>

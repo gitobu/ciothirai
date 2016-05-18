@@ -5,7 +5,6 @@
  */
 
 package com.clinic;
-
 /**
  *
  * @author Gitobu
@@ -22,6 +21,14 @@ public class Patient {
 	private String pin_no; 
         private String phone;
         
+        private String county;
+        private String location;
+        private String village;
+        private int referred;
+        private String affiliation;
+        private int is_member;
+        
+        /*Date variables*/
         private String vday;
         private String vmonth;
 	private String vyear;
@@ -53,7 +60,24 @@ public class Patient {
         public void setPhone (String ph){
                 phone = ph;
                 }
-        
+        public void setCounty (String cou){
+        	county = cou;
+        	}
+        public void setLocation (String loc){
+        	location = loc;
+        	}
+        public void setVillage (String vil){
+        	village = vil;
+        	}
+      	public void setReferred(int ref){
+		referred = ref;
+		}      
+        public void setAffiliation (String afi){
+        	affiliation = afi;
+        	}
+     	public void setIs_member(int ism){
+		is_member = ism;
+		}  
         public void setVday (String vd){
         	vday = vd;
         	}
@@ -90,6 +114,24 @@ public class Patient {
         public String getPhone(){
                 return phone;
                 }
+        public int getReferred(){
+        	return referred;
+        	}
+    	public String getCounty(){
+        	return county;
+        	}
+        public String getLocation(){
+        	return location;
+        	}
+        public String getVillage(){
+        	return village;
+        	}
+        public String getAffiliation(){
+        	return affiliation;
+        	}
+        public int getIs_member(){
+        	return is_member;
+        	}
         public String getVday(){
                 return vday;
                 }
