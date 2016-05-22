@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:useBean id="pa" class="com.clinic.Patient" scope="session"/>
 <!DOCTYPE html>
 <html>
     <head>

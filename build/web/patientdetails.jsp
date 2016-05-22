@@ -31,10 +31,39 @@
             <hr>
            <jsp:directive.include file="nextofkindata.jsp"/>
             <hr>
-            <form name="addnextofkin" action="addnextofkin.jsp">
+            <jsp:directive.include file="medicalhistorydata.jsp"/>
+            <hr>
+            <table border="0" cellpadding="10" align="left">
+                <tr><td>
+            <form name="newvisit" action="visit.jsp">  
+                            <input type="Submit" value="Add visit">
+                        </form>
+                    </td>
+                    <td>
+                     <form name="medical_history" action="medicalhistory.jsp">
+                         
+                                
+                <input type="Submit" value="Add Medical History">
+                
+            </form>   
+                        
+                    </td>
+                    <td>
+                        
+                       <form name="addnextofkin" action="addnextofkin.jsp">
                 <input type="Submit" value="Add Next of Kin">
                 
-            </form>
+            </form> 
+                    </td>
+                    
+                    <td>
+                        
+                       <form name="addappointment" action="appointment.jsp">
+                <input type="Submit" value="Add Appointment">
+                
+            </form> 
+                    </td>
+             </table>   
 </div>
        
         <div id="footer">

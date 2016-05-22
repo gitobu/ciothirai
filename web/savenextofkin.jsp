@@ -164,16 +164,30 @@
             </form>
      
          <%-- Add Visit --%>  
-         <form name="patient" action="visit.jsp" method="POST">
-            <input type="submit" value="Patient visit">
-             
-       
-          
-            
-       
-          <input type="hidden" name="patient_id" value="<%= pa.getPatient_id() %>">
-        </form>
+         <hr>
+         
 
+         <table border="0" cellpadding="10">
+                <tr><td>
+            <form name="newvisit" action="newvisit.jsp">  
+                            <input type="Submit" value="Add visit">
+                             <input type="hidden" name="patient_id" value="<%= pa.getPatient_id() %>">
+                        </form>
+                    </td>
+                    <td>
+                     <form name="medical_history" action="medicalhistory.jsp">
+                <input type="Submit" value="Add Medical History">
+                 <input type="hidden" name="patient_id" value="<%= pa.getPatient_id() %>">
+                
+            </form>   
+                        
+                    </td>
+                    
+             </table>   
+        
+        
+        
+        
         </div>
         <div id="footer">
             
