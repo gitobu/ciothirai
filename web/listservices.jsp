@@ -1,21 +1,18 @@
 <%-- 
-    Document   : listservice
-    Created on : Jan 24, 2016, 6:59:22 AM
+    Document   : listservices
+    Created on : Jun 1, 2016, 8:31:39 PM
     Author     : Gitobu
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <jsp:useBean id="vi" class="com.clinic.Visit" scope="session" />
-
-
-
+<jsp:useBean id="pa" class="com.clinic.Patient" scope="session"/>
 <jsp:directive.include file="sqllink.jsp"/>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>ii</title>
+        <title>JSP Page</title>
         <link href="styleOne.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
@@ -27,18 +24,15 @@
                  <jsp:directive.include file="menubar.jsp"/>
 </div>   
 <div id="section"> 
-    
-            <c:set var="visit_id" value = "${param.visit_id}"/>
-            
-           <jsp:setProperty name="vi" property="visit_id" value="${visit_id}"/>
-            <jsp:directive.include file="patientdata.jsp"/>
+         <c:set var="visit_id" value = "${param.visit_id}"/>
+          <jsp:setProperty name="vi" property="visit_id" value="${visit_id}"/>
+          <jsp:directive.include file="patientdata.jsp"/>
             <hr>
           <jsp:directive.include file="visitdata.jsp"/>
             <hr>
-           <jsp:directive.include file="servicedata.jsp"/>
+         <jsp:directive.include file="servicedata.jsp"/>
             <hr>
-          
-         <sql:query dataSource="${snapshot}" var="show_drugs">
+        <sql:query dataSource="${snapshot}" var="show_drugs">
              SELECT prescription.visit_id, drug.drug_no, drug.drug_name, drug_form.drug_form, prescription.quantity
              FROM prescription, drug, drug_form
              WHERE prescription.drug_id = drug.drug_id
@@ -68,11 +62,9 @@
             
          </tr>
          </c:forEach>
-         </table>   
-            <hr>
-            <jsp:directive.include file="newvisit.jsp"/>
-            <hr>
-         </div>
+         </table>  
+             <jsp:directive.include file="buttonbar.jsp"/>
+    </div>
        
         <div id="footer">
             
@@ -82,4 +74,3 @@
         </div>
     </body>
 </html>
-

@@ -5,16 +5,17 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <jsp:useBean id="vi" class="com.clinic.Visit" scope="session" />
 
-<jsp:useBean id="pa" class="com.clinic.Patient" scope="session"/>
+
 
 <jsp:directive.include file="sqllink.jsp"/>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Prescription for <%= pa.getFirst_name() %> <%= pa.getLast_name() %></title>
+        <title>ii</title>
         <link href="styleOne.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
@@ -30,16 +31,13 @@
             <c:set var="visit_id" value = "${param.visit_id}"/>
             
            <jsp:setProperty name="vi" property="visit_id" value="${visit_id}"/>
-          
-            <hr>
             <jsp:directive.include file="patientdata.jsp"/>
-            <hr> 
-            <jsp:directive.include file="visitdata.jsp"/>
             <hr>
-            <jsp:directive.include file="servicedata.jsp"/>
+          <jsp:directive.include file="visitdata.jsp"/>
             <hr>
-            
-            
+           <jsp:directive.include file="servicedata.jsp"/>
+            <hr>
+          
          <sql:query dataSource="${snapshot}" var="show_drugs">
              SELECT prescription.visit_id, drug.drug_no, drug.drug_name, drug_form.drug_form, prescription.quantity
              FROM prescription, drug, drug_form

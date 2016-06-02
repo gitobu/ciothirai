@@ -42,7 +42,7 @@
 
 </div>
         <div id="section">
-            
+            <jsp:directive.include file="patientdata.jsp"/> 
             <c:set var="edit_mode" value="${not empty param.appointment_id}"></c:set>   
             <c:set var="new_mode" value="${ empty param.appointment_id}"></c:set> 
             
@@ -83,6 +83,7 @@
         <sql:query dataSource="${snapshot}" var="app_list">
         SELECT appointment_id, patient_id, service_date, service_type.service_type_description
         FROM appointment join service_type on appointment.service_type_id = service_type.service_type_id
+        WHERE patient_id = <%= pa.getPatient_id() %>
         ORDER BY service_type.service_type_description
         </sql:query>
         
@@ -93,9 +94,9 @@
         </sql:query> 
         
         <form name="provider" action="saveappointment.jsp" method="POST">
-         <table border="0" cellpadding="10" align="center">  
+         <table border="0" cellpadding="10" >  
              <caption>
-                 <h2>Appointment</h2>
+                 <h2>New Appointment for <%= pa.getLast_name() %></h2>
             </caption>
              
          <c:choose>  
@@ -131,8 +132,8 @@
              <tr><th></th><td><input type="submit" value="Submit" onclick="return validateFormValues()"/></td> </tr>
             </table>
             </form>
-         <table border="0" cellpadding="10" align="center" >
-         <caption><h2>Health care provider</h2></caption>
+         <table border="0" cellpadding="10"  >
+         <caption><h2>Appointments for <%= pa.getLast_name() %></h2></caption>
          <tr>
             <th>Appointment Date</th>
             <th>Appointment purpose</th>
@@ -149,6 +150,7 @@
          </tr>
          </c:forEach>
          </table>
+         <jsp:directive.include file="buttonbar.jsp"/>
         </div>
         <div id="footer">
             

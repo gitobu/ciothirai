@@ -163,7 +163,7 @@
             </table>
             </form>
      
-         <%-- Add Visit --%>  
+         <%-- Add Visit   
          <hr>
          
 
@@ -183,9 +183,9 @@
                         
                     </td>
                     
-             </table>   
-        
-        
+             </table>   --%>
+                
+        <jsp:directive.include file="buttonbar.jsp"/>
         
         
         </div>

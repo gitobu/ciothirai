@@ -48,7 +48,7 @@
         
         </sql:query>
         
-       
+      <font color="lightseagreen"><b>Next of kin</b></font>
         <table border="0" cellpadding="10"  >
         
          <tr>

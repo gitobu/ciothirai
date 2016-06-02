@@ -25,45 +25,36 @@
 </div>   
 <div id="section"> 
     <hr>
-    <c:set var="patient_id" value = "<%= request.getParameter("patient_id")%>"/>         
-    <jsp:setProperty name="pa" property="patient_id" value="${patient_id}"/>
+    <c:set var="patient_id" value = "<%= request.getParameter("patient_id")%>"/> 
+     <sql:query dataSource="${snapshot}" var="pat_data">
+        SELECT patient_id, first_name, last_name
+        FROM patient
+        WHERE patient_id = ${patient_id}
+        </sql:query>
+        <c:forEach var="row" items="${pat_data.rows}">
+             <c:set var="patient_id" value = '${row.patient_id}'/>
+             <c:set var="first_name" value = '${row.first_name}'/>
+             <c:set var="last_name" value = '${row.last_name}'/>
+         
+         <jsp:setProperty name="pa" property="patient_id" value="${patient_id}"/>
+        <jsp:setProperty name="pa" property="first_name" value="${first_name}"/>
+        <jsp:setProperty name="pa" property="last_name" value="${last_name}"/>
+    
+    </c:forEach>
             <jsp:directive.include file="patientdata.jsp"/>
             <hr>
            <jsp:directive.include file="nextofkindata.jsp"/>
             <hr>
             <jsp:directive.include file="medicalhistorydata.jsp"/>
             <hr>
-            <table border="0" cellpadding="10" align="left">
-                <tr><td>
-            <form name="newvisit" action="visit.jsp">  
-                            <input type="Submit" value="Add visit">
-                        </form>
-                    </td>
-                    <td>
-                     <form name="medical_history" action="medicalhistory.jsp">
-                         
-                                
-                <input type="Submit" value="Add Medical History">
-                
-            </form>   
-                        
-                    </td>
-                    <td>
-                        
-                       <form name="addnextofkin" action="addnextofkin.jsp">
-                <input type="Submit" value="Add Next of Kin">
-                
-            </form> 
-                    </td>
-                    
-                    <td>
-                        
-                       <form name="addappointment" action="appointment.jsp">
-                <input type="Submit" value="Add Appointment">
-                
-            </form> 
-                    </td>
-             </table>   
+             
+           <jsp:directive.include file="listvisit.jsp"/>
+              <hr>
+              <font color="lightseagreen"><b>Appointments</b></font>
+             <jsp:directive.include file="appointmentdata.jsp"/> 
+            
+              <jsp:directive.include file="buttonbar.jsp"/>
+            
 </div>
        
         <div id="footer">

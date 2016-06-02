@@ -66,7 +66,7 @@
              <tr><th></th><td><input type="submit" value="Submit" onclick="return validateFormValues()"/></td> </tr>        
             </table>
             </form>    
-        
+        <jsp:directive.include file="buttonbar.jsp"/>
         </div>
         <div id="footer"><jsp:directive.include file="footer.html"/></div>
     </body>

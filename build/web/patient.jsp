@@ -138,7 +138,7 @@
              
          <c:choose>  
              <c:when test='${edit_mode}'>
-                 <input type="hidden" name="patient_id" value="<%= pa.getPatient_id() %>"> 
+                 <td><input type="hidden" name="patient_id" value="<%= pa.getPatient_id() %>"></td> 
                  
                 
              <tr><th align="left">First name</th><td><input type="text" name="first_name" value="<%= pa.getFirst_name() %>"></td> 
@@ -156,11 +156,13 @@
              <tr><th align="left">Village</th><td><input type="text" name="phone" value="<%= pa.getVillage() %>"></td> </tr>
              <tr><th align="left">Religious affiliation</th><td><input type="text" name="phone" value="<%= pa.getAffiliation() %>"></td> </tr>
              </table>
-             <table>
+             <table border="0" cellpadding="10" align="left">
              <tr><th align="left">Were you referred to this clinic?</th><td>Yes<input type="radio" name="affiliation" value="1">No<input type="radio" name="affiliation" value="2"></td></tr>
              <tr><th align="left">Are you a member of Ciothirai Methodist Church</th><td>Yes<input type="radio" name="is_memebr" value="1">No<input type="radio" name="is_memebr" value="2"></td>
+             </table>
              </c:when>
              <c:when test='${new_mode}'>
+             <table border="0" cellpadding="10" align="center">
             <tr><th align="left">First name</th><td><input type="text" name="first_name" ></td> 
             <th align="left">Middle name</th><td><input type="text" name="middle_name" ></td> </tr>
              <tr><th align="left">Last name</th><td><input type="text" name="last_name" ></td> 

@@ -40,7 +40,7 @@
         case when pa.middle_name is null then CONCAT(pa.first_name,' ', pa.last_name)
         else
         CONCAT(pa.first_name,' ', pa.middle_name,' ', pa.last_name) end as patient_name, 
-        DATE_FORMAT(pa.date_of_birth,'%d-%m-%Y') as date_of_birth, case when pa.gender = 1 then 'Male' else 'Female' end as patient_gender, pa.national_id, pa.pin_no, 
+        DATE_FORMAT(pa.date_of_birth,'%d-%m-%Y') as date_of_birth, case when pa.gender = 1 then 'Female' else 'Male' end as patient_gender, pa.national_id, pa.pin_no, 
         case when pa.phone is null then 'N/A' else pa.phone end as phone_number, pa.county, pa.location, pa.village
         FROM patient pa 
         WHERE patient_id = <%= pa.getPatient_id() %>
@@ -51,9 +51,9 @@
         <table border="0" cellpadding="10">
          
                 <c:forEach var="row" items="${pa_list.rows}">     
-                   
+                  
          <tr>
-            <th>Patient Number:</th><td><c:out value="${row.patient_no}"/></td><th align="left">Name:</th><td><c:out value="${row.patient_name}"/></td><th>Date of birth:</th><td><c:out value="${row.date_of_birth}"/></td>
+            <th>Patient Number:</th><td><a href="<c:url value="patient.jsp?patient_id=${row.patient_id}"/>"><c:out value="${row.patient_no}"/></a></td><th align="left">Name:</th><td><c:out value="${row.patient_name}"/></td><th>Date of birth:</th><td><c:out value="${row.date_of_birth}"/></td>
             <th>Gender:</th> <td><c:out value="${row.patient_gender}"/></td>
             <th>Phone Number:</th> <td><c:out value="${row.phone_number}"/></td>
             

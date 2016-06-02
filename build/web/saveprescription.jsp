@@ -108,6 +108,7 @@
          </tr>
          </c:forEach>
          </table>
+             <jsp:directive.include file="buttonbar.jsp"/>
          </div>
        
         <div id="footer">

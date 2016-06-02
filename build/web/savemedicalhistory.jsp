@@ -90,7 +90,7 @@
        
         
         <form name="medical_history" action="savemedicalhistory.jsp" method="POST">
-         <table border="0" cellpadding="10" align="center">  
+         <table border="0" cellpadding="10" >  
              <caption>
                  <h2>Medical history for <%= pa.getLast_name() %></h2>
             </caption>
@@ -118,7 +118,7 @@
              </table>
             </form>
          
-         <table border="0" cellpadding="10" align="center" >
+         <table border="0" cellpadding="10"  >
          <caption><h2>Medical History</h2></caption>
          <tr>
             <th>Time period</th>
@@ -138,6 +138,7 @@
          </tr>
          </c:forEach>
          </table>
+            <jsp:directive.include file="buttonbar.jsp"/>
     </div>
       <div id="footer">
             

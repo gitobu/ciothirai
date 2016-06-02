@@ -41,7 +41,7 @@
         WHERE patient_id = <%= pa.getPatient_id() %>
         </sql:query>
         
-        
+        <font color="lightseagreen"><b>Medical History</b></font>
        <table border="0" cellpadding="10" >
         
          <tr>

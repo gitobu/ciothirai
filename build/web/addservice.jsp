@@ -109,6 +109,7 @@
         
             
         </form>
+            <jsp:directive.include file="buttonbar.jsp"/>
 </div>
            <div id="footer">
             

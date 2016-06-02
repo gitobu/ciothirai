@@ -22,7 +22,8 @@
             <jsp:directive.include file="menubar.jsp"/>
         </div>
         <div id="section">
-        <c:set var="patient_id" value = "<%= request.getParameter("patient_id")%>"/> 
+        <c:set var="patient_id" value = "<%= request.getParameter("patient_id")%>"/>
+        
         <jsp:setProperty name="pa" property="patient_id" value="${patient_id}"/>
         
         <c:set var="criteria" value="<%= request.getParameter("method")%>" />
@@ -33,7 +34,7 @@
         case when pa.middle_name is null then CONCAT(pa.first_name,' ', pa.last_name)
         else
         CONCAT(pa.first_name,' ', pa.middle_name,' ', pa.last_name) end as patient_name, 
-        DATE_FORMAT(pa.date_of_birth,'%d-%m-%Y') as date_of_birth, case when pa.gender = 1 then 'Male' else 'Female' end as patient_gender, pa.national_id, pa.pin_no, 
+        DATE_FORMAT(pa.date_of_birth,'%d-%m-%Y') as date_of_birth, case when pa.gender = 2 then 'Male' else 'Female' end as patient_gender, pa.national_id, pa.pin_no, 
         case when pa.phone is null then 'N/A' else pa.phone end as phone_number
         FROM patient pa
         
@@ -67,7 +68,7 @@
             <th>National Id</th>
             <th>PIN Number</th>
             <th>Phone Number</th>
-            <th>Visits</th>
+            
 
          </tr>
          <c:forEach var="row" items="${pa_list.rows}">
@@ -80,7 +81,7 @@
             <td><c:out value="${row.national_id}"/></td>
             <td><c:out value="${row.pin_no}"/></td>
             <td><c:out value="${row.phone_number}"/></td>
-            <td><a href="<c:url value="listvisit.jsp?patient_id=${row.patient_id}"/>">Visits</a></td>
+            
          </tr>
          </c:forEach>
          </table>
