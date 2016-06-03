@@ -143,18 +143,18 @@
                 
              <tr><th align="left">First name</th><td><input type="text" name="first_name" value="<%= pa.getFirst_name() %>"></td> 
              <th align="left">Middle name</th><td><input type="text" name="middle_name" value="<%= pa.getMiddle_name() %>"></td> </tr>
-             <tr><th align="left">Last name</th><td><input type="text" name="last_name" value="<%= pa.getLast_name() %>"></td> </tr>
-             <tr><th align="left">Date of birth</th><td><input type="text" name="date_of_birth" ></td> 
-             <th align="left">Gender</th><td><input type="text" name="gender" value="<%= pa.getGender() %>"></td> </tr>
+             <tr><th align="left">Last name</th><td><input type="text" name="last_name" value="<%= pa.getLast_name() %>"></td> 
+             <th align="left">Date of birth</th><td><input type="text" name="date_of_birth" ></td> 
+             <tr><th align="left">Gender</th><td><input type="text" name="gender" value="<%= pa.getGender() %>"></td> 
              
-             <tr><th align="left">National Id</th><td><input type="text" name="national_id" value="<%= pa.getNational_id() %>"></td>
-             <th align="left">PIN Number</th><td><input type="text" name="pin_no" value="<%= pa.getPin_no() %>"></td> </tr>
-             <tr><th align="left">Phone Number</th><td><input type="text" name="phone" value="<%= pa.getPhone() %>"></td> </tr>
+             <th align="left">National Id</th><td><input type="text" name="national_id" value="<%= pa.getNational_id() %>"></td>
+             <tr><th align="left">PIN Number</th><td><input type="text" name="pin_no" value="<%= pa.getPin_no() %>"></td> 
+             <th align="left">Phone Number</th><td><input type="text" name="phone" value="<%= pa.getPhone() %>"></td> </tr>
             
-             <tr><th align="left">County</th><td><input type="text" name="phone" value="<%= pa.getCounty() %>"></td> </tr>
-             <tr><th align="left">Location</th><td><input type="text" name="phone" value="<%= pa.getLocation() %>"></td> </tr>
-             <tr><th align="left">Village</th><td><input type="text" name="phone" value="<%= pa.getVillage() %>"></td> </tr>
-             <tr><th align="left">Religious affiliation</th><td><input type="text" name="phone" value="<%= pa.getAffiliation() %>"></td> </tr>
+             <tr><th align="left">County</th><td><input type="text" name="phone" value="<%= pa.getCounty() %>"></td> 
+             <th align="left">Location</th><td><input type="text" name="phone" value="<%= pa.getLocation() %>"></td> </tr>
+             <tr><th align="left">Village</th><td><input type="text" name="phone" value="<%= pa.getVillage() %>"></td> 
+             <th align="left">Religious affiliation</th><td><input type="text" name="phone" value="<%= pa.getAffiliation() %>"></td> </tr>
              </table>
              <table border="0" cellpadding="10" align="left">
              <tr><th align="left">Were you referred to this clinic?</th><td>Yes<input type="radio" name="affiliation" value="1">No<input type="radio" name="affiliation" value="2"></td></tr>
