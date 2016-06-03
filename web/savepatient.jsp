@@ -85,6 +85,12 @@
             <c:set var="middle_name" value = "<%= request.getParameter("middle_name")%>"/> 
             <c:set var="last_name" value = "<%= request.getParameter("last_name")%>"/> 
             <c:set var="date_of_birth" value = "<%= request.getParameter("date_of_birth")%>"/> 
+            <c:set var="vday" value="${fn:substring(date_of_birth, 0, 2)}"/>
+            <c:set var="vmonth" value="${fn:substring(date_of_birth, 3, 5)}"/>
+            <c:set var="vyear" value="${fn:substring(date_of_birth, 6, 10)}"/>
+            <c:set var="dash" value="-"/>
+            <%--<c:set var="dob" value="${vyear}${dash}${vmonth}${dash}${vday}"/>--%>
+            <c:set var="dob" value="${vyear}${dash}${vday}${dash}${vmonth}"/>
             <c:set var="gender" value = "<%= request.getParameter("gender")%>"/> 
             <c:set var="national_id" value = "<%= request.getParameter("national_id")%>"/> 
             <c:set var="pin_no" value = "<%= request.getParameter("pin_no")%>"/> 
@@ -101,7 +107,7 @@
             update patient set first_name = '${first_name}', 
             last_name = '${last_name}', 
             middle_name = '${middle_name}', 
-            date_of_birth = '${date_of_birth}', 
+            date_of_birth = '${dob}', 
             gender = ${gender}, 
             national_id = '${national_id}', 
             pin_no = '${pin_no}', 
@@ -274,7 +280,7 @@
             </form>
      
         
-
+ <jsp:directive.include file="buttonbar.jsp"/>
         </div>
         <div id="footer">
             

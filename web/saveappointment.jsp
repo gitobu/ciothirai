@@ -64,10 +64,16 @@
             <c:set var="appointment_id" value = "<%= request.getParameter("appointment_id")%>"/> 
             <c:set var="patient_id" value = "<%= request.getParameter("patient_id")%>"/> 
             <c:set var="service_date" value = "<%= request.getParameter("service_date")%>"/> 
+            <c:set var="vday" value="${fn:substring(service_date, 0, 2)}"/>
+            <c:set var="vmonth" value="${fn:substring(service_date, 3, 5)}"/>
+            <c:set var="vyear" value="${fn:substring(service_date, 6, 10)}"/>
+            <c:set var="dash" value="-"/>
+            <c:set var="sd" value="${vyear}${dash}${vmonth}${dash}${vday}"/>
+            <%--<c:set var="sd" value="${vyear}${dash}${vday}${dash}${vmonth}"/>--%>
             <c:set var="service_type_id" value = "<%= request.getParameter("service_type_id")%>"/> 
             
             <sql:update dataSource="${snapshot}" var="result">
-            update appointment set service_date = '${service_date}', 
+            update appointment set service_date = '${sd}', 
             service_type_id = '${service_type_id}'
             where appointment_id  = ${appointment_id}
             </sql:update>  

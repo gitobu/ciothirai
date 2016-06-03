@@ -32,6 +32,8 @@ public class Patient {
         private String vday;
         private String vmonth;
 	private String vyear;
+        
+        private String vdash = "-";
     
     	public void setPatient_id(int id){
         	patient_id = id;
@@ -87,6 +89,9 @@ public class Patient {
          public void setVyear (String vy){
         	vyear = vy;
         	}
+        public void setVdash (String vd){
+        	vyear = vd;
+        	}
     	public int getPatient_id(){
         	return patient_id;
         	}
@@ -140,5 +145,8 @@ public class Patient {
                 }
           public String getVyear(){
                 return vyear;
+                }
+          public String getVdash(){
+                return vdash;
                 }
 }

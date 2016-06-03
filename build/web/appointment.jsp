@@ -53,7 +53,7 @@
         <c:set var="appointment_id" value = "${param.appointment_id}"/>
            
         <sql:query dataSource="${snapshot}" var="app_data">
-        SELECT appointment_id, patient_id, service_date, service_type_id
+        SELECT appointment_id, patient_id, service_date, service_type_id, substr(service_date,1,4) as yr, substr(service_date,6,2) as mm, substr(service_date,9,2) as dd
         FROM appointment 
         WHERE appointment_id = ${appointment_id}
         </sql:query>
@@ -63,15 +63,21 @@
         <c:set var="patient_id" value = "${row.patient_id}"/>
         <c:set var="service_date" value = "${row.service_date}"/>
         <c:set var="service_type_id" value = "${row.service_type_id}"/>
- 
+        
+        <c:set var="yr" value = "${row.yr}"/>
+        <c:set var="dd" value = "${row.mm}"/>
+        <c:set var="mo" value = "${row.dd}"/>
+        
         </c:forEach> 
 
         <jsp:setProperty name="app" property="appointment_id" value="${appointment_id}"/>
         <jsp:setProperty name="app" property="patient_id" value="${patient_id}"/>
-        <jsp:setProperty name="app" property="service_date" value="${service_date}"/>
         <jsp:setProperty name="app" property="service_type_id" value="${service_type_id}"/>
       
-     
+        <jsp:setProperty name="app" property="vday" value="${dd}"/>
+        <jsp:setProperty name="app" property="vyear" value="${yr}"/>
+        <jsp:setProperty name="app" property="vmonth" value="${mo}"/>
+        
     </c:when>
     <c:when test='${new_mode}'>
          <c:set var="appointment_id" value = ""/>
@@ -101,9 +107,10 @@
              
          <c:choose>  
              <c:when test='${edit_mode}'>
+                 
                  <tr><td></td><td><input type="hidden" name="appointment_id" value="<%= app.getAppointment_id() %>"></td></tr>  
                  <tr><td></td><td><input type="hidden" name="patient_id" value="<%= pa.getPatient_id() %>"></td></tr>
-                  <tr><th align="left">Appointment Date</th><td><input type="text" name="service_date" ></td>
+                  <tr><th align="left">Appointment Date</th><td><input type="text" name="service_date"  class="tcal" value="<%= pa.getVday() %><%= pa.getVdash() %><%= pa.getVmonth() %><%= pa.getVdash() %><%= pa.getVyear() %>"></td>
              </c:when>
              <c:when test='${new_mode}'>
                  <tr><th align="left">Appointment date</th><td><input type="text" name="service_date"  class="tcal" value=""/></td> </tr>

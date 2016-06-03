@@ -41,7 +41,10 @@
         else
         CONCAT(pa.first_name,' ', pa.middle_name,' ', pa.last_name) end as patient_name, 
         DATE_FORMAT(pa.date_of_birth,'%d-%m-%Y') as date_of_birth, case when pa.gender = 1 then 'Female' else 'Male' end as patient_gender, pa.national_id, pa.pin_no, 
-        case when pa.phone is null then 'N/A' else pa.phone end as phone_number, pa.county, pa.location, pa.village
+        case when pa.phone is null then 'N/A' else pa.phone end as phone_number, pa.county, pa.location, pa.village, 
+        case when pa.referred = 1 then 'Yes' else 'No' end as referral_patient,
+        pa.affiliation, 
+        case when pa.is_member = 1 then 'Yes' else 'No' end as member
         FROM patient pa 
         WHERE patient_id = <%= pa.getPatient_id() %>
         </sql:query>
@@ -61,7 +64,9 @@
              <th>National Id</th><td><c:out value="${row.national_id}"/></td><th>PIN Number</th><td><c:out value="${row.pin_no}"/></td>
              <th>County</th> <td><c:out value="${row.county}"/></td> <th>Location</th> <td><c:out value="${row.location}"/></td> <th>Village</th> <td><c:out value="${row.village}"/></td>
             </tr>
-            
+            <tr>
+               <th>Referred</th><td><c:out value="${row.referral_patient}"/></td> <th>Affiliation</th><td><c:out value="${row.affiliation}"/></td><th>Ciothirai MCK Member</th><td><c:out value="${row.member}"/></td>
+            </tr>
           
          </c:forEach>
          

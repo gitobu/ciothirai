@@ -19,6 +19,8 @@ public class Appointment {
     private String vmonth;
     private String vyear;
     
+    private String vdash = "-";
+    
     public void setAppointment_id (int a){
          appointment_id = a;
     }
@@ -36,6 +38,9 @@ public class Appointment {
         }
     public void setVyear (String vy){
         vyear = vy;
+        }
+    public void setVdash (String vd){
+        vyear = vd;
         }
     public int getAppointment_id(){
         return appointment_id;
@@ -55,5 +60,7 @@ public class Appointment {
     public String getVyear(){
         return vyear;
         }
-    
+    public String getVdash(){
+        return vdash;
+        }
 }

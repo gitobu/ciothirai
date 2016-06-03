@@ -49,7 +49,7 @@
       
         <hr>
         <form name="visit" action="savevisit.jsp" method="POST">
-            <table border="0" cellpadding="5" align="left">  
+            <table border="0" cellpadding="5" >  
                 <tr><th align="left"></th><td><input type="hidden" name="patient_id" value="<%= pa.getPatient_id() %>"> </td> </tr>
                 <tr><th align="left">Visit date</th><td><input type="text" name="visit_date" class="tcal" value=""></td></tr>  
                 <tr><th align="left">Primary complaint</th><td><textarea name="primary_complaint" rows="5" cols="50"></textarea></td> 
