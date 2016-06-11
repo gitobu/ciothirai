@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="tcal.css" /> 
     <script type="text/javascript" src="tcal.js">
        
-                
+        date_of_birth, national_id        
     function validateFormValues(){
 	
 	
@@ -23,6 +23,15 @@
         if (document.patient.last_name.value === ""){
 		alert('Please enter last name');
 		return false;} 
+        if (document.patient.date_of_birth.value === ""){
+                alert('Please enter date of birth');
+                return false
+        }
+         if (document.patient.national_id.value === ""){
+                alert('Please enter national id');
+                return false
+        }
+            
 			else
 		{
 			return true;
@@ -155,7 +164,7 @@
              <th align="left">Date of birth</th><td><input type="text" name="date_of_birth" class="tcal" value="<%= pa.getVday() %><%= pa.getVdash() %><%= pa.getVmonth() %><%= pa.getVdash() %><%= pa.getVyear() %>"></td> 
              <tr><th align="left">Gender</th><td>
                     <c:choose> 
-                        <c:when test='{<%= pa.getGender() %> = 1}'>
+                        <c:when test='{<%= pa.getGender() %> == "1"}'>
                         Female<input type="radio" name="gender" value="1" checked="checked">
                         Male<input type="radio" name="gender" value="2">
                         </c:when>
@@ -178,7 +187,7 @@
              <table border="0" cellpadding="10" align="left">
              <tr><th align="left">Were you referred to this clinic?</th><td>
                      <c:choose> 
-                        <c:when test='{<%= pa.getReferred() %> = 1}'>
+                        <c:when test='{<%= pa.getReferred() %> == 1}'>
                         Yes<input type="radio" name="referred" value="1" checked="checked">
                         No<input type="radio" name="referred" value="2">
                         </c:when>
@@ -191,7 +200,7 @@
                  </td></tr>
              <tr><th align="left">Are you a member of Ciothirai Methodist Church?</th><td>
                       <c:choose> 
-                        <c:when test='{<%= pa.getIs_member() %> = 1}'>
+                        <c:when test='{<%= pa.getIs_member() %> == 1}'>
                         Yes<input type="radio" name="is_member" value="1" checked="checked">
                         No<input type="radio" name="is_member" value="2">
                         </c:when>

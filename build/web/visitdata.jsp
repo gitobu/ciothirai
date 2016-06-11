@@ -39,7 +39,7 @@
                 <c:forEach var="row" items="${vi_list.rows}">     
                    
          <tr>
-            <th>Visit Number:</th><td><a href="<c:url value="listservice.jsp?visit_id=${row.visit_id}"/>"><c:out value="${row.visit_no}"/></a></td><th align="left">Visit date:</th><td><c:out value="${row.visit_date}"/></td><th>Primary complaint:</th><td><c:out value="${row.primary_complaint}"/></td>
+            <th>Visit Number:</th><td><a href="<c:url value="listservices.jsp?visit_id=${row.visit_id}"/>"><c:out value="${row.visit_no}"/></a></td><th align="left">Visit date:</th><td><c:out value="${row.visit_date}"/></td><th>Primary complaint:</th><td><c:out value="${row.primary_complaint}"/></td>
             <th>Practitioner:</th> <td><c:out value="${row.practitioner}"/></td>
             <th>Practitioner title:</th> <td><c:out value="${row.job_title}"/></td>
             

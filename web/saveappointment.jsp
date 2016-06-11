@@ -80,9 +80,11 @@
 
         </c:when>
         <c:when test='${new_mode}'> 
-            <c:set var="appointment_id" value = "<%= request.getParameter("appointment_id")%>"/>  
+            <c:set var="appointment_id" value = "<%= request.getParameter("appointment_id")%>"/>
+            <c:set var="provider_id" value = "<%= request.getParameter("provider_id")%>"/>
             <c:set var="patient_id" value = "<%= pa.getPatient_id() %>"/>  
-
+            <c:set var="appointment_status" value = "0"/>  
+            
             <c:set var="service_date" value = "<%= request.getParameter("service_date")%>"/> 
             <c:set var="vday" value="${fn:substring(service_date, 0, 2)}"/>
             <c:set var="vmonth" value="${fn:substring(service_date, 3, 5)}"/>
@@ -92,12 +94,14 @@
             <c:set var="service_type_id" value = "<%= request.getParameter("service_type_id")%>"/> 
             
             <sql:update dataSource="${snapshot}" var="result">
-            insert into appointment (patient_id, service_date, service_type_id)
-            values (${patient_id}, '${dob}', ${service_type_id})
+            insert into appointment (patient_id, service_date, service_type_id, provider_id, appointment_status)
+            values (${patient_id}, '${dob}', ${service_type_id}, ${provider_id}, ${appointment_status})
             </sql:update>   
             
             <jsp:setProperty name="app" property="appointment_id" value="${appointment_id}"/>
             <jsp:setProperty name="app" property="patient_id" value="${patient_id}"/>
+             <jsp:setProperty name="app" property="appointment_status" value="${appointment_status}"/>
+            <jsp:setProperty name="app" property="provider_id" value="${provider_id}"/>
             <jsp:setProperty name="app" property="vday" value="${fn:substring(service_date, 1, 2)}"/>
             <jsp:setProperty name="app" property="vmonth" value="${fn:substring(service_date, 1, 2)}"/>
             <jsp:setProperty name="app" property="vyear" value="${fn:substring(service_date, 1, 2)}"/>
@@ -107,8 +111,11 @@
     </c:choose>
                
    <sql:query dataSource="${snapshot}" var="app_list">
-        SELECT appointment_id, patient_id, service_date, service_type.service_type_description
+      
+        
+        SELECT appointment_id, patient_id, DATE_FORMAT(appointment.service_date,'%d-%m-%Y') as apt_date, service_type.service_type_description, CONCAT(provider.first_name,' ', provider.last_name) provider 
         FROM appointment join service_type on appointment.service_type_id = service_type.service_type_id
+        left join provider on appointment.provider_id = provider.provider_id
         WHERE patient_id = <%= pa.getPatient_id() %>
         ORDER BY service_type.service_type_description
         </sql:query>
@@ -158,20 +165,23 @@
              <tr><td></td><td><input type="submit" value="Submit" onclick="return validateFormValues()"/></td> </tr>
             </table>
             </form>
+        <h3><font color="lightseagreen"><b>Appointments for <%= pa.getLast_name() %></b></font></h3>
          <table border="0" cellpadding="10"  >
-         <caption><h2>Appointments for <%= pa.getLast_name() %></h2></caption>
+       
          <tr>
-            <th>Appointment Date</th>
-            <th>Appointment purpose</th>
+            <th>Appointment date</th>
+            <th>Purpose</th>
+            <th>Scheduled physician</th>
+            <th>Update</th>
             
-            <th>Edit</th>
+            
 
          </tr>
          <c:forEach var="row" items="${app_list.rows}">
          <tr>
-            <td><c:out value="${row.service_date}"/></td>
+            <td><c:out value="${row.apt_date}"/></td>
             <td><c:out value="${row.service_type_description}"/></td>
-           
+            <td><c:out value="${row.provider}"/></td>
             <td><a href="<c:url value="appointment.jsp?appointment_id=${row.appointment_id}"/>">Edit</a></td>
          </tr>
          </c:forEach>

@@ -89,8 +89,7 @@
             <c:set var="vmonth" value="${fn:substring(date_of_birth, 3, 5)}"/>
             <c:set var="vyear" value="${fn:substring(date_of_birth, 6, 10)}"/>
             <c:set var="dash" value="-"/>
-            <%--<c:set var="dob" value="${vyear}${dash}${vmonth}${dash}${vday}"/>--%>
-            <c:set var="dob" value="${vyear}${dash}${vday}${dash}${vmonth}"/>
+            <c:set var="dob" value="${vyear}${dash}${vmonth}${dash}${vday}"/>
             <c:set var="gender" value = "<%= request.getParameter("gender")%>"/> 
             <c:set var="national_id" value = "<%= request.getParameter("national_id")%>"/> 
             <c:set var="pin_no" value = "<%= request.getParameter("pin_no")%>"/> 
@@ -172,8 +171,7 @@
             <jsp:setProperty name="pa" property="gender" value="${gender}"/>
             <jsp:setProperty name="pa" property="national_id" value="${national_id}"/>
             <jsp:setProperty name="pa" property="pin_no" value="${pin_no}"/>
-            <jsp:setProperty name="pa" property="phone" value="${phone}"/>
-            
+            <jsp:setProperty name="pa" property="phone" value="${phone}"/>            
             <jsp:setProperty name="pa" property="county" value="${county}"/>
             <jsp:setProperty name="pa" property="location" value="${location}"/>
             <jsp:setProperty name="pa" property="village" value="${village}"/>
@@ -251,24 +249,19 @@
       <h3>Next of Kin Information</h3>
       <hr>
      <form name="nextofkin" action="savenextofkin.jsp" method="POST">
-          <table border="0" cellpadding="10">  
-            
-             
-         
-            <tr><th align="left">First name</th><td><input type="text" name="first_name" ></td> 
-            <th align="left">Middle name</th><td><input type="text" name="middle_name" ></td> </tr>
-             <tr><th align="left">Last name</th><td><input type="text" name="last_name" ></td> 
-            <th align="left">Date of birth</th><td><input type="text" name="date_of_birth" class="tcal" value=""></td></tr>          
-             <tr><th align="left">Gender</th><td><input type="radio" name="gender" value="1">Female<input type="radio" name="gender" value="2">Male</td> 
-             <th align="left">National Id</th><td><input type="text" name="national_id" ></td> </tr>
-             <tr><th align="left">PIN Number</th><td><input type="text" name="pin_no" ></td> 
-             <th align="left">Phone Number</th><td><input type="text" name="phone" ></td> </tr>
-              
-              <tr><th align="left">Relationship to patient</th>
+        <table border="0" cellpadding="10">  
+        <tr><th align="left">First name</th><td><input type="text" name="first_name" ></td> 
+        <th align="left">Middle name</th><td><input type="text" name="middle_name" ></td> </tr>
+        <tr><th align="left">Last name</th><td><input type="text" name="last_name" ></td> 
+        <th align="left">Date of birth</th><td><input type="text" name="date_of_birth" class="tcal" value=""></td></tr>          
+        <tr><th align="left">Gender</th><td><input type="radio" name="gender" value="1">Female<input type="radio" name="gender" value="2">Male</td> 
+        <th align="left">National Id</th><td><input type="text" name="national_id" ></td> </tr>
+        <tr><th align="left">PIN Number</th><td><input type="text" name="pin_no" ></td> 
+        <th align="left">Phone Number</th><td><input type="text" name="phone" ></td> </tr>
+        <tr><th align="left">Relationship to patient</th>
                   <td>
-             <select name="relationship_id">
-                  
-                 <option value="">[Please select relationship]</option>
+                    <select name="relationship_id">
+                    <option value="">[Please select relationship]</option>
              
                  <c:forEach var="row" items="${rel.rows}">
                 <option value="${row.relationship_id}">${row.relationship}</option>

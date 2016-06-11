@@ -15,6 +15,8 @@ public class Appointment {
     private int appointment_id;
     private int patient_id;
     private int service_type_id;
+    private int provider_id;
+    private int appointment_status;
     private String vday;
     private String vmonth;
     private String vyear;
@@ -29,6 +31,12 @@ public class Appointment {
     }
     public void setService_type_id (int st){
          service_type_id = st;
+    }
+    public void setProvider_id (int pi){
+        provider_id = pi;
+    }
+    public void setAppointment_status(int as){
+        appointment_status = as;
     }
     public void setVday (String vd){
        vday = vd;
@@ -48,8 +56,14 @@ public class Appointment {
     public int getPatient_id(){
         return patient_id;
     }
-    private int getService_type_id(){
+    public int getService_type_id(){
         return service_type_id;
+    }
+    public int getProvider_id(){
+        return provider_id;
+    }
+    public int getAppointment_status(){
+        return appointment_status;
     }
     public String getVday(){
         return vday;

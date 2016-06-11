@@ -87,8 +87,9 @@
             
        
         <sql:query dataSource="${snapshot}" var="app_list">
-        SELECT appointment_id, patient_id, service_date, service_type.service_type_description
+        SELECT appointment_id, patient_id, service_date, service_type.service_type_description, CONCAT(provider.first_name,' ', provider.last_name) provider 
         FROM appointment join service_type on appointment.service_type_id = service_type.service_type_id
+        left join provider on appointment.provider_id = provider.provider_id
         WHERE patient_id = <%= pa.getPatient_id() %>
         ORDER BY service_type.service_type_description
         </sql:query>
@@ -98,19 +99,25 @@
         FROM service_type
         ORDER BY service_type_description
         </sql:query> 
-        
+         <sql:query dataSource="${snapshot}" var="pr">
+        SELECT provider_id, CONCAT(first_name, ' ' , last_name) as provider
+        FROM provider
+        ORDER BY last_name
+        </sql:query> 
         <form name="provider" action="saveappointment.jsp" method="POST">
+         <h3><font color="lightseagreen"><b>New appointment for <%= pa.getLast_name() %></b></font></h3>   
          <table border="0" cellpadding="10" >  
-             <caption>
-                 <h2>New Appointment for <%= pa.getLast_name() %></h2>
-            </caption>
+             
+                 
+                 
+            
              
          <c:choose>  
              <c:when test='${edit_mode}'>
                  
                  <tr><td></td><td><input type="hidden" name="appointment_id" value="<%= app.getAppointment_id() %>"></td></tr>  
                  <tr><td></td><td><input type="hidden" name="patient_id" value="<%= pa.getPatient_id() %>"></td></tr>
-                  <tr><th align="left">Appointment Date</th><td><input type="text" name="service_date"  class="tcal" value="<%= pa.getVday() %><%= pa.getVdash() %><%= pa.getVmonth() %><%= pa.getVdash() %><%= pa.getVyear() %>"></td>
+                  <tr><th align="left">Appointment Date</th><td><input type="text" name="service_date"  class="tcal" value="<%= app.getVday() %><%= app.getVdash() %><%= app.getVmonth() %><%= app.getVdash() %><%= app.getVyear() %>"></td>
              </c:when>
              <c:when test='${new_mode}'>
                  <tr><th align="left">Appointment date</th><td><input type="text" name="service_date"  class="tcal" value=""/></td> </tr>
@@ -118,33 +125,36 @@
             </c:when> 
              </c:choose> 
                  <tr><th align="left">Purpose</th><td> 
-                <select name="service_type_id">
-                  <c:choose>  
-             
-                      
-                      <c:when test='${edit_mode}'>   
-                 <option value="<%= app.getAppointment_id() %>"> ${service_type_description}  </option>
-              </c:when>
-             <c:when test='${new_mode}'>
-                 <option value="">[Please select appointment purpose]</option>
-             </c:when>
-                  </c:choose>
-                 
-                 <c:forEach var="row" items="${st.rows}">
-                <option value="${row.service_type_id}">${row.service_type_description}</option>
-  		</c:forEach> 
-                </select> 
-  
+         
+  <select name="service_type_id">
+      
+    <c:forEach var="row" items="${st.rows}">
+        <option value="${row.service_type_id}" ${row.service_type_id ==  app.getService_type_id() ? 'selected="selected"' : ''}>${row.service_type_description}</option>
+    </c:forEach>
+</select>
                      </td> </tr>
+                 
+                 <tr><th align="left">Attending physician </th>
+                <td> 
+                <select name="provider_id">
+                  <option value="">[Please select attending physician]</option>
+                    <c:forEach var="row" items="${pr.rows}">
+                        <option value="${row.provider_id}">${row.provider}</option>
+                    </c:forEach> 
+                </select> 
+                </td> 
+                </tr>
              <tr><th></th><td><input type="submit" value="Submit" onclick="return validateFormValues()"/></td> </tr>
             </table>
             </form>
+                 <h3><font color="lightseagreen"><b>Appointments for <%= pa.getLast_name() %></b></font></h3>
          <table border="0" cellpadding="10"  >
-         <caption><h2>Appointments for <%= pa.getLast_name() %></h2></caption>
+       
+   
          <tr>
             <th>Appointment Date</th>
             <th>Appointment purpose</th>
-            
+            <th>Scheduled physician</th>
             <th>Edit</th>
 
          </tr>
@@ -152,7 +162,7 @@
          <tr>
             <td><c:out value="${row.service_date}"/></td>
             <td><c:out value="${row.service_type_description}"/></td>
-           
+           <td><c:out value="${row.provider}"/></td>
             <td><a href="<c:url value="appointment.jsp?appointment_id=${row.appointment_id}"/>">Edit</a></td>
          </tr>
          </c:forEach>

@@ -23,7 +23,7 @@
         <div id="section">
         <form action="listpatient.jsp" method="POST">
             <table border="0" >
-                <caption><h3>Find a patient</h3></caption>
+                <caption><h3><font color="lightseagreen"><b>Find a patient</b></font></h3></caption>
                 <tr><th>Select search criteria</th><td>
             <select name="method">
                  <option value="1">National Id</option>
@@ -34,6 +34,10 @@
                     </td><td><input type="text" name="search"></td><td><input type="submit" value="Search"></td></tr>
            </table> 
         </form>
+            &nbsp;
+            &nbsp;
+            
+            <jsp:directive.include file="appointmentschedule.jsp"/>
         </div>
         <div id="footer">
             
