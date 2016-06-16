@@ -114,7 +114,7 @@ public final class patient_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <link rel=\"stylesheet\" type=\"text/css\" href=\"tcal.css\" /> \n");
       out.write("    <script type=\"text/javascript\" src=\"tcal.js\">\n");
       out.write("       \n");
-      out.write("                \n");
+      out.write("        date_of_birth, national_id        \n");
       out.write("    function validateFormValues(){\n");
       out.write("\t\n");
       out.write("\t\n");
@@ -124,6 +124,15 @@ public final class patient_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        if (document.patient.last_name.value === \"\"){\n");
       out.write("\t\talert('Please enter last name');\n");
       out.write("\t\treturn false;} \n");
+      out.write("        if (document.patient.date_of_birth.value === \"\"){\n");
+      out.write("                alert('Please enter date of birth');\n");
+      out.write("                return false\n");
+      out.write("        }\n");
+      out.write("         if (document.patient.national_id.value === \"\"){\n");
+      out.write("                alert('Please enter national id');\n");
+      out.write("                return false\n");
+      out.write("        }\n");
+      out.write("            \n");
       out.write("\t\t\telse\n");
       out.write("\t\t{\n");
       out.write("\t\t\treturn true;\n");

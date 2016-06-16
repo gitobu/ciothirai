@@ -4,10 +4,16 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Gitobu/Documents/NetBeansProjects/Clinic1/web/newvisit.jsp</file>
+            <file>file:/C:/Users/Gitobu/Documents/NetBeansProjects/Clinic1/web/provider.jsp</file>
+            <file>file:/C:/Users/Gitobu/Documents/NetBeansProjects/Clinic1/web/cancelappointment.jsp</file>
             <file>file:/C:/Users/Gitobu/Documents/NetBeansProjects/Clinic1/web/visitdata.jsp</file>
+            <file>file:/C:/Users/Gitobu/Documents/NetBeansProjects/Clinic1/web/searchpatient.jsp</file>
             <file>file:/C:/Users/Gitobu/Documents/NetBeansProjects/Clinic1/web/listservices.jsp</file>
+            <file>file:/C:/Users/Gitobu/Documents/NetBeansProjects/Clinic1/web/savepatient.jsp</file>
+            <file>file:/C:/Users/Gitobu/Documents/NetBeansProjects/Clinic1/web/appointmentschedule.jsp</file>
             <file>file:/C:/Users/Gitobu/Documents/NetBeansProjects/Clinic1/web/appointmentdata.jsp</file>
             <file>file:/C:/Users/Gitobu/Documents/NetBeansProjects/Clinic1/web/listvisit.jsp</file>
+            <file>file:/C:/Users/Gitobu/Documents/NetBeansProjects/Clinic1/web/appointment.jsp</file>
             <file>file:/C:/Users/Gitobu/Documents/NetBeansProjects/Clinic1/web/menubar.jsp</file>
             <file>file:/C:/Users/Gitobu/Documents/NetBeansProjects/Clinic1/web/patient.jsp</file>
             <file>file:/C:/Users/Gitobu/Documents/NetBeansProjects/Clinic1/web/listservice.jsp</file>
@@ -15,6 +21,7 @@
             <file>file:/C:/Users/Gitobu/Documents/NetBeansProjects/Clinic1/web/relationship.jsp</file>
             <file>file:/C:/Users/Gitobu/Documents/NetBeansProjects/Clinic1/web/listpatient.jsp</file>
             <file>file:/C:/Users/Gitobu/Documents/NetBeansProjects/Clinic1/web/medicalhistorydata.jsp</file>
+            <file>file:/C:/Users/Gitobu/Documents/NetBeansProjects/Clinic1/web/saveappointment.jsp</file>
             <file>file:/C:/Users/Gitobu/Documents/NetBeansProjects/Clinic1/web/patientdata.jsp</file>
             <file>file:/C:/Users/Gitobu/Documents/NetBeansProjects/Clinic1/web/patientdetails.jsp</file>
             <file>file:/C:/Users/Gitobu/Documents/NetBeansProjects/Clinic1/web/servicedata.jsp</file>

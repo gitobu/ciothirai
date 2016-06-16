@@ -164,7 +164,7 @@
              <th align="left">Date of birth</th><td><input type="text" name="date_of_birth" class="tcal" value="<%= pa.getVday() %><%= pa.getVdash() %><%= pa.getVmonth() %><%= pa.getVdash() %><%= pa.getVyear() %>"></td> 
              <tr><th align="left">Gender</th><td>
                     <c:choose> 
-                        <c:when test='{<%= pa.getGender() %> == "1"}'>
+                        <c:when test='{<%= pa.getGender() %> equals ("1")}'>
                         Female<input type="radio" name="gender" value="1" checked="checked">
                         Male<input type="radio" name="gender" value="2">
                         </c:when>

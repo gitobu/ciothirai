@@ -68,13 +68,13 @@
             <c:set var="vmonth" value="${fn:substring(service_date, 3, 5)}"/>
             <c:set var="vyear" value="${fn:substring(service_date, 6, 10)}"/>
             <c:set var="dash" value="-"/>
-            <c:set var="sd" value="${vyear}${dash}${vmonth}${dash}${vday}"/>
+            <c:set var="sd" value="${vyear}${dash}${vday}${dash}${vmonth}"/>
             <%--<c:set var="sd" value="${vyear}${dash}${vday}${dash}${vmonth}"/>--%>
             <c:set var="service_type_id" value = "<%= request.getParameter("service_type_id")%>"/> 
             
             <sql:update dataSource="${snapshot}" var="result">
             update appointment set service_date = '${sd}', 
-            service_type_id = '${service_type_id}'
+            service_type_id = ${service_type_id}
             where appointment_id  = ${appointment_id}
             </sql:update>  
 
@@ -90,12 +90,12 @@
             <c:set var="vmonth" value="${fn:substring(service_date, 3, 5)}"/>
             <c:set var="vyear" value="${fn:substring(service_date, 6, 10)}"/>
             <c:set var="dash" value="-"/>
-            <c:set var="dob" value="${vyear}${dash}${vmonth}${dash}${vday}"/>
+            <c:set var="sd" value="${vyear}${dash}${vmonth}${dash}${vday}"/>
             <c:set var="service_type_id" value = "<%= request.getParameter("service_type_id")%>"/> 
             
             <sql:update dataSource="${snapshot}" var="result">
             insert into appointment (patient_id, service_date, service_type_id, provider_id, appointment_status)
-            values (${patient_id}, '${dob}', ${service_type_id}, ${provider_id}, ${appointment_status})
+            values (${patient_id}, '${sd}', ${service_type_id}, ${provider_id}, ${appointment_status})
             </sql:update>   
             
             <jsp:setProperty name="app" property="appointment_id" value="${appointment_id}"/>
@@ -125,7 +125,11 @@
         FROM service_type
         ORDER BY service_type_description
         </sql:query> 
-        
+        <sql:query dataSource="${snapshot}" var="pr">
+        SELECT provider_id, CONCAT(first_name, ' ' , last_name) as provider
+        FROM provider
+        ORDER BY last_name
+        </sql:query> 
         <form name="provider" action="saveappointment.jsp" method="POST">
          <table border="0" cellpadding="10" >  
              <caption>
@@ -162,6 +166,16 @@
                 </select> 
   
                      </td> </tr>
+                 <tr><th align="left">Attending physician </th>
+                <td> 
+                <select name="provider_id">
+                  <option value="">[Please select attending physician]</option>
+                    <c:forEach var="row" items="${pr.rows}">
+                        <option value="${row.provider_id}">${row.provider}</option>
+                    </c:forEach> 
+                </select> 
+                </td> 
+                </tr>
              <tr><td></td><td><input type="submit" value="Submit" onclick="return validateFormValues()"/></td> </tr>
             </table>
             </form>
