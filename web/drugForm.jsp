@@ -87,13 +87,13 @@
              <c:when test='${edit_mode}'>
                  <input type="hidden" name="drug_form_id" value="<%= df.getDrug_form_id() %>">   
                   
-             <tr><th align="left">Job Title</th><td><input type="text" name="drug_form" value="<%= df.getDrug_form() %>"></td> </tr>
+             <tr><th align="left">Drug Form</th><td><input type="text" name="drug_form" value="<%= df.getDrug_form() %>"></td> </tr>
              </c:when>
              <c:when test='${new_mode}'>
-             <tr><th align="left">Job Title</th><td><input type="text" name="drug_form" ></td> </tr>
+             <tr><th align="left">Drug Form</th><td><input type="text" name="drug_form" ></td> 
             </c:when> 
              </c:choose> 
-             <tr><th></th><td><input type="submit" value="Submit" onclick="return validateFormValues()"/></td> </tr>
+             <td><input type="submit" value="Submit" onclick="return validateFormValues()"/></td> </tr>
             </table>
             </form>
          <table border="0" cellpadding="10" align="center" >
