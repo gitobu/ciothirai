@@ -136,11 +136,14 @@
                  
                  <tr><th align="left">Attending physician </th>
                 <td> 
+                    
+                    
                 <select name="provider_id">
-                  <option value="">[Please select attending physician]</option>
-                    <c:forEach var="row" items="${pr.rows}">
-                        <option value="${row.provider_id}">${row.provider}</option>
-                    </c:forEach> 
+                     <c:forEach var="row" items="${pr.rows}">
+        <option value="${row.provider_id}" ${row.provider_id ==  app.getProvider_id() ? 'selected="selected"' : ''}>${row.provider}</option>
+    </c:forEach>
+                    
+                 
                 </select> 
                 </td> 
                 </tr>
